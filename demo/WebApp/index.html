@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<meta charset=utf-8 />
+<title>PHHC Web App Demo</title>
+</head>
+<body ng-controller="ctrl">
+  <h2>Categories:</h2>
+  <ul>
+    <li ng-repeat="c in categories" ng-click="getAddresses(c)">{{c}}</li>
+  </ul>
+
+  <h3>Addresses in this category</h3>
+  <ul>
+    <li ng-repeat="a in addresses">
+      <ul>
+        <li>Name: {{a.Name__c}}</li>
+        <li>Category: {{a.Category__c}}</li>
+        <li>Address: {{a.Address__c}}</li>
+      </ul>
+    </li>
+  </ul>
+  <script src="app.js"></script>
+</body>
+</html>

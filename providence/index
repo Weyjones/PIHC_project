@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="pihcApp">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Special Topics</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+
+
+  <link href="/providence/content/styles/bootstrap-theme" rel="stylesheet"/>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="/providence/content/styles/site.css" rel="stylesheet"/>
+
+  <!--[if IE 8]>
+  <link href="/providence/content/styles/ie8?v=" rel="stylesheet"/>
+
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/providence/Content/SiteIcons/en-US-north-light-prov/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon-16x16.png" />
+  <link rel="manifest" href="/providence/Content/SiteIcons/en-US-north-light-prov/manifest.json" />
+  <link rel="shortcut icon" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon.ico">
+  <meta name="msapplication-config" content="/providence/Content/SiteIcons/en-US-north-light-prov/browserconfig.xml" />
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="/providence/bundles/angular.js"></script>
+  <script src="/providence/SpecialTopics/app.module.js"></script>
+  <script src="/providence/component/footer/footer.module.js"></script>
+  <script src="/providence/component/footer/footer.component.js"></script>
+  <script src="/providence/component/header/header.module.js"></script>
+  <script src="/providence/component/header/header.component.js"></script>
+  <script src="/providence/component/search/search.module.js"></script>
+  <script src="/providence/component/search/search.component.js"></script>
+  <script src="/providence/component/news/news.module.js"></script>
+  <script src="/providence/component/news/news.component.js"></script>
+  <script src="/providence/component/helpfullink/helpfullink.module.js"></script>
+  <script src="/providence/component/helpfullink/helpfullink.component.js"></script>
+  <script src="/providence/service/jsLoader/jsLoader.service.js"></script>
+</head>
+<body class="">
+  <a id="top" href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<app-header>
+</app-header>
+
+
+<!--
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid container-mainnav">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a href="/providence/Index"><img src="/providence/content/images/en-US-north-light-prov/logo.png" alt="Providence Health &amp; Services" /></a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <div class="">
+        <ul class="nav navbar-nav">
+          <li data-pp-sectionname="PopularTopics" class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="mainnav-item"><span class="mainnav-icon"><span class="hidden-lg"><i class="fa fa-fire fa-2x"></i></span><span class="visible-lg-inline"><i class="fa fa-fire fa-3x"></i></span></span><span class="mainnav-title ">Popular Topics</span><span class="mainnav-desc"><p>Focus on special topics or populations</p>
+              </span></span>
+            </a>
+            <ul class="dropdown-menu megamenu row">
+              <li class="container">
+                <div class="col-sm-12 col-md-2 col-md-offset-2 container-subnav-heading hidden-xs">
+                  <span class="subnav-heading">Popular Topics</span>
+                  <span class="subnav-desc"><p>Focus on special topics or populations</p>
+                  </span>
+                </div>
+                <ul class="col-sm-12 col-md-8 subnav-links">
+                  <li><a href="/providence/SpecialTopics/LiveHealthy2020">LiveHealthy2020</a></li>
+                  <li><a href="/providence/SpecialTopics/LiveWell">LiveWell Local</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li data-pp-sectionname="Favorites" class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="mainnav-item"><span class="mainnav-icon"><span class="hidden-lg"><i class="fa fa-heart fa-2x"></i></span><span class="visible-lg-inline"><i class="fa fa-heart fa-3x"></i></span></span><span class="mainnav-title pad-more">My Favorites</span><span class="mainnav-desc"><p>Sign in to access your saved resources</p>
+              </span></span>
+            </a>
+            <ul class="dropdown-menu megamenu row">
+              <li class="container">
+                <div class="col-sm-12 col-md-2 col-md-offset-2 container-subnav-heading hidden-xs">
+                  <span class="subnav-heading">My Favorites</span>
+                  <span class="subnav-desc"><p>Sign in to access your saved resources</p>
+                  </span>
+                </div>
+                <ul class="col-sm-6 col-md-2">
+                  <li><a href="/providence/Account/Favorites">My Favorites</a></li>
+                  <li><a href="/providence/Account/Searches">My Searches</a></li>
+                </ul>
+                <ul class="col-sm-6 col-md-2">
+                  <li><a href="/providence/Account/Comparisons">My Comparisons</a></li>
+
+                </ul>
+                <ul class="col-sm-6 col-md-2">
+                  <li><a href="/providence/Account/UserAccount">My Settings</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li data-pp-sectionname="ContactUs" class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="mainnav-item"><span class="mainnav-icon"><span class="hidden-lg"><i class="fa fa-mobile fa-2x"></i></span><span class="visible-lg-inline"><i class="fa fa-mobile fa-3x"></i></span></span><span class="mainnav-title pad-less">Contact Us</span><span class="mainnav-desc"><p>Need help? Contact Providence</p>
+              </span></span>
+            </a>
+            <ul class="dropdown-menu megamenu row">
+              <li class="container">
+                <div class="col-sm-12 col-md-2 col-md-offset-2 container-subnav-heading hidden-xs">
+                  <span class="subnav-heading">Contact Us</span>
+                  <span class="subnav-desc">
+                    <p>Need help? <br />Contact Providence</p>
+                  </span>
+                </div>
+                <div class="col-sm-12 col-md-8 subnav-contact">
+                  <p>
+                    <b>Providence Health &amp; Services</b><br />
+                    1321 Colby Ave <br />
+                    C4 Room 014 <br />
+                    Everett, WA 98201 <br />
+                    <p>
+                      <b>Phone:</b> 425-261-3344 <br />
+                      <b>Email:</b> <a href="mailto:PIHC@providence.org">PIHC@providence.org</a><br />
+                    </div>
+                  </li>
+                </ul>
+
+
+              </li>
+            </ul>
+          </div>
+          <div class="container-fluid container-blocknav">
+            <ul class="nav navbar-nav navbar-right navbar-blocknav">
+              <li>
+                <div id="google_translate_element"></div>
+                <script type="text/javascript">
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                }
+                </script>
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+              </li>
+              <li><a href="/providence/Account/SignIn">Sign In</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+-->
+
+    <div id="main" class="main">
+      <a name="content" id="content"></a>
+      <div id="MainContent">
+        <div class="container-fluid container-search">
+          <div class="container">
+            <div class="search-bar">
+              <form action="/providence/Search" method="get">
+                <div class="row nav-2">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="container-input-kwd ">
+                      <input type="hidden" name="sm" value="All">
+                      <label class="search-label sr-only" for="q">Search</label>
+                      <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="form-control input-lg kwd-input tt-hint" data-searchmethod="keywords" type="text" value="" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><input class="form-control input-lg kwd-input tt-input" data-searchmethod="keywords" id="q" name="q" placeholder="What are you looking for?" type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-suggestions"></div></div></span>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-5">
+                    <div class="">
+                      <div class="input-group location">
+                        <label class="search-label sr-only" for="loc">Location Input</label>
+                        <input class="form-control input-lg" data-container="body" data-html="true" data-placement="top" id="loc" name="loc" placeholder="Where?" type="text" value="">
+                        <span class="input-group-addon"><a href="#" onclick="return false;" role="button" tabindex="1" title="Location Options"><span class="glyphicon glyphicon-map-marker"></span><span class="sr-only">Location Options</span></a></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-1">
+                    <button class="btn btn-primary btn-lg btn-search-main" type="submit"><i class="fa fa-search"></i><span class="sr-only">Search</span></button>
+                  </div>
+                </div>
+                <div style="display:none;visibility:hidden">
+                  <input id="geo" name="geo" type="hidden" value="">
+                  <input id="reg" name="reg" type="hidden" value="">
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="bg-banner-fixed" style="background-image: url(/providence/imagelibrary/providence/bg-home.jpg);"><!-- This div positions the background photo for the main banner--></div>
+        <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://staticxx.facebook.com/connect/xd_arbiter/r/0F7S7QWJ0Ac.js?version=42#channel=f68cae5599181&amp;origin=https%3A%2F%2Fwww.resourcehouse.info" style="border: none;"></iframe></div></div></div>
+        <script>
+        (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="row row-featured-topics">
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="panel panel-default panel-featured-topics">
+              <div class="panel-heading"><h2 class="panel-title">Popular Topics</h2></div>
+              <div class="list-group ">
+                <a href="/providence/SpecialTopics/LiveHealthy2020" class="list-group-item">
+                  <i class="fa fa-info-circle"></i>
+                  <span class="logo"><img class="img-responsive" src="/providence/imagelibrary/Providence/Logo_LiveHealthy-Snohomish_v2.png"></span>
+                  <span class="topic">LiveHealthy2020</span>
+                  <span class="description">A search and mapping tool powered by the Snohomish County Community Partner Portal. Developed to help the community collect and share information related to nutrition, physical activity and more.</span>
+                </a>
+                <a href="/providence/SpecialTopics/LiveWell" class="list-group-item">
+                  <i class="fa fa-info-circle"></i>
+                  <span class="logo"><img class="img-responsive" src="/providence/imagelibrary/Providence/Logo_LiveWell_v2.png"></span>
+                  <span class="topic">LiveWell Local</span>
+                  <span class="description">A dedicated Snohomish County health resource hub in partnership with North Sound 211 at Volunteers of America and community organizations. Designed to connect individuals and providers to local resources that support health and well-being.</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-5">
+            <div class="panel-default panel">
+              <div class="panel-heading feature"><h2 class="panel-title">About This Site</h2></div>
+              <ul class="news list-group">
+                <li class="list-group-item">
+                  <h3>Welcome.</h3><p>
+                  </p><p>This site it designed to serve the Snohomish County community in multiple ways:</p>
+                  <ul>
+                    <li>As a search and mapping tool of local organizations committed to a healthier Snohomish County by 2020 (LiveHealthy2020)</li>
+                    <li>As a way to connect people with the local resources they need to pursue their pathway to health (LiveWell Local)</li>
+                    <li>As an opportunity for individuals and organizations to share their health and well-being services with others. (coming soon, our Provider Portal)</li>
+                  </ul>
+                  <p>Explore one, two or all three options depending upon your needs and goals.</p>
+                </li>
+              </ul>
+              <div id="fb-wrapper" style="width:100%; text-align:center;">
+                <div id="fb-container" style="display:inline-block; width:100%;" max-width:"500px;"=""><div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/PIHCSnohomish/" data-tabs="timeline" data-width="500" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=485&amp;height=340&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FPIHCSnohomish%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;small_header=true&amp;tabs=timeline&amp;width=500"><span style="vertical-align: bottom; width: 485px; height: 340px;"><iframe name="f3c32ac11861eb" width="500px" height="340px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.7/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0F7S7QWJ0Ac.js%3Fversion%3D42%23cb%3Df1950950cc87d7%26domain%3Dwww.resourcehouse.info%26origin%3Dhttps%253A%252F%252Fwww.resourcehouse.info%252Ff68cae5599181%26relation%3Dparent.parent&amp;container_width=485&amp;height=340&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FPIHCSnohomish%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;small_header=true&amp;tabs=timeline&amp;width=500" style="border: none; visibility: visible; width: 485px; height: 340px;" class=""></iframe></span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="panel-default panel">
+              <div class="panel-heading feature">
+                <h2 class="panel-title">Helpful Links</h2>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item helpful-link"><a href="https://www.resourcehouse.info/win211/Index"><span class="term">Washington Information Network 211</span><span class="def">Find more online local resources with the Washington Information Network 211. Look for LiveWell Local data integration with NorthSound 211 coming soon.</span></a></li>
+                <li class="list-group-item helpful-link"><a href="http://www.pihcsnohomish.org/"><span class="term">Providence Institute for a Healthier Community</span><span class="def"></span></a></li>
+                <li class="list-group-item helpful-link"><a href="http://snocohealth.org/livehealthy2020/"><span class="term">LiveHealthy2020</span><span class="def"></span></a></li>
+                <li class="list-group-item helpful-link"><a href="http://www.pihcsnohomish.org/livewell/pathways-to-health/"><span class="term">LiveWell (Pathways to Health)</span><span class="def"></span></a></li>
+                <li class="list-group-item helpful-link"><a href="http://snocohealth.org/"><span class="term">Snohomish County Health Leadership Coalition</span><span class="def"></span></a></li>
+                <li class="list-group-item helpful-link"><a href="http://www.providence.org/blog"><span class="term">To Your Health Blog/Providence Health &amp; Services</span><span class="def"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+        (function () {
+          var resizeTimer;
+          window.addEventListener("resize", function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+              if ("undefined" !== typeof "FB.XFBML.parse") {
+                var container_width = $('#fb-container').width();
+                $('#fb-container').html('<div class="fb-page" data-href="https://www.facebook.com/PIHCSnohomish/" data-tabs="timeline" data-width="500" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>');
+                FB.XFBML.parse();
+              }
+            }, 500);
+          });
+        })();
+        </script>
+
+      </div>
+    </div>
+
+    <app-footer>
+  </app-footer>
+
+<!--
+<div class="container-fluid container-footer hidden-print">
+  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4 logo-footer">
+    <img class="logo-footer" src="/providence/content/images/en-US-north-light-prov/logo.png" alt="Providence Health &amp; Services" />
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 container-footerlinks">
+    <ul class="footer-links">
+      <li><a href="/providence/Index">Home</a></li>
+      <li><a href="/providence/AboutUs">About Us</a></li>
+      <li><a href="/providence/Privacy">Privacy Policy &amp; Disclaimer</a></li>
+      <li><a href="/providence/Accessibility">Accessibility Policy</a></li>
+      <li><a href="/providence/ContactUs">Contact Us</a></li>
+      <li><a href="/providence/TechnicalProblems">Technical Problems</a></li>
+      <li><a href="http://washington.providence.org/">washington.providence.org</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+    <ul class="footer-links social-media">
+      <li>
+        <a rel="tooltip" title="Share this page to Facebook" class="social-media facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.resourcehouse.info:443/providence/SpecialTopics/" onclick="window.open(&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + encodeURIComponent(window.location.href),&quot;sharer&quot;,&quot;toolbar=0,status=0,width=580,height=325&quot;); return false;">
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+        <a rel="tooltip" title="Share this page to Twitter" class="social-media twitter" href="https://twitter.com/intent/tweet?url=https://www.resourcehouse.info:443/providence/SpecialTopics/" onclick="window.open(&quot;https://twitter.com/intent/tweet?url=&quot; + encodeURIComponent(window.location.href),&quot;sharer&quot;,&quot;toolbar=0,status=0,width=580,height=325&quot;); return false;">
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container-fluid container-copyright hidden-print">
+  <div class="col-xs-12 col-md-0 col-lg-2">
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-2">
+    <div class="copyrights">
+      <img src="/providence/Content/Images/r.png" width="24" height="24" alt="Revation Logo" />
+      <div class="powered-by">
+        Powered by Revation Systems
+      </div>
+      <div class="copyright">
+        &copy; Copyright 2017 <span class="nowrap">Revation Systems, Inc.</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-8 col-lg-6">
+    <p class="copyright fineprint">Text, graphics, and HTML code are protected by US and International Copyright Laws, and may not be copied, reprinted, published, translated, hosted, or otherwise distributed by any means without explicit permission. Commercial use and distribution of the contents of the website is not allowed without express and prior written consent of the author.</p>
+  </div>
+</div>
+-->
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>(window.jquery)||document.write('<script src="/providence/bundles/jquery"><\/script>');</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>($.fn.modal)||document.write('<script src="/providence/bundles/bootstrap"><\/script>');</script>
+
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDUFkX2zm128gQNZxn8Dg9N2iyyIAW5Hjs&libraries=places&region=US"></script>
+
+<script type="text/javascript">
+(function (publicPortal, $, undefined) {
+  publicPortal.applicationName = "Providence Health &amp; Services";
+  publicPortal.chatServer = "secure2.revation.com";
+  publicPortal.chatId = "";
+  publicPortal.chatGroup = "providence";
+  publicPortal.DefaultStateCode = "WA";
+  publicPortal.SignInUrl = "/providence/Account/SignIn";
+  publicPortal.ComparisonUrl = "/providence/Providers/Compare";
+  publicPortal.CreateComparisonExcel = "/providence/Export/Comparison/Excel";
+  publicPortal.CreateDirectoryUrl = "/providence/Export/Directory/Create";
+  publicPortal.CreateExcel = "/providence/Export/Excel";
+  publicPortal.GetDirectoryUrl = "/providence/Export/Directory";
+  publicPortal.EmailResultsUrl = "/providence/Export/EmailResults";
+  publicPortal.SaveComparisonUrl = "/providence/Account/SaveComparison";
+  publicPortal.SaveSearchUrl = "/providence/Account/SaveSearch";
+  publicPortal.SaveFavoriteUrl = "/providence/Account/SaveFavorite";
+  publicPortal.SubmitReviewUrl = "/providence/Search/SubmitReview";
+  publicPortal.GooglePlacesDefaultBounds = "41.9428321536,-99.9248261452,49.4553354395,-89.4890289307";
+  publicPortal.UseAjaxResultsPage = false;
+  publicPortal.DisableGeoLocation = true;
+
+
+  if ("" !== publicPortal.chatServer && "" !== publicPortal.chatId) {
+    mbaLiveChat.Initialize({
+      chatServer: "secure2.revation.com",
+      chatId: "",
+      chatGroup: "providence",
+      usingChatQuestions: ("true" === "false"),
+      chatOnlineUrl: "Chat/Online?site=Providence+Health+%26+Services",
+      chatOfflineUrl: "Chat/Offline?site=Providence+Health+%26+Services",
+    });
+  }
+
+}(window.publicPortal = window.publicPortal || {}, jQuery));
+</script>
+<script>
+(function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+    (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-4735116-16', 'auto');
+ga('send', 'pageview');
+</script>
+
+<!--[if lt IE 10]>
+<script src="/providence/bundles/ie?v=OVQ9TFoAJI1fW6BO7pKTGyo1_EgBIIN4ZSRv-k4h5gA1"></script>
+
+<![endif]-->
+<!--
+<script src="/providence/bundles/application"></script>
+-->
+
+</body>
+</html>

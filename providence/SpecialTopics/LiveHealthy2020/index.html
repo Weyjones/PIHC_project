@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pihcApp">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Providence Health &amp; Services</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link href="/providence/content/styles/bootstrap-theme" rel="stylesheet"/>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="/providence/content/styles/site.css" rel="stylesheet"/>
+
+  <!--[if IE 8]>
+  <link href="/providence/content/styles/ie8?v=" rel="stylesheet"/>
+
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/providence/Content/SiteIcons/en-US-north-light-prov/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon-16x16.png" />
+  <link rel="manifest" href="/providence/Content/SiteIcons/en-US-north-light-prov/manifest.json" />
+  <link rel="shortcut icon" href="/providence/Content/SiteIcons/en-US-north-light-prov/favicon.ico">
+  <meta name="msapplication-config" content="/providence/Content/SiteIcons/en-US-north-light-prov/browserconfig.xml" />
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="/providence/bundles/angular.js"></script>
+  <script src="/providence/SpecialTopics/app.module.js"></script>
+  <script src="/providence/component/LWL_body/LWL_body.module.js"></script>
+  <script src="/providence/component/LWL_body/LWL_body.component.js"></script>
+  <script src="/providence/component/LH2020_body/LH2020_body.module.js"></script>
+  <script src="/providence/component/LH2020_body/LH2020_body.component.js"></script>
+  <script src="/providence/component/footer/footer.module.js"></script>
+  <script src="/providence/component/footer/footer.component.js"></script>
+  <script src="/providence/component/header/header.module.js"></script>
+  <script src="/providence/component/header/header.component.js"></script>
+  <script src="/providence/component/search/searchbar.module.js"></script>
+  <script src="/providence/component/search/searchbar.component.js"></script>
+  <script src="/providence/component/search/search.module.js"></script>
+  <script src="/providence/component/search/search.component.js"></script>
+  <script src="/providence/component/news/news.module.js"></script>
+  <script src="/providence/component/news/news.component.js"></script>
+  <script src="/providence/component/helpfullink/helpfullink.module.js"></script>
+  <script src="/providence/component/helpfullink/helpfullink.component.js"></script>
+  <script src="/providence/service/jsLoader/jsLoader.service.js"></script>
+
+</head>
+<body class="home SE se-livewell">
+  <a id="top" href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+  <app-header>
+  </app-header>
+
+  <lh2020-body></lh2020-body>
+
+  <app-footer>
+  </app-footer>
+
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script>(window.jquery)||document.write('<script src="/providence/bundles/jquery"><\/script>');</script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>($.fn.modal)||document.write('<script src="/providence/bundles/bootstrap"><\/script>');</script>
+
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk&libraries=places&region=US"></script>
+
+  <script type="text/javascript">
+  (function (publicPortal, $, undefined) {
+    publicPortal.applicationName = "Providence Health &amp; Services";
+    publicPortal.chatServer = "secure2.revation.com";
+    publicPortal.chatId = "";
+    publicPortal.chatGroup = "providence";
+    publicPortal.DefaultStateCode = "WA";
+    publicPortal.SignInUrl = "/providence/Account/SignIn";
+    publicPortal.ComparisonUrl = "/providence/Providers/Compare";
+    publicPortal.CreateComparisonExcel = "/providence/Export/Comparison/Excel";
+    publicPortal.CreateDirectoryUrl = "/providence/Export/Directory/Create";
+    publicPortal.CreateExcel = "/providence/Export/Excel";
+    publicPortal.GetDirectoryUrl = "/providence/Export/Directory";
+    publicPortal.EmailResultsUrl = "/providence/Export/EmailResults";
+    publicPortal.SaveComparisonUrl = "/providence/Account/SaveComparison";
+    publicPortal.SaveSearchUrl = "/providence/Account/SaveSearch";
+    publicPortal.SaveFavoriteUrl = "/providence/Account/SaveFavorite";
+    publicPortal.SubmitReviewUrl = "/providence/Search/SubmitReview";
+    publicPortal.GooglePlacesDefaultBounds = "41.9428321536,-99.9248261452,49.4553354395,-89.4890289307";
+    publicPortal.UseAjaxResultsPage = false;
+    publicPortal.DisableGeoLocation = false;
+
+
+    if ("" !== publicPortal.chatServer && "" !== publicPortal.chatId) {
+      mbaLiveChat.Initialize({
+        chatServer: "secure2.revation.com",
+        chatId: "",
+        chatGroup: "providence",
+        usingChatQuestions: ("true" === "false"),
+        chatOnlineUrl: "Chat/Online?site=Providence+Health+%26+Services",
+        chatOfflineUrl: "Chat/Offline?site=Providence+Health+%26+Services",
+      });
+    }
+
+  }(window.publicPortal = window.publicPortal || {}, jQuery));
+  </script>
+  <script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-4735116-16', 'auto');
+  ga('send', 'pageview');
+  </script>
+
+  <!--[if lt IE 10]>
+  <script src="/providence/bundles/ie?v=OVQ9TFoAJI1fW6BO7pKTGyo1_EgBIIN4ZSRv-k4h5gA1"></script>
+
+  <![endif]-->
+  <!--<script src="/providence/bundles/application"></script>
+-->
+
+
+<script type="text/javascript">
+(function(){
+  if ("0" == "3") {
+    window.location.href = "/providence/Index";
+  }
+
+  publicPortal.KeywordTypeahead({ "remote": "" });
+
+  var $sel = $("#region");
+  var url = "/providence/SpecialTopics/LiveWell";
+  var urlRegion = "/providence/SpecialTopics/LiveWell?region=__region__";
+
+  if (0 < $sel.length) {
+    $("#btnRegion").click(function(e) {
+      e.preventDefault();
+      if ("statewide" === ($sel.val() || "statewide")) {
+        window.location = url;
+      }
+      else {
+        window.location = urlRegion.replace(/__region__/, $sel.val());
+      }
+      return false;
+    });
+  }
+})();
+</script>
+
+<!--
+<script src="/providence/component/header.js"></script>
+-->
+
+</body>
+</html>

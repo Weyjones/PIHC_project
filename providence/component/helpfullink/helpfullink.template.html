@@ -1,0 +1,15 @@
+<div class="col-sm-3 col-md-3">
+  <div class="panel-default panel">
+    <div class="panel-heading feature">
+      <h2 class="panel-title">Helpful Links</h2>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item helpful-link" ng-repeat="link in $ctrl.links  | orderBy : $ctrl.orderProp : false">
+        <a href="{{link.acf.url}}">
+          <span class="term">{{link.title.rendered}}</span>
+          <span class="def">{{link.acf.description}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
