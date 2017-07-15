@@ -1,0 +1,51 @@
+<div class="container-fluid bg-color">
+  <div class="container page-top">
+    <div class="row hidden-print">
+      <div class="col-xs-12">
+        <ul class="nav nav-results nav-pills" role="tablist">
+          <li role="presentation"><a href="#" class="visible-xs hidden-print" role="button" rel="tooltip" data-toggle="offcanvas" title=""><span class="glyphicon glyphicon-filter"></span></a></li>
+          <li role="presentation">
+            <a href="/providence/SpecialTopics/LiveHealthy2020/Map" role="button" class="links-toolbar" tabindex="0"><span class="fa fa-map-marker"></span><span class="hidden-xs hidden-sm">&nbsp;Map View</span></a>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-check"></span><span class="hidden-xs hidden-sm" title="">&nbsp;Compare/Save&nbsp;<span class="caret"></span></span></a>
+            <ul class="dropdown-menu dropdown-menu-results" style="display: none;">
+              <li><a href="#" onclick="ppResults.SaveChecked(); return false;"><i class="fa fa-heart"></i>Save Checked Items to Favorites</a></li>
+              <li><a href="#" onclick="ppResults.CompareChecked(); return false;"><i class="fa fa-columns"></i>Compare Checked Items</a></li>
+              <li><a href="#" onclick="ppResults.SetChecks(true); return false;"><i class="fa fa-check-square-o"></i>Check All Items</a></li>
+              <li><a href="#" onclick="ppResults.SetChecks(false); return false;"><i class="fa fa-square-o"></i>Clear All Checks</a></li>
+            </ul>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-sort"></span><span class="hidden-xs hidden-sm" title="">&nbsp;Sort Options&nbsp;<span class="caret"></span></span></a>
+            <ul class="dropdown-menu dropdown-menu-results" style="display: none; opacity: 1;">
+              <li class=""><a href="" ng-click="$ctrl.setOrderProp('Name')"><i class="fa fa-sort-alpha-asc"></i>Sort by Service Name</a></li>
+              <li class=""><a href="" ng-click="$ctrl.setOrderProp('Name')"><i class="fa fa-sort-alpha-asc"></i>Sort by Provider Name</a></li>
+              <li class=""><a href="" ng-click="$ctrl.setOrderProp('')"><i class="fa fa-sort-amount-desc"></i>Sort by Relevance</a></li>
+            </ul>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list-alt"></span><span class="hidden-xs hidden-sm" title="">&nbsp;Display Options&nbsp;<span class="caret"></span></span></a>
+            <ul class="dropdown-menu dropdown-menu-results" style="display: none; opacity: 1;">
+              <li class=""><a ui-sref='10'  href="" ng-click="$ctrl.setPageSize(10)"><i class="fa fa-list-ol"></i>10 Results Per Page</a></li>
+              <li class=""><a ui-sref='20'  href="" ng-click="$ctrl.setPageSize(20)"><i class="fa fa-list-ol"></i>20 Results Per Page</a></li>
+              <li class=""><a ui-sref='50'  href="" ng-click="$ctrl.setPageSize(50)"><i class="fa fa-list-ol"></i>50 Results Per Page</a></li>
+              <li class=""><a ui-sref='100'  href="" ng-click="$ctrl.setPageSize(100)"><i class="fa fa-list-ol"></i>100 Results Per Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-external-link"></span><span class="hidden-xs hidden-sm" title="">&nbsp;Print/Export&nbsp;<span class="caret"></span></span></a>
+            <ul class="dropdown-menu dropdown-menu-results" style="display: none; opacity: 1;">
+              <li><a href="#" onclick="ppResults.SaveSearch(); return false;"><i class="fa fa-heart"></i>Save This Search</a></li>
+              <li><a href="#" onclick="return false;" data-toggle="modal" data-target="#EmailResults"><i class="fa fa-envelope"></i>Email a Link to These Results</a></li>
+              <li><a href="#" onclick="window.print(); return false;"><i class="fa fa-print"></i>Send Results to a Printer</a></li>
+              <li><a href="#" onclick="return false;" data-toggle="modal" data-target="#ExportExcel"><i class="fa fa-file-excel-o"></i>Export to Excel</a></li>
+              <li><a href="#" onclick="return false;" data-toggle="modal" data-target="#CreateDirectory"><i class="fa fa-file-pdf-o"></i>Create a Directory</a></li>
+            </ul>
+          </li>
+          <li role="presentation"><a href="/providence/FAQ" id="ListView" role="button" class="links-toolbar" tabindex="0"><span class="fa fa-question-circle"></span><span class="hidden-xs hidden-sm" title="">&nbsp;Need Help?</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,2 @@
 'use strict';
-angular.module('search', []);
+angular.module('search', ['ui.router', 'ui.bootstrap']);

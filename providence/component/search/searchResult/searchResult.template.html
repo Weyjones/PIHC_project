@@ -1,0 +1,53 @@
+<div id="resultContainer" class="col-xs-12 col-sm-8 col-md-9 results-list" role="main">
+  <div class="icon-legend">
+  </div>
+  <div class="row row-results-list" dir-paginate="program in $ctrl.programs | filter: (searchKeyword && keyword2) | orderBy:orderProp | itemsPerPage: pageSize ">
+    <div class="col-xs-12 result">
+      <div class="container-fluid container-servicename">
+        <h2 class="agency">
+          <a id="r1" href="/providence/SpecialTopics/#/Providers?program={{program.Name}}" data-detailitem="#r1"><span id="label1"><span class="rownumber">&nbsp;</span>{{program.Name}}</span></a>
+        </h2>
+        <input name="linkcheck" type="checkbox" value="E08EB0A7-2AFB-4714-B8AF-2A0DECF96BEA" aria-labelledby="label1">
+      </div>
+      <div class="row">
+        <div class="container-agency col-md-6">
+          <div class="container-location">
+            <p class="service">{{program.Name}}</p>
+            <p class="location-name">Concern for Neighbors (Mountlake Terrace) Food Bank</p>
+            <p class="address">{{highlightKeysInText(program.Address__c)}}</p>
+            <p class="distance">5 Miles—<a target="_blank" href="https://maps.google.com?daddr=4700 228th Street SW, Mountlake Terrace, WA, 98043&amp;saddr=Current Location">Get Directions</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 container-descriptors">
+          <div class="container-contact">
+          </div>
+        </div>
+
+        <div class="col-xs-12 container-description">
+          <div class="">
+            <p class="description more hidden-print"><b>Description: </b><span ng-bind-html="highlightKeysInText(program.Description__c)"></span></p>
+            <p class="visible-print-block"><b>Description:</b>&nbsp;{{program.Description__c}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="more-results">
+    <div class="hidden loading hidden-print" data-nextpage="/providence/SpecialTopics/LiveHealthy2020/Search_All_Topics?sm=All&amp;q=&amp;loc=12531+17th+Ave+NE%2c+Seattle%2c+WA+98125&amp;geo=47.720388%2c-122.311184&amp;reg=King%2c+WA&amp;num=10&amp;start=11&amp;bare=true"><i class="fa fa-refresh fa-spin fa-lg"></i> Loading...</div>
+  </div>
+  <div id="virtualPager" class="hidden  hidden-print">
+    <div class="row">
+      <div class="col-12 container-load-more">
+        <a id="load-more-button" class="btn btn-primary btn-block" href="/providence/SpecialTopics/LiveHealthy2020/Search_All_Topics?sm=All&amp;q=&amp;loc=12531+17th+Ave+NE%2c+Seattle%2c+WA+98125&amp;geo=47.720388%2c-122.311184&amp;reg=King%2c+WA&amp;num=10&amp;start=11">Load More</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="staticPager" class="row hidden-print">
+    <div class="col-12 container-pagination">
+      <dir-pagination-controls></dir-pagination-controls>
+    </div>
+  </div>
+  <!-- search options -->
+</div>

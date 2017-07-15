@@ -1,0 +1,259 @@
+<a name="content" id="content"></a>
+
+<div id="MainContent">
+
+
+
+  <div class="modal fade" id="EmailResults" tabindex="-1" role="dialog" aria-labelledby="EmailResults" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h1 class="modal-title" id="myModalLabel">E-mail a Link to Results</h1>
+        </div>
+        <div class="modal-body">
+          <fieldset>
+            <legend class="sr-only">E-mail</legend>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input class="form-control" type="text" id="email-name" autofocus="autofocus" data-errormessage="A valid name is required to send. Names must be at least 3 characters long and can contain only letters, numbers and spaces." />
+            </div>
+            <div class="form-group">
+              <label for="email-from">E-mail From (required)</label>
+              <input class="form-control" type="text" id="email-from" data-errormessage="An &quot;E-mail From&quot; value is required to send." />
+            </div>
+            <div class="form-group">
+              <label for="email-to">Email To (required)</label>
+              <input class="form-control" type="text" id="email-to" data-errormessage="An &quot;E-mail To&quot; value is required to send." />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input class="form-control" type="text" id="email-subject" data-defaultcontent="Resources I found at Providence" value="Resources I found at Providence" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="email-message" data-defaultcontent="I found these resources at Providence">I found these resources at Providence</textarea>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="cancel" data-dismiss="modal">Cancel</a>
+          <button type="button" title="E-mail Results" onclick="ppResults.OnEmailResults({&quot;mode&quot;:&quot;results&quot;}); return false;" class="btn btn-primary">E-mail Results</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="CreateDirectory" tabindex="-1" role="dialog" aria-labelledby="CreateDirectory" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h1 class="modal-title" id="myModalLabel">Create a PDF Directory</h1>
+        </div>
+        <div class="modal-body">
+          <p><strong>Note:</strong> Print Directory supports a maximum of 1000 results. <em>Any results over 1000 will be omitted.</em> <a href="#tips" data-toggle="collapse">Tips for Creating Directories</a></p>
+          <div id="tips" class="alert alert-info collapse" role="alert">
+            <button type="button" class="close" data-toggle="collapse" data-target="#tips" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2>Tips</h2>
+            <p><b>Size Limit:</b> If your result list contains more than the maximum of 1,000 service/site combinations, please use the "Excel export" option instead.
+              <p><b>Format Options:</b> Choose to include the entire result set or only the programs you've manually checked on the results page.</p>
+              <p><b>Output Format:</b> Directories are created as PDF (Adobe Portable Document Format) documents. PDF documents can be saved to your hard drive, printed, or e-mailed as an attachment.</p>
+              <p><b>Indexes:</b> On the directory setup page you can choose to include 3 types of indexes in your directory: Provider Name, Service Name, and Subject.</p>
+            </div>
+            <fieldset>
+              <legend class="sr-only">Print Options</legend>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="dirPrintOptions">Create a directory from:</label>
+                    <select class="form-control" id="dirPrintOptions">
+                      <option value="all" selected="selected">The entire result set</option>
+                      <option value="checked">Only the checked services</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <div class="row">
+              <div class="col-sm-6">
+                <fieldset>
+                  <legend>Directory Format</legend>
+                  <div class="form-group">
+                    <label for="dirFormatOptions">Format Options <span class="def glyphicon glyphicon-question-sign" rel="tooltip" data-container="body" title="Detailed Directory provides a lot of details about the services listed. Telephone Directory includes only the Provider Name, Address, Service Name, Phone Number and E-mail Address"></span></label>
+                    <select class="form-control" id="dirFormatOptions">
+                      <option value="0">Detailed Directory</option>
+                      <option value="1">Telephone Directory</option>
+                    </select>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-sm-6">
+                <fieldset>
+                  <legend>Indexing Options <span class="def glyphicon glyphicon-question-sign" rel="tooltip" data-container="body" title="Use this index to create a list of providers, or get a list of services by provider.  You can also group the services by topic.  If you do not require an index, simply do not check any of the options."></span></legend>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" id="dirIndexByProvider">
+                        Index by Provider
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" id="dirIndexByService">
+                        Index by Service
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" id="dirIndexByTopic">
+                        Index by Topic
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <fieldset>
+              <legend>Cover Page Options</legend>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="dirTitle">Title (max. 60 characters)</label>
+                    <input class="form-control" type="text" id="dirTitle" maxlength="60" />
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="dirSubtitle">Sub Title (max. 140 characters)</label>
+                    <input class="form-control" type="text" id="dirSubtitle" maxlength="140" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="dirDatePrinted">Date Printed</label>
+                    <input class="form-control" type="date" id="dirDatePrinted" value="2017-07-05" />
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="dirCreatedBy">Created By</label>
+                    <input class="form-control" type="text" id="dirCreatedBy" value="" />
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="dirTextSize">Text Size</label>
+                    <select class="form-control" id="dirTextSize">
+                      <option value="8">Small</option>
+                      <option value="10">Medium</option>
+                      <option value="14">Large</option>
+                      <option value="16">Extra Large</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row hidden">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="dirSaveAs">Save As (max. 50 characters)</label>
+                    <input class="form-control" type="text" id="dirSaveAs" data-lcid="" data-idlist="/providence/SpecialTopics/LiveHealthy2020/Search??start=0&amp;num=1000&amp;bare=true" maxlength="50" />
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="cancel" data-dismiss="modal">Cancel</a>
+            <button type="button" title="Create PDF" onclick="ppResults.OnCreateDirectory(); return false;" class="btn btn-primary">Create PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="ExportExcel" tabindex="-1" role="dialog" aria-labelledby="ExportExcel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="myModalLabel">Export Your Results to an Excel Spreadsheet</h1>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <fieldset>
+                  <legend>Excel Formatting Options</legend>
+                  <div class="form-group">
+                    <label for="excelFormat">Choose a Format:</label>
+                    <select class="form-control" id="excelFormat">
+                      <option value="simple">Simple Format</option>
+                      <option value="complex">Detailed Format</option>
+                    </select>
+                  </div>
+                  <div class="hidden">
+                    <input type="hidden" id="excelPageSize" value="1000" />
+                    <input type="hidden" id="excelBatch" value="1" data-idlist="/providence/SpecialTopics/LiveHealthy2020/Search??start=0&amp;num=1000&amp;bare=true&amp;output=json" />
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="cancel" data-dismiss="modal">Cancel</a>
+            <button type="button" title="Export" onclick="ppResults.OnCreateExcel(); return false;" class="btn btn-primary">Export</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="uncheckAll" tabindex="-1" role="dialog" aria-labelledby="uncheckAllLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="uncheckAllLabel">Uncheck Options</h1>
+          </div>
+          <div class="modal-body">
+            <p id="uncheckmessage">Uncheck selected services on this page? Or uncheck all selected services?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="cancel" data-dismiss="modal">Cancel</a>
+            <button id="uncheckthispage" type="button" class="btn btn-primary">This Page Only</button>
+            <button id="uncheckall" type="button" class="btn btn-primary">All Pages</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-searchbar></app-searchbar>
+
+    <div id="ResultContent" class="results">
+      <search-control></search-control>
+
+      <div class="container-fluid">
+        <div class="container bg-color">
+          <div class="row row-offcanvas row-offcanvas-left">
+            <search-filter></search-filter>
+            <div class="col-xs-12 col-sm-8 col-md-9 header-results">
+              <h1></h1>
+              <div class="container-result-count">
+                <p>{{programCount}} results</p>
+              </div>
+            </div>
+            <search-result></search-result>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="DetailContent" class="details">
+    </div>
+    <div id="ComparisonContent" class="comparison">
+    </div>
+  </div>
