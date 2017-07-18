@@ -112,9 +112,39 @@ function pihc_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'PIHC Content', 'twentyseventeen' ),
-		'id'            => 'pihc-content',
-		'description'   => __( 'Add widgets here to appear in pihc content.', 'twentyseventeen' ),
+		'name'          => __( 'LiveWell Content', 'twentyseventeen' ),
+		'id'            => 'liveWell-content',
+		'description'   => __( 'Add widgets here to appear in LiveWell content.', 'twentyseventeen' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'LiveHealthy Content', 'twentyseventeen' ),
+		'id'            => 'liveHealthy-content',
+		'description'   => __( 'Add widgets here to appear in LiveHealthy content.', 'twentyseventeen' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'LiveWell Search', 'twentyseventeen' ),
+		'id'            => 'liveWell-search',
+		'description'   => __( 'Add widgets here to appear in LiveWell search.', 'twentyseventeen' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'LiveHealthy Search', 'twentyseventeen' ),
+		'id'            => 'liveHealthy-search',
+		'description'   => __( 'Add widgets here to appear in LiveHealthy search.', 'twentyseventeen' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

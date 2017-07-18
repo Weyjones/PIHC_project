@@ -1,0 +1,992 @@
+[
+	{
+		"Name": "Alzheimer's Association of the State of Washington",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 1",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 1",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 2",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 2",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 3",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 3",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 4",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 4",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 5",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 5",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 6",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 6",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 7",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 7",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 8",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 8",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 9",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 9",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 10",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 10",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 11",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association 11",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 12",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 13",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 14",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 15",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 16",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	},
+		{
+		"Name": "Alzheimer's Association of the State of Washington 17",
+		"Address__c": "100 W Harrison Street, Suite N200, Seattle, WA, 98119",
+		"Description__c": "Free 24/7 Helpline allows people with Alzheimer's disease or dementia, caregivers, families, and the public to: Speak Confidently with our Master's Level Care consultants for decision making support, crisis assistance, and education on issues families face every day. Learn about the signs of Alzheimer's Disease and other dementias. Find out about local programs and services for individuals with the disease and their caregivers, family and friends. Get general information about medications, and other treatment options, legal, and financial care decisions. Receive Help in their preferred language through our bilingual staff or translation service, which accomodates more than 200 Languages."
+	},
+	{
+		"Name": "American Heart Association",
+		"Address__c": "710 2nd Avenue, Suite 900, Seattle, WA, 98104",
+		"Description__c": "Multifaceted, comprehensive free program for worksite wellness for employers of all sizes. The program offers a suite of evidence-based tools to help you maximize your current employee health program."
+	},
+	{
+		"Name": "CENTER FOR INCLUSIVE ENTREPRENEURSHIP",
+		"Address__c": "220 Second Ave S, Seattle, WA, 98104",
+		"Description__c": "At CIE we go beyond supporting individual entrepresneurs, aiming to build an ecosystem that helps entrepreneurs thrive. With this goal, we engage in a range of multi-organization collaborations, community events, research and pilot projects, and sustainable business initiatives."
+	},
+	{
+		"Name": "Mercy Housing Northwest",
+		"Address__c": "2505 Third Ave, Suite 204, Seattle, WA, 98121",
+		"Description__c": "Healthy cooking classes and exercise classes at Family Tree and Lincoln Way Apartments."
+	},
+	{
+		"Name": "Project Access Northwest",
+		"Address__c": "1111 Harvard Ave, Seattle, WA, 98122",
+		"Description__c": "At Project Access Northwest we build the CAPACITY for Snohomish County people to be physically active and healthy by providing no-cost access to specialty care medical services necessary before people can return to a physically active lifestyle. Specialty medical care includes access to specialists and others who can make the difference between a life of forced inactivity and return to a healthy lifestyle."
+	},
+	{
+		"Name": "SHAG - SENIOR HOUSING ASSISTANCE GROUP",
+		"Address__c": "3131 Elliot Ave, Seattle, WA, 98144",
+		"Description__c": "Group exercise classes geared toward aging demographic"
+	},
+	{
+		"Name": "Sodexo - Redmond",
+		"Address__c": "2432 E Roanoke St, Seattle, WA, 98112",
+		"Description__c": "Helping to stop hunger and childhood obesity"
+	},
+	{
+		"Name": "Gear Up & Go!",
+		"Address__c": "219 1st Ave. South Suite 315, Seattle, WA, 98104",
+		"Description__c": "Launched in 2013, this homegrown initiative was originally created by the Snohomish County Health Leadership Coalition in concert with school district superintendents and a working group of district teachers, health and physical education professionals. Gear Up & Go! is now fully powered by Sqord, Inc. and is aimed at engaging fifth-grade students and teachers to rapidly discover and share best practices throughout the county to improve health for all."
+	},
+	{
+		"Name": "YWCA of Seattle - King - Snohomish",
+		"Address__c": "1118 Fifth Ave, Seattle, WA, 98101",
+		"Description__c": "Reducing food insecurity by distributing food boxes to all emergency shelter and transitional housing families in need. Giving out healthy snacks at our after school homework clubs and summer activity clubs. Walking groups intermittently held throughout the year"
+	},
+	{
+		"Name": "Food Lifeline",
+		"Address__c": "815 S. 96th Street, Seattle, WA, 98106",
+		"Description__c": "Food Lifeline partners with 28 food banks and meal sites in Snohomish County. Our member agencies order food from us through our online ordering system once a week or month. However, some agencies do not order food through us and instead pick up food at local grocery stores through our Grocery Rescue program."
+	},
+	{
+		"Name": "Mindfulness Teaching",
+		"Address__c": "14230 NE 21st Street, Bellevue, WA, 98007",
+		"Description__c": "Mindfulness based stress reduction"
+	}
+]

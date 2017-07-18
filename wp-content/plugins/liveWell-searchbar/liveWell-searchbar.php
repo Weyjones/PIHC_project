@@ -1,43 +1,40 @@
 <?php
 /*
-Plugin Name: PIHC footer
-Description: pihc footer Plugin
+Plugin Name: LiveWell searchbar
+Description: LiveWell searchbar Plugin
 */
 /* Start Adding Functions Below this Line */
 
 // Register and load the widget
-function pihc_footer_widget() {
-	register_widget( 'pihc_footer' );
+function liveWell_searchbar_widget() {
+	register_widget( 'liveWell_searchbar' );
 }
-add_action( 'widgets_init', 'pihc_footer_widget' );
-
+add_action( 'widgets_init', 'liveWell_searchbar_widget' );
+wp_enqueue_style( 'searchbar.css', plugins_url( 'searchbar.css', __FILE__ ) );
 // Creating the widget
-class pihc_footer extends WP_Widget {
+class liveWell_searchbar extends WP_Widget {
 
 function __construct() {
 parent::__construct(
 
 // Base ID of your widget
-'pihc_footer',
+'liveWell_searchbar',
 
 // Widget name will appear in UI
-__('PIHC footer', 'pihc_footer_domain'),
+__('LiveWell searchbar', 'liveWell_searchbar_domain'),
 
 // Widget description
-array( 'description' => __( 'Widget FOR PIHC footer ', 'pihc_footer_domain' ), )
+array( 'description' => __( 'Widget FOR LiveWells searchbar ', 'liveWell_searchbar_domain' ), )
 );
 }
 
 // Creating widget front-end
 
 public function widget( $args, $instance ) {
-echo '<footer id="footer">
-	<div class="container">
-		<p>';
-echo $instance['FooterText'];
-		echo '</p>
-	</div>
-</footer>';
+echo '<form class="search-container" action="/livewell-search/#!/" method="get">
+    <input type="text" id="search-bar" name="query" placeholder="What are you looking for?">
+    <button type="submit" class="search-icon"><i class="fa fa-search"></i><span class="sr-only">Search</span></button>
+  </form>';
 }
 
 // Widget Backend
@@ -46,11 +43,9 @@ if ( isset( $instance[ 'FooterText' ] ) ) {
 $FooterText = $instance[ 'FooterText' ];
 }
 else {
-$FooterText = __( 'New FooterText', 'pihc_footer_domain' );
+$FooterText = __( 'New FooterText', 'liveWell_searchbar_domain' );
 }
 // Widget admin form
-
-//
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'FooterText' ); ?>"><?php _e( 'FooterText:' ); ?></label>
@@ -65,7 +60,7 @@ $instance = array();
 $instance['FooterText'] = ( ! empty( $new_instance['FooterText'] ) ) ? strip_tags( $new_instance['FooterText'] ) : '';
 return $instance;
 }
-} // Class pihc_footer ends here
+} // Class liveWell_searchbar ends here
 
 /* Stop Adding Functions Below this Line */
 ?>
