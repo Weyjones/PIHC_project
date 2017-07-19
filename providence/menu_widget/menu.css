@@ -744,7 +744,7 @@ a {
     text-decoration: none;
     text-transform: uppercase; }
     .sub-menu .menu a.active, .sub-menu .menu a:hover {
-      background: #e39441; }
+      background: rgba(255, 255, 255, 0.5); }
 
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
@@ -977,7 +977,7 @@ a.meanmenu-reveal {
   .diamond span {
     display: block;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 8px;
     text-transform: uppercase; }
   .diamond a {
