@@ -1,0 +1,78 @@
+.center-div{
+    margin: auto;
+    width: 998px;
+    margin-top: 30;
+    margin-bottom: 30;
+}
+#liveWell-slideTabs {
+    position: relative;
+    height: 315px;
+    /*margin: 20px 50px;*/
+    overflow:hidden;
+    width: 998px;
+}
+
+#liveWell-slideTabs .banner{
+    display: inline-block;
+    padding: 0px;
+    width: 78px;
+    height: 315px;
+    background-repeat: no-repeat;
+    background-size: 78px 315px;
+    cursor: pointer;
+}
+
+#liveWell-slideTabs .content{
+    display: inline-block;
+    width: 533px;
+    height: 315px;
+    margin: 0px;
+    margin-left: -5px;
+    background-color: #eee;
+}
+
+#liveWell-slideTabs .slidetabs-background {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    /*box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.6);*/
+    /*X axis shift-10px Y axis shift-20px blur(can be 0px for shaarp edge)-5px color-#888888*/
+}
+#slideTabs-tab5 {
+    z-index: 5;
+}
+#slideTabs-tab5 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/workGrowth.jpg');
+}
+#slideTabs-tab4 {
+    z-index: 4;
+}
+#slideTabs-tab4 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/security.jpg');
+}
+#slideTabs-tab3 {
+    z-index: 3;
+}
+#slideTabs-tab3 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/relationships.jpg');
+}
+#slideTabs-tab2 {
+    z-index: 2;
+}
+#slideTabs-tab2 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/physicalHealth.jpg');
+}
+#slideTabs-tab1 {
+    z-index: 1;
+}
+#slideTabs-tab1 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/neighborhood.jpg');
+}
+
+#slideTabs-tab0 {
+    z-index: 0;
+}
+#slideTabs-tab0 .banner{
+    background-image: url('/providence/livewell_welcome_widgget/images/emotionalhealth.jpg');
+}

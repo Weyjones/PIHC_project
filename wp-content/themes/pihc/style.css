@@ -1,4 +1,24 @@
+/*!
+Theme Name: RMC
+Theme URI: http://underscores.me/
+Author: John Marco Alcaria
+Author URI: http://underscores.me/
+Description: A Custom Wordpress theme with WooCommerce Shopping Cart
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rmc
+Tags:
 
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+RMC is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -215,8 +235,7 @@ a:hover {
 a:focus {
   outline: none; }
 
-strong {
-  color: #0064a6; }
+strong { }
 
 .col-20 {
   display: inline-block;
@@ -246,7 +265,8 @@ h5.heading {
 #breadcrumbs {
   color: #fff;
   font-size: 24px;
-  padding-bottom: 15px;
+  padding-top: 18px;
+  padding-bottom: 7px;
   position: relative;
   text-transform: uppercase; }
   #breadcrumbs a {
@@ -272,7 +292,6 @@ button,
 input,
 select,
 textarea {
-  color: #a1a1a1;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-size: 1rem;
@@ -685,8 +704,8 @@ a {
       transition: all ease-in-out 0.1s; }
 
 .sub-menu {
+  margin-top: -20px;
   float: left;
-  padding: 20px 0 0;
   width: 100%; }
   .sub-menu ul {
     display: block;
@@ -709,19 +728,21 @@ a {
       opacity: 0.2;
       position: absolute;
       right: -2px;
-      top: 23px;
+      top: 15px;
       width: 1px; }
   .sub-menu .menu a {
     background: transparent;
+    font-size: 17;
+    font-weight: 100;
     color: #fff;
     display: block;
     line-height: 32px;
     outline: none;
-    padding: 23px 15px 18px;
+    padding: 15px 15px;
     text-decoration: none;
     text-transform: uppercase; }
     .sub-menu .menu a.active, .sub-menu .menu a:hover {
-      background: #e39441; }
+      background: rgba(255, 255, 255, 0.5); }
 
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
@@ -874,6 +895,7 @@ a.meanmenu-reveal {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
+  margin-top: 30px;
   /* Make sure select elements fit in widgets. */ }
   .widget select {
     max-width: 100%; }
@@ -940,6 +962,7 @@ a.meanmenu-reveal {
 
 .diamond {
   border-radius: 20px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.9), 0 0px 33px 0 rgba(0, 0, 0, 0.29);
   height: 120px;
   display: block;
   margin-left: auto;
@@ -952,8 +975,8 @@ a.meanmenu-reveal {
     width: 60px; }
   .diamond span {
     display: block;
-    font-weight: 100;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 16px;
     margin-top: 8px;
     text-transform: uppercase; }
   .diamond a {
@@ -1047,7 +1070,7 @@ a.meanmenu-reveal {
   float: left;
   width: 100%; }
   #join-us .container {
-    padding: 80px 0 60px 0; }
+    padding: 0px 0 30px 0; }
   #join-us h3 {
     color: #f8981d;
     margin: 10px 0; }
@@ -1085,7 +1108,10 @@ a.meanmenu-reveal {
 
 .content-intro {
   float: left;
-  width: 100%; }
+  width: 100%;
+  color: black;
+  margin-bottom: 30px;
+}
   .content-intro h2 {
     color: #7452a0;
     margin: 0 0 50px 0; }
@@ -1227,11 +1253,9 @@ header {
   text-transform: uppercase; }
 
 .contact-details {
-  padding: 25px 0;
-  text-align: center; }
+ }
   .contact-details .i-social {
-    margin: 0;
-    padding: 25px 0 0; }
+    margin: 0; }
     .contact-details .i-social .title {
       color: #008eb4;
       font-size: 24px;
@@ -1247,29 +1271,33 @@ header {
       float: left;
       width: 35px; }
   .contact-details .contact-info ul {
-    margin: 20px  0 !important; }
+        padding-left: 70;
+        padding-right: 38;
+      }
     .contact-details .contact-info ul li {
-      border-right: 1px solid #919191;
-      color: #919191;
+
+      border-right: 1px solid #ffffff;
+      color: #ffffff;
       display: inline-block;
       line-height: 1em;
       padding: 0px 10px; }
       .contact-details .contact-info ul li:last-child {
         border-right: 0; }
       .contact-details .contact-info ul li strong {
-        color: #919191; }
+        color: #ffffff; }
       .contact-details .contact-info ul li a {
-        color: #919191; }
+        color: #ffffff; }
 
 footer {
   background: #003779;
-  padding: 21px 0;
-  text-align: center; }
+  padding: 21px 0;}
   footer p {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 100;
-    margin: 0; }
+    margin: 0;
+    padding-left: 77;
+  }
 
 @media screen and (max-width: 767px) {
   h1 {
@@ -1335,6 +1363,7 @@ footer {
     margin: 40px 0 0; }
 
   .sub-menu {
+
     text-align: center; }
 
   #breadcrumbs {
@@ -1445,3 +1474,28 @@ object {
 
 .gallery-caption {
   display: block; }
+
+.container{
+  width: auto;
+}
+
+.contact-info{
+  padding-top: 9;
+}
+
+.main-body{
+  width: 82%;
+}
+
+.lower-body{
+  background: gainsboro;
+  padding-bottom: 30px;
+}
+
+.btn-search{
+  margin: auto;
+  border: none;
+  padding: 0 0 0 0;
+  background: white;
+  max-width: 30px;
+}
