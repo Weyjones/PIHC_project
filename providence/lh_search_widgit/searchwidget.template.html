@@ -4,10 +4,10 @@
     <div class="col-md-2">
       <!--Sidebar content-->
 
-      <p>
+      <!-- <p>
         Search:
-        <input ng-model="$ctrl.query" />
-      </p>
+        <input ng-model="$ctrl.keyword" />
+      </p> -->
 
       <p>
         Sort by:
@@ -22,7 +22,7 @@
       <!--Body content-->
 
       <ul class="phones">
-        <li ng-repeat="program in $ctrl.programs | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+        <li ng-repeat="program in $ctrl.programs | filter:$ctrl.keyword | orderBy:$ctrl.orderProp">
           <span>{{program.Name}}</span>
           <p>{{program.Address__c}}</p>
           <p>{{program.Description__c}}</p>
