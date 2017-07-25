@@ -1,4 +1,4 @@
-<?php /* Template Name: LWLsearch */
+<?php /* Template Name: LiveWell Local search */
 wp_head(); ?>
 
 <div class="pihc-template">

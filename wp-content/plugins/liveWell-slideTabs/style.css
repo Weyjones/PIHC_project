@@ -1,0 +1,152 @@
+.center-div{
+    margin: auto;
+    width: 998px;
+}
+#liveWell-slideTabs {
+    position: relative;
+    height: 315px;
+    /*margin: 20px 50px;*/
+    /*overflow:hidden;*/
+    width: 998px;
+}
+
+#liveWell-slideTabs .banner{
+    float: left;
+    display: inline-block;
+    padding: 0px;
+    width: 78px;
+    height: 315px;
+    background-repeat: no-repeat;
+    background-size: 78px 315px;
+    cursor: pointer;
+}
+
+#liveWell-slideTabs .content{
+    float: left;
+    display: inline-block;
+    width: 533px;
+    height: 315px;
+    margin: 0px;
+    background-color: #f6f7f9;
+}
+#liveWell-slideTabs .content .desc-section h3.header{
+    text-transform: uppercase;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+#liveWell-slideTabs .content .desc-section p.desc{
+    margin-bottom: 25px;
+    line-height: 20px;
+}
+
+#liveWell-slideTabs .slidetabs-background {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    /*box-shadow: -5px 0px 4px rgba(0, 0, 0, 0.6);*/
+    /*X axis shift-10px Y axis shift-20px blur(can be 0px for shaarp edge)-5px color-#888888*/
+}
+#liveWell-slideTabs .content .bellows, #liveWell-slideTabs .content .desc-section{
+    margin: auto;
+    max-width: 90%;
+}
+
+#liveWell-slideTabs .bellows.bellows-skin-blue-material,
+#liveWell-slideTabs .bellows-target{
+    background-color: #f2f2f2;
+    color: #adadad;
+    border: none;
+}
+#liveWell-slideTabs .bellows-target .bellows-target-title{
+    color: #414141;
+}
+#liveWell-slideTabs .bellows-submenu .bellows-target .bellows-target-title{
+ color: #0164C9;
+}
+#liveWell-slideTabs .bellows .bellows-nav .bellows-target{
+    padding: 10px;
+}
+#liveWell-slideTabs .bellows .bellows-nav .bellows-subtoggle{
+    width: 60px;
+}
+#liveWell-slideTabs ul.bellows-submenu,
+#liveWell-slideTabs ul.bellows-submenu .bellows-target{
+    background-color: #fff;
+}
+#liveWell-slideTabs .bellows.bellows-skin-blue-material:hover{
+    background-color: #ddd;
+}
+.bellows.bellows-skin-blue-material .bellows-nav .bellows-item-level-0 > .bellows-target .bellows-subtoggle{
+    background: none !important;
+}
+
+#liveWell-slideTabs .bellows .bellows-nav .bellows-target>.bellows-target-text{
+    margin-left: 50px;
+}
+#liveWell-slideTabs .bellows .bellows-nav .bellows-subtoggle{
+    right: auto;
+    left: 0;
+}
+#liveWell-slideTabs .bellows .fa-chevron-down:before{
+    content: "\f054";
+}
+
+#liveWell-slideTabs .bellows .fa-chevron-up:before{
+    content: "\f078";
+}
+#slideTabs-tab5 {
+    z-index: 5;
+}
+#slideTabs-tab5 .content h3.header{
+    color: #3C93A7;
+}
+#slideTabs-tab5 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/workGrowth.jpg');
+}
+#slideTabs-tab4 {
+    z-index: 4;
+}
+#slideTabs-tab4 .content h3.header{
+    color: #74529F;
+}
+#slideTabs-tab4 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/security.jpg');
+}
+#slideTabs-tab3 {
+    z-index: 3;
+}
+#slideTabs-tab3 .content h3.header{
+    color: #DE2537;
+}
+#slideTabs-tab3 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/relationships.jpg');
+}
+#slideTabs-tab2 {
+    z-index: 2;
+}
+#slideTabs-tab2 .content h3.header{
+    color: #7CA84F;
+}
+#slideTabs-tab2 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/physicalHealth.jpg');
+}
+#slideTabs-tab1 {
+    z-index: 1;
+}
+#slideTabs-tab1 .content h3.header{
+    color: #A4BA4B;
+}
+#slideTabs-tab1 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/neighborhood.jpg');
+}
+
+#slideTabs-tab0 {
+    z-index: 0;
+}
+#slideTabs-tab0 .content h3.header{
+    color: #E9AF44;
+}
+#slideTabs-tab0 .banner{
+    background-image: url('/wp-content/plugins/liveWell-slideTabs/images/emotionalhealth.jpg');
+}

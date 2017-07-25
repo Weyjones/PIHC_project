@@ -704,7 +704,6 @@ a {
       transition: all ease-in-out 0.1s; }
 
 .sub-menu {
-  margin-top: -20px;
   float: left;
   width: 100%; }
   .sub-menu ul {
@@ -936,6 +935,7 @@ a.meanmenu-reveal {
   color: #ffffff;
   height: 400px;
   padding: 90px;
+  margin-bottom: -20px;
   text-align: center; }
   .banner .tagline {
     font-size: 19px;

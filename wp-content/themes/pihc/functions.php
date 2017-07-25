@@ -95,6 +95,10 @@ function pihc_content_width() {
 }
 add_action( 'after_setup_theme', 'pihc_content_width', 0 );
 
+
+
+
+
 /**
  * Register widget area.
  *
@@ -170,6 +174,8 @@ function pihc_scripts() {
 	wp_enqueue_style( 'pihc-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'pihc-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'jquery-script', '' . 'https://code.jquery.com/jquery-3.2.1.min.js', array(), true );
 
 	wp_enqueue_script( 'pihc-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 

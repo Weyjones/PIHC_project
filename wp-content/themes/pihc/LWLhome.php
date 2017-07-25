@@ -112,8 +112,7 @@
 
 
 <!--Topics-->
-
-
+<?php if ( dynamic_sidebar('liveWell-content') ) : else : endif; ?>
 
 <!--Lower Body-->
 <div class="lower-body">
