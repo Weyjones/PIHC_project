@@ -1,34 +1,79 @@
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2">
-      <!--Sidebar content-->
-
-      <p>
-        Search:
-        <input ng-model="$ctrl.query" />
-      </p>
-
-      <p>
-        Sort by:
-        <select ng-model="$ctrl.orderProp">
-          <option value="name">Alphabetical</option>
-          <option value="age">Newest</option>
-        </select>
-      </p>
-
-    </div>
-    <div class="col-md-10">
-      <!--Body content-->
-
-      <ul class="programs">
-        <li ng-repeat="program in $ctrl.programs | filter:$ctrl.keyword | orderBy:$ctrl.orderProp">
-          <span>{{program.Name}}</span>
-          <p>{{program.Address__c}}</p>
-          <p>{{program.Description__c}}</p>
-        </li>
-      </ul>
-
-    </div>
-  </div>
+<div class="search-container container">
+		<div class="row">
+			<div class="filter-container col-sm-2">
+				<button class="view-map-btn">See Listings in Map View</button>
+				<hr/>
+				<div class="filters">
+					<h2 class="filter-header">Search Filter</h2>
+          <div class="function-area">
+              <input ng-model="$ctrl.query" />
+          </div>
+					<div class="function-area">
+						<h4 class="function-header">Sort by</h4>
+						<ul class="function-options">
+							<li>Service Name</li>
+							<li>Provider Name</li>
+							<li>Relevance</li>
+							<li>Distance</li>
+						</ul>
+					</div>
+					<div class="function-area">
+						<h4 class="function-header">Display Options</h4>
+						<ul class="function-options">
+							<li>10 results</li>
+							<li>20 results</li>
+							<li>50 results</li>
+							<li>100 results</li>
+							<li>Show all results</li>
+						</ul>
+					</div>
+					<div class="function-area">
+						<h4 class="function-header">Topics</h4>
+						<ul class="function-options">
+							<li>Topic 1</li>
+							<li>Topic 2</li>
+							<li>Topic 3</li>
+							<li>Topic 4</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="result-container col-sm-10" data-ng-init="initMap()">
+				<div>
+					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp">
+						<div class="map col-sm-2">
+              <div class="minimap" style="width: 150px;margin-left: -13px;height: 250px;background:blue;">
+                <div id="map" style="height: 250px; width: 100%;" data-ng-init="codeAddress()"></div>
+              </div>
+            </div>
+						<div class="info col-sm-5">
+							<h3 class="program-name">
+                  {{program.Name}}
+              </h3>
+							<span class="service-name">
+								  {{program.Name}}
+							</span>
+							<div class="address" id="address">
+								{{program.Address__c}}
+							</div>
+							<div class="distance">
+								2 miles - <a href="#">Get Directions</a>
+							</div>
+							<div class="phone">
+								206-123-4567
+							</div>
+							<div class="website">
+								<a href="#">Website</a>
+							</div>
+						</div>
+						<div class="desc col-sm-5">
+							<h4>Description</h4>
+							<div class="desc-content">
+                  {{program.Description__c}}
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </div>

@@ -18,6 +18,7 @@ wp_enqueue_script('angular-resource', plugins_url( 'lib/angular-resource.min.js'
 wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('basetag', plugins_url( 'lib/setup.js', __FILE__ ), array(), true);
 wp_enqueue_script('app', plugins_url( 'app.js', __FILE__ ), array(), true);
+wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk&callback=initMap', array(), true);
 
 
 
@@ -34,14 +35,14 @@ parent::__construct(
 __('LiveHealthy search', 'livehealthy_search_domain'),
 
 // Widget description
-array( 'description' => __( 'Widget FOR PIHC footer ', 'livehealthy_search_domain' ), )
+array( 'description' => __( 'Widget FOR livehealthy search', 'livehealthy_search_domain' ), )
 );
 }
 
 // Creating widget front-end
 
 public function widget( $args, $instance ) {
-echo '  <div ng-app="LHsearch">
+echo '<div ng-app="LHsearch">
 		<div ng-view></div>
 	</div>';
 }

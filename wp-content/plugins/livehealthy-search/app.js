@@ -16,7 +16,7 @@ var app = angular.module('LHsearch', ['ngRoute'])
   ]);
 
 app.component('searchWidget', {
-    templateUrl: '../../wp-content/plugins/liveWell-search/searchwidget.template.html',
+    templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
     //template: 'foo bar',
     controller: function PrpgramListController($http, $routeParams) {
       var $ctrl = this;
@@ -35,6 +35,42 @@ app.component('searchWidget', {
           }, function errorCallback(response) {
               console.log(response);
       });
+
+      var geocoder;
+      var map;
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        geocoder = new google.maps.Geocoder();
+      }
+
+      function codeAddress() {
+        var address = document.getElementById('address').value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            console.log(status);
+          }
+        });
+      }
+
+
+
+      // (function(d, s, id) {
+      //   var js, fjs = d.getElementsByTagName(s)[0];
+      //   if (d.getElementById(id)) return;
+      //   js = d.createElement(s); js.id = id;
+      //   js.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk&callback=initMap";
+      //   fjs.parentNode.insertBefore(js, fjs);
+      // }(document, 'script', 'googlemap'));
 
     }
   });

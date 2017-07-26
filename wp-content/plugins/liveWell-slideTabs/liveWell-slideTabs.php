@@ -12,7 +12,7 @@ function liveWell_slideTabs_widget() {
 
 add_action( 'widgets_init', 'liveWell_slideTabs_widget' );
 
-wp_enqueue_script( 'jquery-slide', '' . 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js', array(), true );
+//wp_enqueue_script( 'jquery-slide', '' . 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js', array(), true );
 wp_enqueue_style( 'slideTabs-style.css', plugins_url( 'style.css', __FILE__ ) );
 wp_enqueue_script('slideTabs-script.js', plugins_url( 'script.js', __FILE__ ), array('jquery'));
 
