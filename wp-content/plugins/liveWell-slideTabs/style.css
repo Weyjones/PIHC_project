@@ -34,6 +34,10 @@
     font-size: 1.1em;
     margin-bottom: 5px;
 }
+
+#liveWell-slideTabs .content .bellows-nav .item-level-0 {
+  list-style: none;
+}
 #liveWell-slideTabs .content .desc-section p.desc{
     margin-bottom: 25px;
     line-height: 20px;

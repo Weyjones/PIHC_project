@@ -27,6 +27,4 @@ factory('dataCache', function() {
         }
       }
     };
-
-
 });

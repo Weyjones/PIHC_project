@@ -99,19 +99,19 @@
 
 <!--Search Bar-->
 <div class="container-fluid main-body">
-	<form class="search-bar">
+	<form class="search-bar" action="/livehealthy2020/search/">
 		<div class="keyword-search col-md-5">
-			<input type="text" class="form-control" placeholder="Search by Keyword">
+			<input type="text" name="q" class="form-control" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
-			<input type="text" class="form-control" placeholder="Enter your Location (City or Zip Code) ">
+			<input type="text" name="location" class="form-control" placeholder="Enter your Location (City or Zip Code) ">
 		</div>
 		<button type="submit" class="btn-search"><img src="<?php the_field(search_button_icon); ?>"></button>
 	</form>
 </div>
 
 <!--Navigation-->
-
+<?php if ( dynamic_sidebar('liveHealthy-content') ) : else : endif; ?>
 
 <!--Lower Body-->
 <div class="lower-body">

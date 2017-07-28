@@ -187,7 +187,7 @@ add_action( 'wp_enqueue_scripts', 'pihc_scripts' );
 
 function reg_scripts() {
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
-		wp_enqueue_style( 'topic', get_template_directory_uri() . '/layouts/topic.css' );
+		//wp_enqueue_style( 'topic', get_template_directory_uri() . '/layouts/topic.css' );
 		wp_enqueue_style( 'dropmenu', get_template_directory_uri() . '/layouts/dropmenu.css' );
 
 

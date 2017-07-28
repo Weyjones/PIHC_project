@@ -1,4 +1,4 @@
-<?php /* Template Name: Live Healthy 2020 search */ ?>
+<?php /* Template Name: Live Healthy 2020 detail */ ?>
 
 <?php get_header(); ?>
 

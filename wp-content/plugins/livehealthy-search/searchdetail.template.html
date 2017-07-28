@@ -1,0 +1,39 @@
+<div class="search-container container">
+		<div class="row">
+			<div class="filter-container col-sm-2">
+				<search-filter></search-filter>
+			</div>
+			<div class="result-container col-sm-10" data-ng-init="initMap()">
+				<div>
+					<div class="result-item row">
+						<div class="info col-sm-5">
+							<h3 class="program-name">
+								  {{$ctrl.currentProgram.Name}}
+              </h3>
+							<span class="service-name">
+									{{$ctrl.currentProgram.Account__r.Name}}
+							</span>
+							<div class="address" id="address">
+								{{$ctrl.currentProgram.Address__c}}
+							</div>
+							<div class="distance">
+								2 miles - <a href="#">Get Directions</a>
+							</div>
+							<div class="phone">
+								206-123-4567
+							</div>
+							<div class="website">
+								<a href="#">Website</a>
+							</div>
+						</div>
+						<div class="desc col-sm-5">
+							<h4>Description</h4>
+							<div class="desc-content">
+                  {{$ctrl.currentProgram.Description__c}}
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

@@ -36,10 +36,10 @@ echo '<div id="livehealthy-topics" class="container">
         <div class="row">
             <div class="col-sm-6">';
 
-echo bellows( 'main' , array( 'menu' => 11 ) );
+echo bellows( 'main' , array( 'menu' => 10 ) );
 echo '      </div>
             <div class="col-sm-6">';
-echo bellows( 'main' , array( 'menu' => 12 ) );
+echo bellows( 'main' , array( 'menu' => 11 ) );
 echo '
             </div>
           </div>

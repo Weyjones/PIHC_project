@@ -1,60 +1,34 @@
 <div class="search-container container">
 		<div class="row">
 			<div class="filter-container col-sm-2">
-				<button class="view-map-btn">See Listings in Map View</button>
-				<hr/>
-				<div class="filters">
-					<h2 class="filter-header">Search Filter</h2>
-          <div class="function-area">
-              <input ng-model="$ctrl.query" />
-          </div>
-					<div class="function-area">
-						<h4 class="function-header">Sort by</h4>
-						<ul class="function-options">
-							<li>Service Name</li>
-							<li>Provider Name</li>
-							<li>Relevance</li>
-							<li>Distance</li>
-						</ul>
-					</div>
-					<div class="function-area">
-						<h4 class="function-header">Display Options</h4>
-						<ul class="function-options">
-							<li>10 results</li>
-							<li>20 results</li>
-							<li>50 results</li>
-							<li>100 results</li>
-							<li>Show all results</li>
-						</ul>
-					</div>
-					<div class="function-area">
-						<h4 class="function-header">Topics</h4>
-						<ul class="function-options">
-							<li>Topic 1</li>
-							<li>Topic 2</li>
-							<li>Topic 3</li>
-							<li>Topic 4</li>
-						</ul>
-					</div>
-				</div>
+				<search-filter></search-filter>
 			</div>
 			<div class="result-container col-sm-10" data-ng-init="initMap()">
 				<div>
 					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp">
 						<div class="map col-sm-2">
               <div class="minimap" style="width: 150px;margin-left: -13px;height: 250px;background:blue;">
-                <div id="map" style="height: 250px; width: 100%;" data-ng-init="codeAddress()"></div>
+                <!-- <div id="map-{{$index}}" style="height: 250px; width: 100%;"></div> -->
+								<ng-map ng-if="program.latlng" style="width:150px; height:250px;" center="{{program.latlng}}" zoom="12" disable-default-u-i="true">
+							    <marker position="{{program.latlng}}"></marker>
+							  </ng-map>
+								 <!-- ng-init="$ctrl.createMap($index, program.Address__c, program.City__c)" -->
               </div>
             </div>
 						<div class="info col-sm-5">
-							<h3 class="program-name">
-                  {{program.Name}}
-              </h3>
+							<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
+								<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
+	                  {{program.Account__r.Name}}
+	              </h3>
+							<!-- </a> -->
 							<span class="service-name">
 								  {{program.Name}}
 							</span>
-							<div class="address" id="address">
-								{{program.Address__c}}
+							<div class="address" id="address-{{$index}}">
+								{{program.Address__c}} , {{program.City__c}}
+							</div>
+							<div>
+									{{program.latlng}}
 							</div>
 							<div class="distance">
 								2 miles - <a href="#">Get Directions</a>
