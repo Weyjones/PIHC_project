@@ -47,7 +47,7 @@ app.component('searchWidget', {
         } else {
             $ctrl.programs = dataCache.getProgramCache();
         }
-        
+
         /************ Filter ********/
         var filterValuesIncluded = {
             'age': [],
@@ -71,7 +71,7 @@ app.component('searchWidget', {
 
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
-            
+
             //var i = $.inArray(value, currentValues);
             var i = currentValues.indexOf(value);
             if (i > -1) {
@@ -105,14 +105,12 @@ app.component('searchWidget', {
                     }
                 }
             }
-
             if(containAll){
                 return program;
             }else{
                 return;
             }
         };
-
     }
 });
 
@@ -155,11 +153,68 @@ app.component('searchDetail', {
                     $scope.$apply(function () {
                         $ctrl.currentProgram.latlng = latlng;
                     });
-                }
-            });
-        }
+                  }
+              });
+          }
+      }
+  });
+
+
+app.component('searchMapview', {
+  templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
+  //template: 'foo bar',
+  controller: function PrpgramListController($scope, $http, $routeParams, dataCache, $timeout, $location) {
+    var $ctrl = this;
+    $ctrl.orderProp = 'Name';
+    $ctrl.keyword = $routeParams.q;
+    if($ctrl.keyword){
+      $ctrl.showKeyword = $ctrl.keyword;
+    } else {
+      $ctrl.showKeyword = "Search All";
     }
+
+    $ctrl.openDetailPage = function(program) {
+      $location.url('/livehealthy2020/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
+    }
+
+    // $ctrl.geoToolKit = function(program) {
+    //   var geoUrl = 'http://www.datasciencetoolkit.org/street2coordinates/';
+    //   var geoLoc = program.Address__c + ' ' + program.City__c + ' '+ program.State__c+ ' ' + program.Postal_Code__c;
+    //   $http({
+    //     method: 'GET',
+    //     url: geoUrl + geoLoc,
+    //   }).then(function successCallback(response) {
+    //     console.log(response.geoLoc.latitude);
+    //     return (response);
+    //   }, function errorCallback(response) {
+    //     console.log(response);
+    //   });
+    // }
+
+    //(function main() {
+    if (dataCache.isEmpty()) {
+      $http({
+        method: 'GET',
+        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall',
+      }).then(function successCallback(response) {
+        dataCache.setProgramCache(response.data);
+        $ctrl.programs = response.data;
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    } else {
+      $ctrl.programs = dataCache.getProgramCache();
+    }
+  }
 });
+
+app.component('searchFilter', {
+  templateUrl: '../../wp-content/plugins/livehealthy-search/searchFilter.template.html',
+  controller: function PrpgramFilterController($scope) {
+
+  }
+});
+
 app.factory('dataCache', function() {
     var programCache;
 

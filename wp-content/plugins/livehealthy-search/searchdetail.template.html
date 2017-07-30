@@ -18,13 +18,12 @@
 						</div>
 						<h3 class="title">
 							Location
-						</h3>
-						<ng-map ng-if="$ctrl.currentProgram.latlng" id="map" zoom="11" center="{{$ctrl.currentProgram.latlng}}">
-							<marker position="{{$ctrl.currentProgram.latlng}}" title="allen">
-
-							</marker>
-						</ng-map>
-						<div class="address" id="address">
+          				</h3>
+						<ng-map id="map" zoom="10" scrollwheel="false" center="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}">
+						    <marker position="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}" title="allen">
+						    </marker>
+					    </ng-map>
+					    <div class="address" id="address">
 					    	<span class="service-name">
 								{{$ctrl.currentProgram.Account__r.Name}}
 							</span>
@@ -63,6 +62,26 @@
 						<div class="related-serivices-content">
 
 						</div>
+						<div>
+							<strong>Website: </strong><a href="#">TBD</a>
+						</div>
+						<div>
+							<strong>Business Hours: </strong>TBD
+						</div>
+					</div>
+					<div class="location col-sm-5">
+						<h3 class="title">Other Locations</h3>
+						<div class="location-content">
+
+		                </div>
+		                <h3 class="title">Other Services</h3>
+						<div class="services-content">
+
+		                </div>
+		                <h3 class="title">Related Services</h3>
+						<div class="related-serivices-content">
+
+		                </div>
 					</div>
 				</div>
 			</div>
