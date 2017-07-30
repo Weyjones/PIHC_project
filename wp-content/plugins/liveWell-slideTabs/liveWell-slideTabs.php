@@ -12,9 +12,9 @@ function liveWell_slideTabs_widget() {
 
 add_action( 'widgets_init', 'liveWell_slideTabs_widget' );
 
-//wp_enqueue_script( 'jquery-slide', '' . 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js', array(), true );
-wp_enqueue_style( 'slideTabs-style.css', plugins_url( 'style.css', __FILE__ ) );
-wp_enqueue_script('slideTabs-script.js', plugins_url( 'script.js', __FILE__ ), array('jquery'));
+//wp_enqueue_script( 'jquery-slide', '' . 'https://code.jquery.com/jquery-3.2.1.min.js', array(), true );
+// wp_enqueue_style( 'slideTabs-style.css', plugins_url( 'style.css', __FILE__ ) );
+// wp_enqueue_script('slideTabs-script.js', plugins_url( 'script.js', __FILE__ ) );
 
 
 // Creating the widget
@@ -39,7 +39,7 @@ array( 'description' => __( 'Widget FOR LiveWell slide tabs ', 'liveWell_slideTa
 public function widget( $args, $instance ) {
 echo '<div class="center-div">
         <div id="liveWell-slideTabs">
-          <div class="slidetabs-background" id="slideTabs-tab0">
+          <div class="slidetabs-background" id="slideTabs-tab1">
             <div class="banner"></div>
             <div class="content">
                 <div class="desc-section">
@@ -54,7 +54,7 @@ echo bellows( 'main' , array( 'menu' => 4 ) );
 echo '
             </div>
           </div>
-          <div class="slidetabs-background" id="slideTabs-tab1">
+          <div class="slidetabs-background" id="slideTabs-tab2">
             <div class="banner"></div>
             <div class="content">
                 <div class="desc-section">
@@ -69,7 +69,7 @@ echo bellows( 'main' , array( 'menu' => 5 ) );
 echo '
             </div>
           </div>
-          <div class="slidetabs-background" id="slideTabs-tab2">
+          <div class="slidetabs-background" id="slideTabs-tab3">
             <div class="banner"></div>
             <div class="content">
                 <div class="desc-section">
@@ -84,7 +84,7 @@ echo bellows( 'main' , array( 'menu' => 6 ) );
 echo '
             </div>
           </div>
-          <div class="slidetabs-background" id="slideTabs-tab3">
+          <div class="slidetabs-background" id="slideTabs-tab4">
             <div class="banner"></div>
             <div class="content">
                 <div class="desc-section">
@@ -99,7 +99,7 @@ echo bellows( 'main' , array( 'menu' => 7 ) );
 echo '
             </div>
           </div>
-            <div class="slidetabs-background" id="slideTabs-tab4">
+            <div class="slidetabs-background" id="slideTabs-tab5">
                 <div class="banner"></div>
                 <div class="content">
                 <div class="desc-section">
@@ -114,7 +114,7 @@ echo bellows( 'main' , array( 'menu' => 8 ) );
 echo '
                 </div>
             </div>
-          <div class="slidetabs-background" id="slideTabs-tab5">
+          <div class="slidetabs-background" id="slideTabs-tab6">
             <div class="banner"></div>
             <div class="content">
                 <div class="desc-section">

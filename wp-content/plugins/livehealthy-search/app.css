@@ -11,6 +11,7 @@ button.view-map-btn{
 }
 .search-container{
     margin: auto 120px;
+    padding-top: 30px;
 }
 .function-area .function-header{
     font-size: 1.3em;

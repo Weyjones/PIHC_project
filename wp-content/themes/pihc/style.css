@@ -1107,10 +1107,12 @@ a.meanmenu-reveal {
     margin-bottom: 40px; }
 
 .content-intro {
-  float: left;
-  width: 100%;
+  margin: auto;
   color: black;
   margin-bottom: 30px;
+}
+.content-intro h1{
+  padding-top: 30px;
 }
   .content-intro h2 {
     color: #7452a0;
@@ -1484,7 +1486,7 @@ object {
 }
 
 .main-body{
-  width: 82%;
+  width: 80%;
 }
 
 .lower-body{

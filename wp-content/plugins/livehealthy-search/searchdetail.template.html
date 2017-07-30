@@ -1,21 +1,26 @@
 <div class="search-container container">
 		<div class="row">
-			<div class="filter-container col-sm-2">
+			<div class="filter-container col-sm-3">
 				<search-filter></search-filter>
 			</div>
-			<div class="result-container col-sm-10" data-ng-init="initMap()">
+			<div class="result-container col-sm-9" data-ng-init="initMap()">
 				<div>
 					<div class="result-item row">
-						<div class="info col-sm-5">
+						<div class="info col-sm-7">
 							<h3 class="program-name">
 								  {{$ctrl.currentProgram.Name}}
               </h3>
 							<span class="service-name">
 									{{$ctrl.currentProgram.Account__r.Name}}
 							</span>
+
 							<div class="address" id="address">
 								{{$ctrl.currentProgram.Address__c}}
 							</div>
+							{{$ctrl.currentProgram.latlng}}
+							<ng-map ng-if="$ctrl.currentProgram.latlng" id="map" zoom="11" center="{{$ctrl.currentProgram.latlng}}">
+						    <marker position="{{$ctrl.currentProgram.latlng}}" title="allen"></marker>
+						  </ng-map>
 							<div class="distance">
 								2 miles - <a href="#">Get Directions</a>
 							</div>

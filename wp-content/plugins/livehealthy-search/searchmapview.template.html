@@ -1,0 +1,57 @@
+<div class="search-container container">
+		<div class="row">
+			<div class="filter-container col-sm-3">
+				<search-filter></search-filter>
+			</div>
+			<div class="result-container col-sm-9">
+				<div>
+					<ng-map id="map" zoom="11" center="[40.74, -74.18]">
+						<marker position="[40.71, -74.21]" title="hello"></marker>
+						<marker position="[40.72, -74.20]" title="marker"></marker>
+						<marker position="[40.73, -74.19]" title="drag me" ></marker>
+						<marker position="[40.74, -74.18]" title="how" ></marker>
+						<marker position="[40.75, -74.17]" title="are"></marker>
+						<marker position="[40.76, -74.16]" title="you"></marker>
+						<marker position="[40.77, -74.15]" title="from"></marker>
+						<marker position="[40.78, -74.14]" title="allen"></marker>
+					</ng-map>
+					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp">
+
+						<div class="info col-sm-4">
+							<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
+								<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
+	                  {{program.Account__r.Name}}
+	              </h3>
+							<!-- </a> -->
+							<span class="service-name">
+								  {{program.Name}}
+							</span>
+							<div class="address" id="address-{{$index}}">
+								{{program.Address__c}} , {{program.City__c}}
+							</div>
+							<div>
+									{{program.latlng}}
+							</div>
+							<div class="distance">
+								2 miles - <a href="#">Get Directions</a>
+							</div>
+							<div class="phone">
+								206-123-4567
+							</div>
+							<div class="website">
+								<a href="#">Website</a>
+							</div>
+						</div>
+						<div class="desc col-sm-8">
+
+							
+							<h4>Description</h4>
+							<div class="desc-content">
+                  {{program.Description__c}}
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

@@ -1,7 +1,7 @@
 <?php /* Template Name: Live Healthy 2020 search */ ?>
 
 <?php get_header(); ?>
-
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
