@@ -54,7 +54,30 @@ ul.function-options>li:hover{
 }
 
 .result-item .desc-content{
-  max-height: 100px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
+.detail-view{
+    background-color: #F2F2F2;
+    color: #5A5A5A;
+}
+.detail-view .back-to-list{
+    padding-top: 10px;
+}
+.detail-view .back-to-list .back-to-list-link{
+    color: #0e4181;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.detail-view .back-to-list span.back-to-list-link::before {
+    content: '\003C\003C\00A0';
+}
+.detail-view .title{
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #0e4181;
+}
+

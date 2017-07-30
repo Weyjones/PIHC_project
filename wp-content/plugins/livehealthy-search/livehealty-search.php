@@ -18,7 +18,8 @@ wp_enqueue_style( 'app.css', plugins_url( 'app.css', __FILE__ ) );
 //wp_enqueue_script( 'angular-route', '' . 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js', array(), true );
 wp_enqueue_script('angular', plugins_url( 'lib/angular.js', __FILE__ ), array(), true);
 wp_enqueue_script('angular-resource', plugins_url( 'lib/angular-resource.min.js', __FILE__ ), array(), true);
-wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
+wp_enqueue_script('angular-route', plugins_url( 'lib/angular-ui-router.js', __FILE__ ), array(), true);
+//wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('basetag', plugins_url( 'lib/setup.js', __FILE__ ), array(), true);
 
 wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk', array(), true);
@@ -50,7 +51,7 @@ array( 'description' => __( 'Widget FOR livehealthy search', 'livehealthy_search
 
 public function widget( $args, $instance ) {
 echo '<div ng-app="LHsearch">
-		<div ng-view></div>
+        <ui-view></ui-view>
 	</div>';
 }
 
