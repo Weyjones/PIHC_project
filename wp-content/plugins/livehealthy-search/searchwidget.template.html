@@ -2,6 +2,7 @@
 		<div class="row">
 			<div class="filter-container col-sm-3">
 				<!-- <search-filter></search-filter> -->
+				<h4>{{filteredProgram.length}} search results for "{{$ctrl.showKeyword}}"</h4>
 				<button class="view-map-btn">See Listings in Map View</button>
 				<hr/>
 				<div class="filters">
@@ -126,7 +127,7 @@
 			</div>
 			<div class="result-container col-sm-9">
 				<div>
-					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: ageFilter | filter: genderFilter | filter: householdFilter | filter: focusFilter | filter: objectiveFilter | filter: typeFilter | filter: ethnicFilter | orderBy:$ctrl.orderProp">
+					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: ageFilter | filter: genderFilter | filter: householdFilter | filter: focusFilter | filter: objectiveFilter | filter: typeFilter | filter: ethnicFilter | orderBy:$ctrl.orderProp as filteredProgram">
 						<div class="info col-sm-4">
 							<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
 								<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">

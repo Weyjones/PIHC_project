@@ -20,7 +20,7 @@ wp_enqueue_script('angular', plugins_url( 'lib/angular.js', __FILE__ ), array(),
 wp_enqueue_script('angular-resource', plugins_url( 'lib/angular-resource.min.js', __FILE__ ), array(), true);
 wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('basetag', plugins_url( 'lib/setup.js', __FILE__ ), array(), true);
-
+//wp_enqueue_script('angular-ui-router', plugins_url( 'lib/angular-ui-router.min.js', __FILE__ ), array(), true);
 wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk', array(), true);
 
 wp_enqueue_script('ng-map', plugins_url( 'lib/ng-map.min.js', __FILE__ ), array(), true);

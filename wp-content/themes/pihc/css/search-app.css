@@ -54,9 +54,9 @@ ul.function-options>li:hover{
 }
 
 .result-item .desc-content{
-  max-height: 100px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .detail-view{
     background-color: #F2F2F2;

@@ -1,62 +1,86 @@
-'use strict';
-
-var app = angular.module('LHsearch', ['ngRoute','ngMap'])
-.config(['$locationProvider', '$routeProvider',
-function config($locationProvider, $routeProvider) {
-  $routeProvider.caseInsensitiveMatch = true;
-  $routeProvider.
-  when('/livehealthy2020/search', {
-    template: '<search-widget></search-widget>'
-  }).
-  when('/livehealthy2020/detail', {
-    template: '<search-detail></search-detail>'
-  }).
-  when('/livehealthy2020/mapview', {
-    template: '<search-mapview></search-mapview>'
-  });
-  //$locationProvider.html5Mode(true);
-  $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
-  });
-}
-]);
 
 app.component('searchWidget', {
-  templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
-  //template: 'foo bar',
-  controller: function PrpgramListController($scope, $http, $routeParams, dataCache, $timeout, $location) {
+  //templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
+  template: 'foo bar',
+  controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
     var $ctrl = this;
     $ctrl.orderProp = 'Name';
-    $ctrl.keyword = $routeParams.q;
-    if($ctrl.keyword){
-      $ctrl.showKeyword = $ctrl.keyword;
-    } else {
-      $ctrl.showKeyword = "Search All";
-    }
+    //$ctrl.keyword = $routeParams.q;
 
     $ctrl.openDetailPage = function(program) {
       $location.url('/livehealthy2020/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
-    }
+    };
 
-    //(function main() {
-    if (dataCache.isEmpty()) {
-      $http({
-        method: 'GET',
-        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall',
-      }).then(function successCallback(response) {
+    function successCallback(response) {
         dataCache.setProgramCache(response.data);
         $ctrl.programs = response.data;
         console.log($ctrl.programs);
-      }, function errorCallback(response) {
+    }
+
+    function errorCallback(response) {
         console.log(response);
-      });
+    }
+
+    if (dataCache.isEmpty()) {
+        /*
+      $http({
+        method: 'GET',
+        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall'
+      }).then(successCallback, errorCallback);
+      */
+
+        $http.get('../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
+
     } else {
       $ctrl.programs = dataCache.getProgramCache();
     }
 
 
+
     /***************filter function age***********/
+    var filterValuesIncluded = {
+        'age': [],
+        'gender': [],
+        'household': [],
+        'focus': [],
+        'objective': [],
+        'type': [],
+        'ethnic': []
+    };
+
+      var keyToPropMap = {
+          'age': 'What_ages_do_you_reach__c',
+          'gender': 'Do_you_serve__c',
+          'household': 'LH2020_Does_your_program_serve__c',
+          'focus': 'Program_Focus__c',
+          'objective': 'Program_Objective__c',
+          'type': 'Program_Type__c',
+          'ethnic': 'Sub_community_or_ethnic_group_reach__c'
+      };
+
+    $scope.includeFilter = function (key, value) {
+        var currentValues = filterValuesIncluded[key];
+        var i = $.inArray(value, currentValues);
+        if (i > -1) {
+            currentValues.splice(i, 1);
+        } else {
+            currentValues.push(value);
+        }
+    };
+    $scope.programFilter = function(program) {
+      var containAll = true;
+        angular.forEach(filterValuesIncluded, function(key, value) {
+            console.log(key + ":" + value);
+        });
+
+      if(containAll){
+          return program;
+      }else{
+          return;
+      }
+    };
+
+
     $scope.ageIncludes = [];
 
     $scope.includeAge = function(age) {
@@ -66,7 +90,7 @@ app.component('searchWidget', {
         } else {
             $scope.ageIncludes.push(age);
         }
-    }
+    };
 
     $scope.ageFilter = function(program) {
         var containAll = true;
@@ -98,7 +122,7 @@ app.component('searchWidget', {
             $scope.genderIncludes.push(gender);
             console.log($scope.genderIncludes);
         }
-    }
+    };
 
     $scope.genderFilter = function(program) {
         var containAll = true;
@@ -130,7 +154,7 @@ app.component('searchWidget', {
         } else {
             $scope.householdIncludes.push(household);
         }
-    }
+    };
 
     $scope.householdFilter = function(program) {
         var containAll = true;
@@ -222,7 +246,7 @@ app.component('searchWidget', {
         } else {
             $scope.typeIncludes.push(type);
         }
-    }
+    };
 
     $scope.typeFilter = function(program) {
         var containAll = true;
@@ -243,8 +267,6 @@ app.component('searchWidget', {
         }
     }
 
-
-
     /***************filter function ethnic***********/
     $scope.ethnicIncludes = [];
 
@@ -255,7 +277,7 @@ app.component('searchWidget', {
         } else {
             $scope.ethnicIncludes.push(ethnic);
         }
-    }
+    };
 
     $scope.ethnicFilter = function(program) {
         var containAll = true;
@@ -274,7 +296,7 @@ app.component('searchWidget', {
         }else{
           return;
         }
-    }
+    };
 
     //  }());
 
@@ -322,25 +344,28 @@ console.log(status);
 app.component('searchDetail', {
   templateUrl: '../../wp-content/plugins/livehealthy-search/searchdetail.template.html',
   //template: 'foo bar',
-  controller: function PrpgramDetailController($scope, $http, $routeParams, dataCache) {
+  controller: function PrpgramDetailController($scope, $http, dataCache) {
     var $ctrl = this;
-    var programName = $routeParams.name;
-    var programAccount = $routeParams.account;
-    var programAddress = $routeParams.address;
-
-
+    //var programName = $routeParams.name;
+    //var programAccount = $routeParams.account;
+    //var programAddress = $routeParams.address;
+      function successCallback(response) {
+          dataCache.setProgramCache(response.data);
+          $ctrl.currentProgram = dataCache.findProgramByName(programName,programAccount,programAddress);
+          codeAddress($ctrl.currentProgram);
+      }
+      function errorCallback(response) {
+          console.log(response);
+      }
 
     if (dataCache.isEmpty()) {
+        /*
       $http({
         method: 'GET',
         url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall',
-      }).then(function successCallback(response) {
-        dataCache.setProgramCache(response.data);
-        $ctrl.currentProgram = dataCache.findProgramByName(programName,programAccount,programAddress);
-        codeAddress($ctrl.currentProgram);
-      }, function errorCallback(response) {
-        console.log(response);
-      });
+      }).then(successCallback, errorCallback);
+      */
+        $http.get('../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
     } else {
       $ctrl.currentProgram = dataCache.findProgramByName(programName,programAccount,programAddress);
       codeAddress($ctrl.currentProgram);
@@ -368,33 +393,14 @@ app.component('searchDetail', {
 app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
   //template: 'foo bar',
-  controller: function PrpgramListController($scope, $http, $routeParams, dataCache, $timeout, $location) {
+  controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
     var $ctrl = this;
     $ctrl.orderProp = 'Name';
-    $ctrl.keyword = $routeParams.q;
-    if($ctrl.keyword){
-      $ctrl.showKeyword = $ctrl.keyword;
-    } else {
-      $ctrl.showKeyword = "Search All";
-    }
+    //$ctrl.keyword = $routeParams.q;
 
     $ctrl.openDetailPage = function(program) {
       $location.url('/livehealthy2020/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
     }
-
-    // $ctrl.geoToolKit = function(program) {
-    //   var geoUrl = 'http://www.datasciencetoolkit.org/street2coordinates/';
-    //   var geoLoc = program.Address__c + ' ' + program.City__c + ' '+ program.State__c+ ' ' + program.Postal_Code__c;
-    //   $http({
-    //     method: 'GET',
-    //     url: geoUrl + geoLoc,
-    //   }).then(function successCallback(response) {
-    //     console.log(response.geoLoc.latitude);
-    //     return (response);
-    //   }, function errorCallback(response) {
-    //     console.log(response);
-    //   });
-    // }
 
     //(function main() {
     if (dataCache.isEmpty()) {
