@@ -2,7 +2,6 @@
 
 <?php get_header(); ?>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
-<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
@@ -36,8 +35,6 @@
 <div class="container-fluid">
 	<div class="row">
 
-<div class="col-sm-12 col-md-1">
-</div>
 <div class="col-sm-12 col-md-2">
 <div class="diamond" style="background:<?php the_field(menu_color); ?>">
 	<div class="diamond-inner">
@@ -48,7 +45,7 @@
 	</div>
 </div>
 </div>
-<div class="col-sm-12 col-md-9">
+<div class="col-sm-12 col-md-10">
 <div id="breadcrumbs"><a rel="nofollow" href="http://www.pihcsnohomish.org/"><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
 <?php
 	$menulinks = get_field( 'menu_links' );
@@ -100,9 +97,9 @@
 
 <!--Search Bar-->
 <div class="container-fluid main-body">
-	<form class="search-bar" action="/livehealthy2020/search/">
+	<form id="lh-search-form" class="search-bar" action="/livehealthy2020/search/">
 		<div class="keyword-search col-md-5">
-			<input type="text" name="q" class="form-control" placeholder="Search by Keyword">
+			<input type="text" name="query" class="form-control" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
 			<input type="text" name="location" class="form-control" placeholder="Enter your Location (City or Zip Code) ">
@@ -110,6 +107,27 @@
 		<button type="submit" class="btn-search"><img src="<?php the_field(search_button_icon); ?>"></button>
 	</form>
 </div>
+<script>
+$("#lh-search-form").submit(function( event ) {
+  var params = $(this).serializeArray();
+  var keypairs = [];
+  var searchStr = '?';
+  for(var i in params) {
+    var p = params[i];
+    var name = p.name;
+    var value = encodeURIComponent(p.value);
+    if (value) {
+        keypairs.push(name + '=' + value);
+    }
+  }
+  searchStr += keypairs.join('&');
+
+  var url = window.location.origin + window.location.pathname + '#/' + searchStr;
+
+  window.location.href = url;
+  event.preventDefault();
+});
+</script>
 
 <!--Search Result-->
 <?php if ( dynamic_sidebar('liveHealthy-search') ) : else : endif; ?>
@@ -154,5 +172,5 @@
 		</div>
 	</footer><!-- #colophon -->
 
-<script src="<?php echo (get_template_directory_uri().'/js/LHsearchapp.js') ?>"></script>
+
 <?php get_footer(); ?>

@@ -26,19 +26,25 @@ ul.function-options>li:hover{
     cursor: pointer;
 }
 .result-item{
-    font-size: 1.2em;
+    font-size: 1em;
     background-color: #F2F2F2;
     margin-bottom: 15px;
+    position: relative;
 }
 .result-item h4{
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
 }
 .result-item .program-name{
-    font-size: 1em;
+    font-size: 1.2em;
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 20px;
+    cursor: pointer;
+}
+.result-item .program-name:hover{
+    color: #0e4181;
+    text-decoration: underline;
 }
 .result-item .service-name{
     font-weight: bold;
@@ -48,11 +54,18 @@ ul.function-options>li:hover{
 }
 .result-item .desc{
     margin-top: 20px;
-    border-left: 1px solid #bbb;
     padding-bottom: 20px;
     padding-left: 20px;
 }
-
+.result-item .divider{
+    position: absolute;
+    left: 33%;
+    top: 10%;
+    bottom: 10%;
+    z-index: 200;
+    border-left: 1px solid #bbb;
+    height: 80%;
+}
 .result-item .desc-content{
     max-height: 100px;
     text-overflow: ellipsis;
@@ -80,25 +93,6 @@ ul.function-options>li:hover{
     font-weight: normal;
     color: #0e4181;
 }
-.detail-view{
-    background-color: #F2F2F2;
-    color: #5A5A5A;
-}
-.detail-view .back-to-list{
-    padding-top: 10px;
-}
-.detail-view .back-to-list .back-to-list-link{
-    color: #0e4181;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    cursor: pointer;
-}
-.detail-view .back-to-list span.back-to-list-link::before {
-    content: '\003C\003C\00A0';
-}
-.detail-view .title{
-    font-size: 1.4em;
-    font-weight: normal;
-    color: #0e4181;
+.detail-view .title:hover{
+    text-decoration: underline;
 }

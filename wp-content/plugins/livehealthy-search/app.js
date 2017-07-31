@@ -5,43 +5,24 @@ app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
             name: 'search',
-            url: '/',
+            url: '/?query&location',
             component: 'searchWidget'
         },
         {
             name: 'detail',
             url: '/detail/:programId',
             component: 'searchDetail'
-        },
-       {
-         name: 'mapview',
-         url: '/mapview',
-         component: 'searchMapview'
-       }];
+        }];
 
     states.forEach(function(state) {
         $stateProvider.state(state);
     });
-})
-.run(function($rootScope, NgMap) {
-  NgMap.getMap().then(function(map) {
-    $rootScope.map = map;
-  });
+    //$locationProvider.html5Mode(true);
 });
 
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
-    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
-        var $ctrl = this;
-        //console.log($location);
-        $ctrl.orderProp = 'Name';
-        //$ctrl.keyword = $routeParams.q;
-
-        $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
-        };
-
+    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams) {
         function successCallback(response) {
             dataCache.setProgramCache(response.data);
             $ctrl.programs = response.data;
@@ -51,6 +32,17 @@ app.component('searchWidget', {
         function errorCallback(response) {
             console.log(response);
         }
+
+        var $ctrl = this;
+        
+        //console.log($location);
+        $ctrl.orderProp = '';
+        $ctrl.keyword = $stateParams.query || '';
+
+        $ctrl.openDetailPage = function(program) {
+            var url = '/detail/' + program.Id;
+            $location.url(url);
+        };
 
         if (dataCache.isEmpty()) {
             $http.get('../../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
@@ -115,6 +107,7 @@ app.component('searchWidget', {
                     }
                 }
             }
+
             if(containAll){
                 return program;
             }else{
@@ -122,6 +115,7 @@ app.component('searchWidget', {
             }
         };
     }
+
 });
 
 app.component('searchDetail', {
@@ -163,69 +157,11 @@ app.component('searchDetail', {
                     $scope.$apply(function () {
                         $ctrl.currentProgram.latlng = latlng;
                     });
-                  }
-              });
-          }
-      }
-  });
-
-
-app.component('searchMapview', {
-  templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
-  //template: 'foo bar',
-  controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
-    var $ctrl = this;
-    $ctrl.orderProp = 'Name';
-    $ctrl.keyword = '';//$routeParams.q;
-
-    if($ctrl.keyword){
-      $ctrl.showKeyword = $ctrl.keyword;
-    } else {
-      $ctrl.showKeyword = "Search All";
+                }
+            });
+        }
     }
-
-    $ctrl.openDetailPage = function(program) {
-      $location.url('/livehealthy2020/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
-    }
-
-    // $ctrl.geoToolKit = function(program) {
-    //   var geoUrl = 'http://www.datasciencetoolkit.org/street2coordinates/';
-    //   var geoLoc = program.Address__c + ' ' + program.City__c + ' '+ program.State__c+ ' ' + program.Postal_Code__c;
-    //   $http({
-    //     method: 'GET',
-    //     url: geoUrl + geoLoc,
-    //   }).then(function successCallback(response) {
-    //     console.log(response.geoLoc.latitude);
-    //     return (response);
-    //   }, function errorCallback(response) {
-    //     console.log(response);
-    //   });
-    // }
-
-    //(function main() {
-    if (dataCache.isEmpty()) {
-      $http({
-        method: 'GET',
-        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall',
-      }).then(function successCallback(response) {
-        dataCache.setProgramCache(response.data);
-        $ctrl.programs = response.data;
-      }, function errorCallback(response) {
-        console.log(response);
-      });
-    } else {
-      $ctrl.programs = dataCache.getProgramCache();
-    }
-  }
 });
-
-app.component('searchFilter', {
-  templateUrl: '../../wp-content/plugins/livehealthy-search/searchFilter.template.html',
-  controller: function PrpgramFilterController($scope) {
-
-  }
-});
-
 app.factory('dataCache', function() {
     var programCache;
 
@@ -256,5 +192,28 @@ app.factory('dataCache', function() {
                 }
             }
         }
+    };
+});
+
+app.filter('cut', function () {
+    return function (value, wordwise, max, tail) {
+        if (!value) return '';
+
+        max = parseInt(max, 10);
+        if (!max) return value;
+        if (value.length <= max) return value;
+
+        value = value.substr(0, max);
+        if (wordwise) {
+            var lastspace = value.lastIndexOf(' ');
+            if (lastspace !== -1) {
+                //Also remove . and , so its gives a cleaner result.
+                if (value.charAt(lastspace-1) === '.' || value.charAt(lastspace-1) === ',') {
+                    lastspace = lastspace - 1;
+                }
+                value = value.substr(0, lastspace);
+            }
+        }
+        return value + (tail || ' …');
     };
 });
