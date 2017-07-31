@@ -1,34 +1,77 @@
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2">
-      <!--Sidebar content-->
-
-      <p>
-        Search:
-        <input ng-model="$ctrl.query" />
-      </p>
-
-      <p>
-        Sort by:
-        <select ng-model="$ctrl.orderProp">
-          <option value="name">Alphabetical</option>
-          <option value="age">Newest</option>
-        </select>
-      </p>
-
-    </div>
-    <div class="col-md-10">
-      <!--Body content-->
-
-      <ul class="phones">
-        <li ng-repeat="program in $ctrl.programs | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-          <span>{{program.Name}}</span>
-          <p>{{program.Address__c}}</p>
-          <p>{{program.Description__c}}</p>
-        </li>
-      </ul>
-
-    </div>
-  </div>
+<div class="search-container container">
+	<div class="row">
+		<div class="filter-container col-sm-3">
+			<!-- <search-filter></search-filter> -->
+			<button class="view-map-btn">See Listings in Map View</button>
+			<hr/>
+			<div class="filters">
+				<h2 class="filter-header">Search Filter</h2>
+				<div class="function-area">
+					<input ng-model="$ctrl.query" />
+				</div>
+				<div class="function-area">
+					<h4 class="function-header">Sort by</h4>
+					<ul class="function-options">
+						<li>Service Name</li>
+						<li>Provider Name</li>
+						<li>Relevance</li>
+						<li>Distance</li>
+					</ul>
+				</div>
+				<div class="function-area">
+					<h4 class="function-header">Display Options</h4>
+					<ul class="function-options">
+					</ul>
+				</div>
+				<div class="treeview hover">
+							<ul>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')">Mental, Emotional & Spiritual</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')">Neighborhood/Natural Environment</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')">Physical Health</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')">Relationships & Social Connection</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')">Security & Basic Need</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')">Work, Learning & Growth</li>
+							</ul>
+				</div>
+			</div>
+		</div>
+		<div class="result-container col-sm-9">
+			<div>
+				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp">
+					<div class="info col-sm-4">
+						<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
+						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
+				  			{{program.Account__r.Name}}
+			  			</h3>
+						<!-- </a> -->
+						<span class="service-name">
+							{{program.Name}}
+						</span>
+						<div class="address" id="address-{{$index}}">
+							{{program.Address__c}} , {{program.City__c}}
+						</div>
+						<div>
+							{{program.latlng}}
+						</div>
+						<div class="distance">
+							2 miles - <a href="#">Get Directions</a>
+						</div>
+						<div class="phone">
+							206-123-4567
+						</div>
+						<div class="website">
+							<a href="#">Website</a>
+						</div>
+					</div>
+					<div class="desc col-sm-8">
+						{{program.Sub_community_or_ethnic_group_reach__c}}<br>
+						<h4>Description</h4>
+						<p class="desc-content hidden-print">
+			  				{{program.Description__c}}
+		  				</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

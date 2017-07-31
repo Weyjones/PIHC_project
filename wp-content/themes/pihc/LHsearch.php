@@ -2,6 +2,7 @@
 
 <?php get_header(); ?>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
@@ -153,5 +154,5 @@
 		</div>
 	</footer><!-- #colophon -->
 
-
+<script src="<?php echo (get_template_directory_uri().'/js/LHsearchapp.js') ?>"></script>
 <?php get_footer(); ?>

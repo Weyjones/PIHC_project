@@ -19,9 +19,25 @@
 						<h3 class="title">
 							Location
           				</h3>
-						<ng-map id="map" zoom="10" scrollwheel="false" center="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}">
-						    <marker position="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}" title="allen">
+						<ng-map default-style="true" id="map" zoom="10" scrollwheel="false" center="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}">
+						    <marker position="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}" title="allen" on-click="map.showInfoWindow(event, 'bar')">
 						    </marker>
+								<info-window id="bar" max-width="280">
+					        <div ng-non-bindable>
+					          <div id="siteNotice"></div>
+					          <h4 style="color:#06c">{{$ctrl.currentProgram.Name}}</h4>
+					          <div id="bodyContent">
+					            <p>
+												<b>{{$ctrl.currentProgram.Account__r.Name}}</b><br>
+						            {{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}<br>
+
+						            <a href="https://maps.google.com/?daddr={{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}&saddr=Current%20Location">
+						              Directions
+						            </a>
+					            </p>
+					          </div>
+					        </div>
+					      </info-window>
 					    </ng-map>
 					    <div class="address" id="address">
 					    	<span class="service-name">

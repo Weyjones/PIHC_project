@@ -2,6 +2,7 @@
 
 <?php get_header(); ?>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
@@ -99,7 +100,7 @@
 
 <!--Search Bar-->
 <div class="container-fluid main-body">
-	<form class="search-bar" action="/livehealthy2020/search/">
+	<form class="search-bar" action="/livewell/search/">
 		<div class="keyword-search col-md-5">
 			<input type="text" name="q" class="form-control" placeholder="Search by Keyword">
 		</div>
@@ -111,7 +112,7 @@
 </div>
 
 <!--Search Result-->
-<?php if ( dynamic_sidebar('liveHealthy-search') ) : else : endif; ?>
+<?php if ( dynamic_sidebar('livewell-search') ) : else : endif; ?>
 
 <!--Footer-->
 <footer id="footer">
@@ -153,5 +154,5 @@
 		</div>
 	</footer><!-- #colophon -->
 
-
+<script src="<?php echo (get_template_directory_uri().'/js/LWLsearchapp.js') ?>"></script>
 <?php get_footer(); ?>

@@ -12,11 +12,21 @@ app.config(function($stateProvider, $locationProvider) {
             name: 'detail',
             url: '/detail/:programId',
             component: 'searchDetail'
-        }];
+        },
+       {
+         name: 'mapview',
+         url: '/mapview',
+         component: 'searchMapview'
+       }];
 
     states.forEach(function(state) {
         $stateProvider.state(state);
     });
+})
+.run(function($rootScope, NgMap) {
+  NgMap.getMap().then(function(map) {
+    $rootScope.map = map;
+  });
 });
 
 app.component('searchWidget', {
@@ -163,10 +173,10 @@ app.component('searchDetail', {
 app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
   //template: 'foo bar',
-  controller: function PrpgramListController($scope, $http, $routeParams, dataCache, $timeout, $location) {
+  controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
     var $ctrl = this;
     $ctrl.orderProp = 'Name';
-    $ctrl.keyword = $routeParams.q;
+    $ctrl.keyword = '';//$routeParams.q;
     if($ctrl.keyword){
       $ctrl.showKeyword = $ctrl.keyword;
     } else {

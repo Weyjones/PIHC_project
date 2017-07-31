@@ -1,0 +1,82 @@
+button.view-map-btn{
+    background-color: #ED9030;
+    border-radius: 0;
+    text-transform: none;
+    font-size: 1.1em;
+    padding: 3px 15px;
+}
+.filter-header{
+    font-size: 2em;
+    font-weight: normal;
+}
+.search-container{
+    margin: auto 120px;
+    padding-top: 30px;
+}
+.function-area .function-header{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+ul.function-options{
+    list-style: none;
+    padding-left: 0;
+}
+ul.function-options>li:hover{
+    background-color: #7BB4C5;
+    cursor: pointer;
+}
+.result-item{
+    font-size: 1.2em;
+    background-color: #F2F2F2;
+    margin-bottom: 15px;
+}
+.result-item h4{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.result-item .program-name{
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.result-item .service-name{
+    font-weight: bold;
+}
+.result-item .info{
+    padding-bottom: 20px;
+}
+.result-item .desc{
+    margin-top: 20px;
+    border-left: 1px solid #bbb;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.result-item .desc-content{
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.detail-view{
+    background-color: #F2F2F2;
+    color: #5A5A5A;
+}
+.detail-view .back-to-list{
+    padding-top: 10px;
+}
+.detail-view .back-to-list .back-to-list-link{
+    color: #0e4181;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.detail-view .back-to-list span.back-to-list-link::before {
+    content: '\003C\003C\00A0';
+}
+.detail-view .title{
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #0e4181;
+}
