@@ -5,7 +5,7 @@ app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
             name: 'search',
-            url: '/',
+            url: '/?query&location',
             component: 'searchWidget'
         },
         {
@@ -17,21 +17,12 @@ app.config(function($stateProvider, $locationProvider) {
     states.forEach(function(state) {
         $stateProvider.state(state);
     });
+    //$locationProvider.html5Mode(true);
 });
 
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
-    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
-        var $ctrl = this;
-        //console.log($location);
-        $ctrl.orderProp = '';
-        //$ctrl.keyword = $routeParams.q;
-
-        $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
-        };
-
+    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams) {
         function successCallback(response) {
             dataCache.setProgramCache(response.data);
             $ctrl.programs = response.data;
@@ -42,12 +33,23 @@ app.component('searchWidget', {
             console.log(response);
         }
 
+        var $ctrl = this;
+        
+        //console.log($location);
+        $ctrl.orderProp = '';
+        $ctrl.keyword = $stateParams.query || '';
+
+        $ctrl.openDetailPage = function(program) {
+            var url = '/detail/' + program.Id;
+            $location.url(url);
+        };
+
         if (dataCache.isEmpty()) {
             $http.get('../../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
         } else {
             $ctrl.programs = dataCache.getProgramCache();
         }
-        
+
         /************ Filter ********/
         var filterValuesIncluded = {
             'age': [],
@@ -71,7 +73,7 @@ app.component('searchWidget', {
 
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
-            
+
             //var i = $.inArray(value, currentValues);
             var i = currentValues.indexOf(value);
             if (i > -1) {
@@ -112,8 +114,8 @@ app.component('searchWidget', {
                 return;
             }
         };
-
     }
+
 });
 
 app.component('searchDetail', {

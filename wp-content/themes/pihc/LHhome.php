@@ -99,9 +99,9 @@
 
 <!--Search Bar-->
 <div class="container-fluid main-body">
-	<form class="search-bar" action="/livehealthy2020/search/#/">
+	<form id="lh-search-form" class="search-bar" action="/livehealthy2020/search/#/">
 		<div class="keyword-search col-md-5">
-			<input type="text" name="q" class="form-control" placeholder="Search by Keyword">
+			<input type="text" name="query" class="form-control" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
 			<input type="text" name="location" class="form-control" placeholder="Enter your Location (City or Zip Code) ">
@@ -109,6 +109,24 @@
 		<button type="submit" class="btn-search"><img src="<?php the_field(search_button_icon); ?>"></button>
 	</form>
 </div>
+<script>
+$("#lh-search-form").submit(function( event ) {
+  var params = $(this).serializeArray();
+  var keypairs = [];
+  var searchStr = '?';
+  for(var i in params) {
+    var p = params[i];
+    var name = p.name;
+    var value = encodeURIComponent(p.value);
+    if (value) {
+        keypairs.push(name + '=' + value);
+    }
+  }
+  searchStr += keypairs.join('&');
+  window.location.href += 'search/#/' + searchStr;
+  event.preventDefault();
+});
+</script>
 
 <!--Navigation-->
 <?php if ( dynamic_sidebar('liveHealthy-content') ) : else : endif; ?>
