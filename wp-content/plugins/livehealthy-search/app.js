@@ -24,7 +24,7 @@ app.component('searchWidget', {
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
         var $ctrl = this;
         //console.log($location);
-        $ctrl.orderProp = 'Name';
+        $ctrl.orderProp = '';
         //$ctrl.keyword = $routeParams.q;
 
         $ctrl.openDetailPage = function(program) {

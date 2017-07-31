@@ -39,6 +39,11 @@ ul.function-options>li:hover{
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 20px;
+    cursor: pointer;
+}
+.result-item .program-name:hover{
+    color: #0e4181;
+    text-decoration: underline;
 }
 .result-item .service-name{
     font-weight: bold;
@@ -80,4 +85,6 @@ ul.function-options>li:hover{
     font-weight: normal;
     color: #0e4181;
 }
-
+.detail-view .title:hover{
+    text-decoration: underline;
+}
