@@ -147,11 +147,11 @@
 						</div>
 						-->
 					</div>
+					<div class="divider"></div>
 					<div class="desc col-sm-8">
-						{{program.Sub_community_or_ethnic_group_reach__c}}<br>
 						<h4>Description</h4>
 						<p class="desc-content hidden-print">
-			  				{{program.Description__c}}
+			  				{{program.Description__c | cut:true:215:' ...'}}
 		  				</p>
 					</div>
 				</div>

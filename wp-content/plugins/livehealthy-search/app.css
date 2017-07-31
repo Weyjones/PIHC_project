@@ -26,16 +26,17 @@ ul.function-options>li:hover{
     cursor: pointer;
 }
 .result-item{
-    font-size: 1.2em;
+    font-size: 1em;
     background-color: #F2F2F2;
     margin-bottom: 15px;
+    position: relative;
 }
 .result-item h4{
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
 }
 .result-item .program-name{
-    font-size: 1em;
+    font-size: 1.2em;
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 20px;
@@ -53,11 +54,19 @@ ul.function-options>li:hover{
 }
 .result-item .desc{
     margin-top: 20px;
-    border-left: 1px solid #bbb;
+    /*border-left: 1px solid #bbb;*/
     padding-bottom: 20px;
     padding-left: 20px;
 }
-
+.result-item .divider{
+    position: absolute;
+    left: 33%;
+    top: 10%;
+    bottom: 10%;
+    z-index: 200;
+    border-left: 1px solid #bbb;
+    height: 80%;
+}
 .result-item .desc-content{
     max-height: 100px;
     text-overflow: ellipsis;
