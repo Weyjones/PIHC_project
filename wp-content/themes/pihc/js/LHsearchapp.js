@@ -177,7 +177,6 @@ app.component('searchMapview', {
     var $ctrl = this;
     $ctrl.orderProp = 'Name';
     $ctrl.keyword = '';//$routeParams.q;
-
     if($ctrl.keyword){
       $ctrl.showKeyword = $ctrl.keyword;
     } else {

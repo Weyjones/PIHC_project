@@ -1,0 +1,51 @@
+<div class="search-container container">
+		<div class="row">
+			<div class="filter-container col-sm-3">
+				<search-filter></search-filter>
+			</div>
+			<div class="result-container col-sm-9">
+				<div>
+					<ng-map id="map" zoom="8" center="current" scrollwheel="false"  style="height:450px">
+						<marker ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp" position="{{program.Address__c}} {{program.City__c}} {{program.State__c}} {{program.Postal_Code__c}}" title="hello"></marker>
+
+					</ng-map>
+					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp">
+
+						<div class="info col-sm-4">
+							<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
+								<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
+	                  {{program.Account__r.Name}}
+	              </h3>
+							<!-- </a> -->
+							<span class="service-name">
+								  {{program.Name}}
+							</span>
+							<div class="address" id="address-{{$index}}">
+								{{program.Address__c}} , {{program.City__c}}
+							</div>
+							<div>
+									{{program.latlng}}
+							</div>
+							<div class="distance">
+								2 miles - <a href="#">Get Directions</a>
+							</div>
+							<div class="phone">
+								206-123-4567
+							</div>
+							<div class="website">
+								<a href="#">Website</a>
+							</div>
+						</div>
+						<div class="desc col-sm-8">
+
+
+							<h4>Description</h4>
+							<div class="desc-content">
+                  {{program.Description__c}}
+              </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

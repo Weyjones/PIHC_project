@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('LHsearch', ['ui.router', 'ngMap']);
+var app = angular.module('LWLsearch', ['ui.router', 'ngMap']);
 app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
@@ -30,7 +30,7 @@ app.config(function($stateProvider, $locationProvider) {
 });
 
 app.component('searchWidget', {
-    templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
+    templateUrl: '../../wp-content/plugins/livewell-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
         var $ctrl = this;
         //console.log($location);
@@ -53,30 +53,18 @@ app.component('searchWidget', {
         }
 
         if (dataCache.isEmpty()) {
-            $http.get('../../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
+            $http.get('https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/LWLsearchall').then(successCallback, errorCallback);
         } else {
             $ctrl.programs = dataCache.getProgramCache();
         }
 
         /************ Filter ********/
         var filterValuesIncluded = {
-            'age': [],
-            'gender': [],
-            'household': [],
-            'focus': [],
-            'objective': [],
-            'type': [],
-            'ethnic': []
+            'Dimension': [],
         };
 
         var keyToPropMap = {
-            'age': 'What_ages_do_you_reach__c',
-            'gender': 'Do_you_serve__c',
-            'household': 'LH2020_Does_your_program_serve__c',
-            'focus': 'Program_Focus__c',
-            'objective': 'Program_Objective__c',
-            'type': 'Program_Type__c',
-            'ethnic': 'Sub_community_or_ethnic_group_reach__c'
+            'Dimension': 'LWL_Dimension__c',
         };
 
         $scope.includeFilter = function (key, value) {
@@ -125,7 +113,7 @@ app.component('searchWidget', {
 });
 
 app.component('searchDetail', {
-    templateUrl: '../../wp-content/plugins/livehealthy-search/searchdetail.template.html',
+    templateUrl: '../../wp-content/plugins/livewell-search/searchdetail.template.html',
     controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location) {
         console.log($stateParams);
         var $ctrl = this;
@@ -142,7 +130,7 @@ app.component('searchDetail', {
         }
 
         if (dataCache.isEmpty()) {
-            $http.get('../../wp-content/plugins/livehealthy-search/programs.json').then(successCallback, errorCallback);
+            $http.get('https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/LWLsearchall').then(successCallback, errorCallback);
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             codeAddress($ctrl.currentProgram);
@@ -171,13 +159,12 @@ app.component('searchDetail', {
 
 
 app.component('searchMapview', {
-  templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
+  templateUrl: '../../wp-content/plugins/livewell-search/searchmapview.template.html',
   //template: 'foo bar',
   controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location) {
     var $ctrl = this;
     $ctrl.orderProp = 'Name';
     $ctrl.keyword = '';//$routeParams.q;
-
     if($ctrl.keyword){
       $ctrl.showKeyword = $ctrl.keyword;
     } else {
@@ -185,7 +172,7 @@ app.component('searchMapview', {
     }
 
     $ctrl.openDetailPage = function(program) {
-      $location.url('/livehealthy2020/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
+      $location.url('/livewell/detail').search({name: program.Name, account: program.Account__c, address: program.Address__c});
     }
 
     // $ctrl.geoToolKit = function(program) {
@@ -206,7 +193,7 @@ app.component('searchMapview', {
     if (dataCache.isEmpty()) {
       $http({
         method: 'GET',
-        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/searchall',
+        url: 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/LWLsearchall',
       }).then(function successCallback(response) {
         dataCache.setProgramCache(response.data);
         $ctrl.programs = response.data;
@@ -220,7 +207,7 @@ app.component('searchMapview', {
 });
 
 app.component('searchFilter', {
-  templateUrl: '../../wp-content/plugins/livehealthy-search/searchFilter.template.html',
+  templateUrl: '../../wp-content/plugins/livewell-search/searchFilter.template.html',
   controller: function PrpgramFilterController($scope) {
 
   }

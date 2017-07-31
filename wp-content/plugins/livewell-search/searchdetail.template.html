@@ -1,0 +1,106 @@
+<div class="search-container container">
+	<div class="row">
+		<div class="filter-container col-sm-3">
+			<search-filter></search-filter>
+		</div>
+		<div class="result-container col-sm-9" data-ng-init="initMap()">
+			<div>
+				<div class="detail-view row">
+					<div class="info col-sm-7">
+						<div class="back-to-list">
+							<span class="back-to-list-link" ng-click="backToSearch()">back to listing</span>
+						</div>
+						<h3 class="title">
+							{{$ctrl.currentProgram.Name}}
+						</h3>
+						<div class="description">
+							{{$ctrl.currentProgram.Description__c}}
+						</div>
+						<h3 class="title">
+							Location
+          				</h3>
+						<ng-map default-style="true" id="map" zoom="10" scrollwheel="false" center="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}">
+						    <marker position="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}" title="allen" on-click="map.showInfoWindow(event, 'bar')">
+						    </marker>
+								<info-window id="bar" max-width="280">
+					        <div ng-non-bindable>
+					          <div id="siteNotice"></div>
+					          <h4 style="color:#06c">{{$ctrl.currentProgram.Name}}</h4>
+					          <div id="bodyContent">
+					            <p>
+												<b>{{$ctrl.currentProgram.Account__r.Name}}</b><br>
+						            {{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}<br>
+
+						            <a href="https://maps.google.com/?daddr={{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}&saddr=Current%20Location">
+						              Directions
+						            </a>
+					            </p>
+					          </div>
+					        </div>
+					      </info-window>
+					    </ng-map>
+					    <div class="address" id="address">
+					    	<span class="service-name">
+								{{$ctrl.currentProgram.Account__r.Name}}
+							</span>
+							</br>
+							<span>
+							{{$ctrl.currentProgram.Address__c}},
+							{{$ctrl.currentProgram.City__c}},
+							{{$ctrl.currentProgram.State__c}},
+							{{$ctrl.currentProgram.Postal_Code__c}}
+							</span>
+							</br>
+							<span>
+								Distance: TBD
+							</span>
+						</div>
+						<div>
+							<strong>Phone: </strong>206-123-4567
+						</div>
+						<div>
+							<strong>Website: </strong><a href="#">TBD</a>
+						</div>
+						<div>
+							<strong>Business Hours: </strong>TBD
+						</div>
+					</div>
+					<div class="location col-sm-5">
+						<h3 class="title">Other Locations</h3>
+						<div class="location-content">
+
+						</div>
+						<h3 class="title">Other Services</h3>
+						<div class="services-content">
+
+						</div>
+						<h3 class="title">Related Services</h3>
+						<div class="related-serivices-content">
+
+						</div>
+						<div>
+							<strong>Website: </strong><a href="#">TBD</a>
+						</div>
+						<div>
+							<strong>Business Hours: </strong>TBD
+						</div>
+					</div>
+					<div class="location col-sm-5">
+						<h3 class="title">Other Locations</h3>
+						<div class="location-content">
+
+		                </div>
+		                <h3 class="title">Other Services</h3>
+						<div class="services-content">
+
+		                </div>
+		                <h3 class="title">Related Services</h3>
+						<div class="related-serivices-content">
+
+		                </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

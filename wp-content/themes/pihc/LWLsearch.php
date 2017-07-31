@@ -2,7 +2,9 @@
 
 <?php get_header(); ?>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
+
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
+
 
 <header id="header">
 	<div class="container-fluid">
@@ -86,7 +88,6 @@
 </div>
 </div>
 
-
 <!-- Introduction -->
 <div class="container-fluid main-body">
 	<div class="content-intro">
@@ -112,6 +113,7 @@
 </div>
 
 <!--Search Result-->
+
 <?php if ( dynamic_sidebar('livewell-search') ) : else : endif; ?>
 
 <!--Footer-->

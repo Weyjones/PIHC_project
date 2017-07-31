@@ -1,0 +1,119 @@
+<button class="view-map-btn">See Listings in Map View</button>
+<hr/>
+<div class="filters">
+  <h2 class="filter-header">Search Filter</h2>
+  <div class="function-area">
+      <input ng-model="$ctrl.query" />
+  </div>
+  <div class="function-area">
+    <h4 class="function-header">Sort by</h4>
+    <ul class="function-options">
+      <li>Service Name</li>
+      <li>Provider Name</li>
+      <li>Relevance</li>
+      <li>Distance</li>
+    </ul>
+  </div>
+  <div class="function-area">
+    <h4 class="function-header">Display Options</h4>
+    <ul class="function-options">
+      <li>10 results</li>
+      <li>20 results</li>
+      <li>50 results</li>
+      <li>100 results</li>
+      <li>Show all results</li>
+    </ul>
+  </div>
+  <div class="treeview hover">
+    <ul>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-1" checked="false">
+        <label for="cb-1">Ages Reached by Program</label>
+        <ul>
+          <li><input type="checkbox" ng-click="includeAge('Seniors (60+)')">Seniors (60+)</li>
+          <li><input type="checkbox" ng-click="includeAge('Adult (26-59)')">Adults (26-59)</li>
+          <li><input type="checkbox" ng-click="includeAge('Young Adults (19-25)')">Young Adults (19-25)</li>
+          <li><input type="checkbox" ng-click="includeAge('Teens (11-18)')">Teens (11-18)</li>
+          <li><input type="checkbox" ng-click="includeAge('Youth (6-10)')">Youth (6-10)</li>
+          <li><input type="checkbox" ng-click="includeAge('Children (0-5)')">Children (0-5)</li>
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-2" checked="false">
+        <label for="cb-2">Genders Served</label>
+        <ul>
+          <li><input type="checkbox" >Female</li>
+          <li><input type="checkbox">Male</li>
+          <li><input type="checkbox" >Gender Fluid</li>
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-3" checked="false">
+        <label for="cb-3">Household Type Served</label>
+        <ul>
+          <li><input type="checkbox" ng-model='search'>Multiple Adults</li>
+          <li><input type="checkbox" ng-model='search'>Open to All (General Community)</li>
+          <li><input type="checkbox" ng-model='search'>Single Adult</li>
+          <li><input type="checkbox" ng-model='search'>Supportive Living</li>
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-4" checked="false">
+        <label for="cb-4">Program Focus</label>
+        <ul>
+          <li><input type="checkbox" >Adult Activity Programs</li>
+          <li><input type="checkbox" >Child Nutrition</li>
+          <li><input type="checkbox" >Community Nutrition Education</li>
+          <li><input type="checkbox" >Emergency Food Access</li>
+          <li><input type="checkbox" >Employee Wellness</li>
+          <li><input type="checkbox" >Farmers Markets/Community Gardens</li>
+          <li><input type="checkbox" >Health Education</li>
+          <li><input type="checkbox" >Safety Net Programs</li>
+          <li><input type="checkbox" >Senior Nutrition</li>
+          <li><input type="checkbox" >Youth Activity Programs</li>
+          <li><input type="checkbox" >Other</li>
+
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-5" checked="false">
+        <label for="cb-5">Program Objective</label>
+        <ul>
+          <li><input type="checkbox" >Capacity Building</li>
+          <li><input type="checkbox" >Ensuring a Healthy Weight</li>
+          <li><input type="checkbox" >Increasing Adult Activity</li>
+          <li><input type="checkbox" >Increasing Youth Activity</li>
+          <li><input type="checkbox" >Promoting a Balanced Diet</li>
+          <li><input type="checkbox" >Promoting a Healthy Weight</li>
+          <li><input type="checkbox" >Reducing Food Insecurity</li>
+          <li><input type="checkbox" >Reducing Sedentary Behavior</li>
+          <li><input type="checkbox" >Other</li>
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-6" checked="false">
+        <label for="cb-6">Program Type</label>
+        <ul>
+          <li><input type="checkbox" >Increase Activity</li>
+          <li><input type="checkbox" >Improve Nutrition</li>
+        </ul>
+      </li>
+      <li class="level-1">
+        <input class="expand-label" type="checkbox" id="cb-7" checked="false">
+        <label for="cb-7">Sub-Community or Ethnic Group Reach</label>
+        <ul>
+          <li><input type="checkbox" >African American</li>
+          <li><input type="checkbox" >Caucasian</li>
+          <li><input type="checkbox" >Chinese</li>
+          <li><input type="checkbox" >Filipino</li>
+          <li><input type="checkbox" >Japanese</li>
+          <li><input type="checkbox" >Korean</li>
+          <li><input type="checkbox" >Latino</li>
+          <li><input type="checkbox" >Open to All (General Community)</li>
+          <li><input type="checkbox" >People With Diverse Abilities</li>
+          <li><input type="checkbox" >Russian</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
