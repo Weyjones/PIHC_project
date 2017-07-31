@@ -2,6 +2,9 @@
 	<div class="row">
 		<div class="filter-container col-sm-3">
 			<!-- <search-filter></search-filter> -->
+			<div>
+				{{filteredPrograms.length}} result(s)
+			</div>
 			<button class="view-map-btn">See Listings in Map View</button>
 			<hr/>
 			<div class="filters">
@@ -11,22 +14,11 @@
 				</div>
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
-					<ul class="function-options">
-						<li>Service Name</li>
-						<li>Provider Name</li>
-						<li>Relevance</li>
-						<li>Distance</li>
-					</ul>
-				</div>
-				<div class="function-area">
-					<h4 class="function-header">Display Options</h4>
-					<ul class="function-options">
-						<li>10 results</li>
-						<li>20 results</li>
-						<li>50 results</li>
-						<li>100 results</li>
-						<li>Show all results</li>
-					</ul>
+					<select ng-model="$ctrl.orderProp">
+						<option value="Name">Program Name</option>
+						<option value="Account__r.Name">Service Name</option>
+						<option value="">Relevance</option>
+					</select>
 				</div>
 				<div class="treeview hover">
 					<ul>
@@ -126,7 +118,7 @@
 		</div>
 		<div class="result-container col-sm-9">
 			<div>
-				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp">
+				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
 						<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
 						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
