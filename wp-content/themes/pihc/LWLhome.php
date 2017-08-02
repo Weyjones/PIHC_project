@@ -44,7 +44,7 @@
 <div class="col-sm-12 col-md-2">
 <div class="diamond" style="background:<?php the_field(menu_color); ?>">
 	<div class="diamond-inner">
-		<a href="http://www.pihcsnohomish.org/livewell/">
+		<a href="<?php get_site_url('/livewell/')?>">
 			<img src="<?php the_field(menu_icon); ?>" alt="">
 			<span style="line-height: 90%;">LIVE WELL</span>
 		</a>
@@ -52,7 +52,7 @@
 </div>
 </div>
 <div class="col-sm-12 col-md-9">
-<div id="breadcrumbs"><a rel="nofollow" href="http://www.pihcsnohomish.org/"><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
+<div id="breadcrumbs"><a rel="nofollow" href=""><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
 <?php
 	$menulinks = get_field( 'menu_links' );
 	if ( $menulinks ) {

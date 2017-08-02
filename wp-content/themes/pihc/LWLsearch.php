@@ -43,7 +43,7 @@
 <div class="col-sm-12 col-md-2">
 <div class="diamond" style="background:<?php the_field(menu_color); ?>">
 	<div class="diamond-inner">
-		<a href="http://www.pihcsnohomish.org/livewell/">
+		<a href="<?php get_site_url('/livewell/')?>">
 			<img src="<?php the_field(menu_icon); ?>" alt="">
 			<span style="line-height: 90%;">LIVE WELL</span>
 		</a>

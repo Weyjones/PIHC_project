@@ -47,7 +47,7 @@ echo '<div class="center-div">
                         Emotional & Spiritual Health
                     </h3>
                     <p class="desc">
-
+												Recognizing your own and others emotions and responding appropriately makes a difference. 
                     </p>
                 </div>';
 echo bellows( 'main' , array( 'menu' => 4 ) );
@@ -62,7 +62,7 @@ echo '
                         Neighborhood & Environment
                     </h3>
                     <p class="desc">
-
+												Being in nature not only makes you feel better emotionally, it contributes to your physical wellbeing—it soothes, restores and connects.
                     </p>
                 </div>';
 echo bellows( 'main' , array( 'menu' => 5 ) );
@@ -77,7 +77,7 @@ echo '
                         Physical Health
                     </h3>
                     <p class="desc">
-
+										Be a self-care master. One of the most important things you can do is to make wise decisions that keep you safe and healthy—helping you to maintain an independent, productive, and social life.
                     </p>
                 </div>';
 echo bellows( 'main' , array( 'menu' => 6 ) );
@@ -92,7 +92,7 @@ echo '
                         Relationships & Social connections
                     </h3>
                     <p class="desc">
-
+											Healthy relationships are vital to health. Strong family ties, friendships, and partnerships can increase our sense of security, self-esteem, belonging and provide a buffer against stress, anxiety, and depression.
                     </p>
                 </div>';
 echo bellows( 'main' , array( 'menu' => 7 ) );
@@ -107,7 +107,7 @@ echo '
                         Security & Basic Needs
                     </h3>
                     <p class="desc">
-
+											Having enough, being enough and freedom from worry. We need enough money for food, rent or mortgage, health care, medical bills and basic expenses of daily living.
                     </p>
                 </div>';
 echo bellows( 'main' , array( 'menu' => 8 ) );

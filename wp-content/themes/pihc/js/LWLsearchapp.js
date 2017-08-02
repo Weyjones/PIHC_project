@@ -263,7 +263,7 @@ app.component('searchMapview', {
       //
       // $scope.showDetail = function(e, program) {
       //   $scope.program = program;
-      map.showInfoWindow('foo');
+      //   map.showInfoWindow('foo');
       // };
 
       $scope.includeFilter = function (key, value) {
