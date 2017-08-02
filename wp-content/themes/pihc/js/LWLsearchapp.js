@@ -219,10 +219,11 @@ app.component('searchDetail', {
 
 app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livewell-search/searchmapview.template.html',
-  controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams) {
+  controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
       function successCallback(response) {
           dataCache.setProgramCache(response.data);
           $ctrl.programs = response.data;
+          setupMap();
           console.log($ctrl.programs);
       }
 
@@ -247,6 +248,30 @@ app.component('searchMapview', {
           $ctrl.programs = dataCache.getProgramCache();
       }
 
+      /****** Info Window *********/
+      function setupMap() {
+          NgMap.getMap().then(function(map) {
+              console.log('map', map);
+              $ctrl.map = map;
+          });
+
+          $ctrl.clicked = function() {
+              alert('Clicked a link inside infoWindow');
+          };
+
+
+          $ctrl.selectedProgram = $ctrl.programs[0];
+
+          $ctrl.showDetail = function(e, program) {
+              $ctrl.selectedProgram = program;
+              $ctrl.map.showInfoWindow('map-lwl', program.Id);
+          };
+
+          $ctrl.hideDetail = function() {
+              $ctrl.map.hideInfoWindow('map-lwl');
+          };
+      }
+
       /************ Filter ********/
       var filterValuesIncluded = {
           'Dimension': [],
@@ -255,16 +280,6 @@ app.component('searchMapview', {
       var keyToPropMap = {
           'Dimension': 'LWL_Dimension__c',
       };
-
-      // NgMap.getMap().then(function(map) {
-      //   console.log('map', map);
-      //   $crtl.map = map;
-      // });
-      //
-      // $scope.showDetail = function(e, program) {
-      //   $scope.program = program;
-      map.showInfoWindow('foo');
-      // };
 
       $scope.includeFilter = function (key, value) {
           var currentValues = filterValuesIncluded[key];

@@ -36,10 +36,19 @@
 				<div>
 					<ng-map ng-if="$ctrl.programs" id="map" default-style="true" zoom="8" center="seattle" scrollwheel="false"  style="height:450px">
 						<div ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp" >
-							<marker position="{{program.GeoInfo__Latitude__s}}, {{program.GeoInfo__Longitude__s}}" title="hello">
+							<marker id="{{program.Id}}" position="[{{program.GeoInfo__Latitude__s}}, {{program.GeoInfo__Longitude__s}}]" title="hello" on-click="$ctrl.showDetail(program)">
 							</marker>
-
-					</div>
+						</div>
+						<info-window id="map-lwl">
+							<div ng-non-bindable="">
+								id: {{$ctrl.selectedProgram.Id}}<br/>
+								name: {{$ctrl.selectedProgram.name}}<br/>
+								Position 1: {{$ctrl.selectedProgram.latlng}}<br/>
+								Position 2: {{anchor.getPosition()}}<br/>
+								Position 3: {{$ctrl.map.markers[$ctrl.selectedProgram.Id].getPosition()}}<br/>
+								<a href="#" ng-click="$ctrl.clicked()">Click Here</a>
+							</div>
+						</info-window>
 					</ng-map>
 					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 
