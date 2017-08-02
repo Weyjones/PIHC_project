@@ -17,6 +17,7 @@ add_action( 'widgets_init', 'livewell_search_widget' );
 //wp_enqueue_script( 'angular', '' . 'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js', array(), true );
 //wp_enqueue_script( 'angular-route', '' . 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js', array(), true );
 wp_enqueue_script('angular', plugins_url( 'lib/angular.js', __FILE__ ), array(), true);
+wp_enqueue_script('angular-resource', plugins_url( 'lib/angular-resource.min.js', __FILE__ ), array(), true);
 wp_enqueue_script('angular-route', plugins_url( 'lib/angular-ui-router.js', __FILE__ ), array(), true);
 //wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('basetag', plugins_url( 'lib/setup.js', __FILE__ ), array(), true);

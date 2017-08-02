@@ -8,7 +8,7 @@
 	<div class="container-fluid">
 
 		<div class="col-sm-12 col-md-8 site-branding">
-			<a href="http://www.pihcsnohomish.org/"><img src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
+			<a href="http://www.pihcsnohomish.org/"><img style="padding-left: 40px;" src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
 		</div>
 
 		<div class="col-sm-12 col-md-4 site-details">
@@ -103,17 +103,34 @@
 
 <!--Search Bar-->
 <div class="container-fluid main-body">
-	<form class="search-bar" action="/livewell/search/">
+	<form id="lwl-search-form" class="search-bar" action="/livewell/search/">
 		<div class="keyword-search col-md-5">
-			<input type="text" class="form-control" placeholder="Search by Keyword">
+			<input type="text" class="form-control" name="query" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
-			<input type="text" class="form-control" placeholder="Enter your Location (City or Zip Code) ">
+			<input type="text" class="form-control" name="location" placeholder="Enter your Location (City or Zip Code) ">
 		</div>
 		<button type="submit" class="btn-search"><img src="<?php the_field(search_button_icon); ?>"></button>
 	</form>
 </div>
-
+<script>
+$("#lwl-search-form").submit(function( event ) {
+  var params = $(this).serializeArray();
+  var keypairs = [];
+  var searchStr = '?';
+  for(var i in params) {
+    var p = params[i];
+    var name = p.name;
+    var value = encodeURIComponent(p.value);
+    if (value) {
+        keypairs.push(name + '=' + value);
+    }
+  }
+  searchStr += keypairs.join('&');
+  window.location.href += 'search/#/' + searchStr;
+  event.preventDefault();
+});
+</script>
 
 <!--Topics-->
 <?php if ( dynamic_sidebar('liveWell-content') ) : else : endif; ?>
@@ -140,7 +157,7 @@
 				<div class="col-md-4">
 					<div style="margin-top:30px;">
 
-						<div class="fb-page" data-href="<?php the_field(facebook_link); ?>" data-tabs="timeline" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="<?php the_field(facebook_link); ?>" class="fb-xfbml-parse-ignore"><a href="<?php the_field(facebook_link); ?>">Facebook</a></blockquote></div>
+						<div class="fb-page" data-href="<?php the_field(facebook_link); ?>" data-tabs="timeline" data-height="475" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="<?php the_field(facebook_link); ?>" class="fb-xfbml-parse-ignore"><a href="<?php the_field(facebook_link); ?>">Facebook</a></blockquote></div>
 				</div>
 
 				</div>

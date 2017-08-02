@@ -48,7 +48,7 @@ ul.function-options>li:hover{
 }
 .result-item .desc{
     margin-top: 20px;
-    border-left: 1px solid #bbb;
+    /*border-left: 1px solid #bbb;*/
     padding-bottom: 20px;
     padding-left: 20px;
 }

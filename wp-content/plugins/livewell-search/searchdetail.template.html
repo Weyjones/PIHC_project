@@ -1,9 +1,39 @@
+
 <div class="search-container container">
 	<div class="row">
 		<div class="filter-container col-sm-3">
-			<search-filter></search-filter>
+			<!-- <search-filter></search-filter> -->
+			<div>
+				{{filteredPrograms.length}} result(s)
+			</div>
+			<button class="view-map-btn">See Listings in Map View</button>
+			<hr/>
+			<div class="filters">
+				<!-- <h2 class="filter-header">Search Filter</h2>
+				<div class="function-area">
+					<input ng-model="$ctrl.query" />
+				</div> -->
+				<div class="function-area">
+					<h4 class="function-header">Sort by</h4>
+					<select ng-model="$ctrl.orderProp">
+						<option value="Name">Program Name</option>
+						<option value="Account__r.Name">Service Name</option>
+						<option value="">Relevance</option>
+					</select>
+				</div>
+				<div class="treeview hover">
+							<ul style="list-style:none;">
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')">Mental, Emotional & Spiritual</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')">Neighborhood/Natural Environment</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')">Physical Health</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')">Relationships & Social Connection</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')">Security & Basic Need</li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><label>Work, Learning & Growth</label></li>
+							</ul>
+				</div>
+			</div>
 		</div>
-		<div class="result-container col-sm-9" data-ng-init="initMap()">
+		<div class="result-container col-sm-9">
 			<div>
 				<div class="detail-view row">
 					<div class="info col-sm-7">
@@ -18,7 +48,7 @@
 						</div>
 						<h3 class="title">
 							Location
-          				</h3>
+						</h3>
 						<ng-map default-style="true" id="map" zoom="10" scrollwheel="false" center="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}">
 						    <marker position="{{$ctrl.currentProgram.Address__c}} {{$ctrl.currentProgram.City__c}} {{$ctrl.currentProgram.State__c}} {{$ctrl.currentProgram.Postal_Code__c}}" title="allen" on-click="map.showInfoWindow(event, 'bar')">
 						    </marker>
@@ -39,7 +69,7 @@
 					        </div>
 					      </info-window>
 					    </ng-map>
-					    <div class="address" id="address">
+						<div class="address" id="address">
 					    	<span class="service-name">
 								{{$ctrl.currentProgram.Account__r.Name}}
 							</span>
@@ -78,26 +108,6 @@
 						<div class="related-serivices-content">
 
 						</div>
-						<div>
-							<strong>Website: </strong><a href="#">TBD</a>
-						</div>
-						<div>
-							<strong>Business Hours: </strong>TBD
-						</div>
-					</div>
-					<div class="location col-sm-5">
-						<h3 class="title">Other Locations</h3>
-						<div class="location-content">
-
-		                </div>
-		                <h3 class="title">Other Services</h3>
-						<div class="services-content">
-
-		                </div>
-		                <h3 class="title">Related Services</h3>
-						<div class="related-serivices-content">
-
-		                </div>
 					</div>
 				</div>
 			</div>

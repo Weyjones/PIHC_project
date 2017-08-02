@@ -32,7 +32,7 @@ array( 'description' => __( 'Widget FOR LiveHealthy Topics ', 'liveHealthy_topic
 
 // Creating widget front-end
 public function widget( $args, $instance ) {
-echo '<div id="livehealthy-topics" class="container">
+echo '<div id="livehealthy-topics" class="container-fluid main-body">
         <div class="row">
             <div class="col-sm-6">';
 

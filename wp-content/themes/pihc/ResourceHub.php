@@ -5,11 +5,11 @@
 <header id="header">
 	<div class="container-fluid">
 
-		<div class="col-sm-12 col-md-8 site-branding">
-			<a href="http://www.pihcsnohomish.org/"><img src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
+		<div class="col-sm-12 col-md-6 site-branding">
+			<a href="http://www.pihcsnohomish.org/"><img style="padding-left: 40px" src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
 		</div>
 
-		<div class="col-sm-12 col-md-4 site-details">
+		<div class="col-sm-12 col-md-6 site-details">
 			<div class="contact-details">
 				<div class="container-fluid">
 					<ul class="i-social">
@@ -37,6 +37,8 @@
 <div class="container-fluid">
 	<div class="row">
 
+<div class="col-sm-12 col-md-1">
+</div>
 <div class="col-sm-12 col-md-2">
 <div class="diamond" style="background:<?php the_field(menu_color); ?>">
 	<div class="diamond-inner">
@@ -47,7 +49,7 @@
 	</div>
 </div>
 </div>
-<div class="col-sm-12 col-md-10">
+<div class="col-sm-12 col-md-9">
 <div id="breadcrumbs"><a rel="nofollow" href="http://www.pihcsnohomish.org/"><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
 <?php
 	$menulinks = get_field( 'menu_links' );
@@ -157,7 +159,7 @@
 				<div class="col-md-4">
 					<div style="margin-top:30px;">
 
-						<div class="fb-page" data-href="<?php the_field(facebook_link); ?>" data-tabs="timeline" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="<?php the_field(facebook_link); ?>" class="fb-xfbml-parse-ignore"><a href="<?php the_field(facebook_link); ?>">Facebook</a></blockquote></div>
+						<div class="fb-page" data-href="<?php the_field(facebook_link); ?>" data-tabs="timeline" data-height="475" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="<?php the_field(facebook_link); ?>" class="fb-xfbml-parse-ignore"><a href="<?php the_field(facebook_link); ?>">Facebook</a></blockquote></div>
 				</div>
 
 				</div>

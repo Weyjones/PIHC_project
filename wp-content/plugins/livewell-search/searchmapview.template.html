@@ -1,15 +1,47 @@
 <div class="search-container container">
-		<div class="row">
-			<div class="filter-container col-sm-3">
-				<search-filter></search-filter>
+	<div class="row">
+		<div class="filter-container col-sm-3">
+			<!-- <search-filter></search-filter> -->
+			<div>
+				{{filteredPrograms.length}} result(s)
 			</div>
+			<button class="view-map-btn">See Listings in Map View</button>
+			<hr/>
+			<div class="filters">
+				<!-- <h2 class="filter-header">Search Filter</h2>
+				<div class="function-area">
+					<input ng-model="$ctrl.query" />
+				</div> -->
+				<div class="function-area">
+					<h4 class="function-header">Sort by</h4>
+					<select ng-model="$ctrl.orderProp">
+						<option value="Name">Program Name</option>
+						<option value="Account__r.Name">Service Name</option>
+						<option value="">Relevance</option>
+					</select>
+				</div>
+				<div class="treeview hover">
+							<ul style="list-style:none;">
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon"></div><label>Mental, Emotional & Spiritual</label></li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon"></div><label>Neighborhood/Natural Environment</label></li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')"><div class="physicalIcon"></div><label>Physical Health</label></li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')"><div class="relastionlIcon"></div><label>Relationships & Social Connection</label></li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')"><div class="securityIcon"></div><label>Security & Basic Need</label></li>
+								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><div class="workIcon"></div><label>Work, Learning & Growth</label></li>
+							</ul>
+				</div>
+			</div>
+		</div>
 			<div class="result-container col-sm-9">
 				<div>
-					<ng-map id="map" zoom="8" center="current" scrollwheel="false"  style="height:450px">
-						<marker ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp" position="{{program.Address__c}} {{program.City__c}} {{program.State__c}} {{program.Postal_Code__c}}" title="hello"></marker>
+					<ng-map ng-if="$ctrl.programs" id="map" default-style="true" zoom="8" center="seattle" scrollwheel="false"  style="height:450px">
+						<div ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp" >
+							<marker position="{{program.GeoInfo__Latitude__s}}, {{program.GeoInfo__Longitude__s}}" title="hello">
+							</marker>
 
+					</div>
 					</ng-map>
-					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | orderBy:$ctrl.orderProp">
+					<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 
 						<div class="info col-sm-4">
 							<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
