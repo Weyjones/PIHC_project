@@ -22,14 +22,14 @@
 					</select>
 				</div>
 				<div class="treeview hover">
-							<ul style="list-style:none;">
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')">Mental, Emotional & Spiritual</li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')">Neighborhood/Natural Environment</li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')">Physical Health</li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')">Relationships & Social Connection</li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')">Security & Basic Need</li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><label>Work, Learning & Growth</label></li>
-							</ul>
+					<ul style="list-style:none" class="lwl-topics-filter-list">
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon icon inline-block"></div><label class="inline-block">Mental, Emotional & Spiritual</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon icon inline-block"></div><label class="inline-block">Neighborhood/Natural Environment</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')"><div class="physicalIcon icon inline-block"></div><label class="inline-block">Physical Health</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')"><div class="relastionlIcon icon inline-block"></div><label class="inline-block">Relationships & Social Connection</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')"><div class="securityIcon icon inline-block"></div><label class="inline-block">Security & Basic Need</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><div class="workIcon icon inline-block"></div><label class="inline-block">Work, Learning & Growth</label></li>
+					</ul>
 				</div>
 			</div>
 		</div>

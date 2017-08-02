@@ -13,6 +13,9 @@ button.view-map-btn{
     margin: auto 120px;
     padding-top: 30px;
 }
+.function-area{
+    margin-bottom: 20px;
+}
 .function-area .function-header{
     font-size: 1.3em;
     font-weight: bold;
@@ -79,4 +82,41 @@ ul.function-options>li:hover{
     font-size: 1.4em;
     font-weight: normal;
     color: #0e4181;
+}
+.map-view-container{
+    margin-bottom: 20px;
+}
+.lwl-topics-filter-list .inline-block{
+    display: inline-block;
+    vertical-align: middle;
+}
+.lwl-topics-filter-list .inline{
+    display: inline;
+}
+.lwl-topics-filter-list>li{
+    display: block;
+    margin-bottom: 10px;
+}
+.lwl-topics-filter-list>li:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+}
+.lwl-topics-filter-list>li .icon{
+    width: 10%;
+    min-width: 26px;
+    max-width: 26px;
+}
+.lwl-topics-filter-list>li label{
+    font-size: 1em;
+    width: 80%;
+    margin-left: 2%;
+}
+.lwl-topics-filter-list>li input{
+    width: 5%;
+    margin-right: 2%;
+}
+.icon-list .inline-block{
+    display: inline-block;
+    margin-right: 5px;
 }

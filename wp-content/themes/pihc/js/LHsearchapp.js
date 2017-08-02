@@ -22,7 +22,6 @@ app.config(function($stateProvider, $locationProvider) {
     states.forEach(function(state) {
         $stateProvider.state(state);
     });
-    //$locationProvider.html5Mode(true);
 });
 
 app.component('searchWidget', {
@@ -184,7 +183,7 @@ app.component('searchMapview', {
       }
 
       var $ctrl = this;
-      //console.log($location);
+
       $ctrl.orderProp = '';
       $ctrl.keyword = $stateParams.query || '';
       console.log($stateParams);
