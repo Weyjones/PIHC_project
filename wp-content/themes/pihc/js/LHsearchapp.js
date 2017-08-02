@@ -171,10 +171,11 @@ app.component('searchDetail', {
 
 app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
-  controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams) {
+  controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
       function successCallback(response) {
           dataCache.setProgramCache(response.data);
           $ctrl.programs = response.data;
+          setupMap()
           console.log($ctrl.programs);
       }
 
@@ -198,7 +199,29 @@ app.component('searchMapview', {
       } else {
           $ctrl.programs = dataCache.getProgramCache();
       }
+      /****** Info Window *********/
+      function setupMap() {
+          NgMap.getMap().then(function(map) {
+              console.log('map', map);
+              $ctrl.map = map;
+          });
 
+          $ctrl.clicked = function() {
+              alert('Clicked a link inside infoWindow');
+          };
+
+
+          $ctrl.selectedProgram = $ctrl.programs[0];
+
+          $ctrl.showDetail = function(e, program) {
+              $ctrl.selectedProgram = program;
+              $ctrl.map.showInfoWindow('map-lh', program.Id);
+          };
+
+          $ctrl.hideDetail = function() {
+              $ctrl.map.hideInfoWindow('map-lh');
+          };
+      }
       /************ Filter ********/
       var filterValuesIncluded = {
           'age': [],
