@@ -101,37 +101,49 @@
 
 <!--Navigation-->
 <div class="container-fluid main-body">
-	<div class="col-xs-12 col-md-4 col" style="">
-		<a href="http://www.pihcsnohomish.org/about/staff/">
-			<img src="<?php the_field(live_healthy_navigation_image); ?>" alt="Leadership &amp; Staff">
-			<h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_healthy_navigation_title); ?></h5>
-		</a>
+	<div class="col-xs-12 col-md-4 col nav-block">
+	    <div class="title-block">
+            <a href="http://www.pihcsnohomish.org/about/staff/">
+                <img src="<?php the_field(live_healthy_navigation_image); ?>" alt="Leadership &amp; Staff">
+                <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_healthy_navigation_title); ?></h5>
+            </a>
+	    </div>
 		<div class="excerpt">
 			<p><?php the_field(live_healthy_navigation_description); ?></p>
 		</div>
-		<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORER COMMUNITY</a>
+		<div class="nav-btn">
+			<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORER COMMUNITY</a>
+		</div>
 	</div>
 
-	<div class="col-xs-12 col-md-4 col" style="">
-		<a href="http://www.pihcsnohomish.org/about/staff/">
-			<img src="<?php the_field(live_well_navigation_image); ?>" alt="Leadership &amp; Staff">
-			<h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_well_navigation_title); ?></h5>
-		</a>
+	<div class="col-xs-12 col-md-4 col nav-block">
+		<div class="title-block">
+            <a href="http://www.pihcsnohomish.org/about/staff/">
+                <img src="<?php the_field(live_well_navigation_image); ?>" alt="Leadership &amp; Staff">
+                <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_well_navigation_title); ?></h5>
+            </a>
+		</div>
 		<div class="excerpt">
 			<p><?php the_field(live_well_navigation_description); ?></p>
 		</div>
-		<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">LOCAL RESOURCE</a>
+		<div class="nav-btn">
+            <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">LOCAL RESOURCE</a>
+		</div>
 	</div>
 
-	<div class="col-xs-12 col-md-4 col" style="">
-		<a href="http://www.pihcsnohomish.org/about/staff/">
-			<img src="<?php the_field(provider_portal_navigation_image); ?>" alt="Leadership &amp; Staff">
-			<h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(provider_portal_navigation_title); ?></h5>
-		</a>
+	<div class="col-xs-12 col-md-4 col nav-block">
+		<div class="title-block">
+            <a href="http://www.pihcsnohomish.org/about/staff/">
+                <img src="<?php the_field(provider_portal_navigation_image); ?>" alt="Leadership &amp; Staff">
+                <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(provider_portal_navigation_title); ?></h5>
+            </a>
+		</div>
 		<div class="excerpt">
 			<p><?php the_field(provider_portal_navigation_description); ?></p>
 		</div>
-		<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">CONNECT TO PORTAL</a>
+		<div class="nav-btn">
+		    <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">CONNECT TO PORTAL</a>
+		</div>
 	</div>
 
 </div>

@@ -1502,10 +1502,6 @@ object {
   max-width: 30px;
 }
 
-/*.gm-style-cc {
-  display: none !important;
+.nav-block .title-block img{
+  height: 50px;
 }
-
-.gm-style a[href^="https://maps.google.com/maps"] {
-  display: none !important;
-}*/

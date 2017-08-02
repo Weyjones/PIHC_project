@@ -22,14 +22,14 @@
 					</select>
 				</div>
 				<div class="treeview hover">
-							<ul style="list-style:none;">
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon"></div><label>Mental, Emotional & Spiritual</label></li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon"></div><label>Neighborhood/Natural Environment</label></li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')"><div class="physicalIcon"></div><label>Physical Health</label></li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')"><div class="relastionlIcon"></div><label>Relationships & Social Connection</label></li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')"><div class="securityIcon"></div><label>Security & Basic Need</label></li>
-								<li><input type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><div class="workIcon"></div><label>Work, Learning & Growth</label></li>
-							</ul>
+					<ul style="list-style:none" class="lwl-topics-filter-list">
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon icon inline-block"></div><label class="inline-block">Mental, Emotional & Spiritual</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon icon inline-block"></div><label class="inline-block">Neighborhood/Natural Environment</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')"><div class="physicalIcon icon inline-block"></div><label class="inline-block">Physical Health</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')"><div class="relastionlIcon icon inline-block"></div><label class="inline-block">Relationships & Social Connection</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')"><div class="securityIcon icon inline-block"></div><label class="inline-block">Security & Basic Need</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><div class="workIcon icon inline-block"></div><label class="inline-block">Work, Learning & Growth</label></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -37,11 +37,17 @@
 			<div>
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
-						<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
 						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
 				  			{{program.Account__r.Name}}
 			  			</h3>
-						<!-- </a> -->
+						<div class="icon-list">
+							<div ng-if="program.LWL_Dimension__c === 'Mental/Emotional/Spiritual'" class="mentalIcon inline-block"></div>
+							<div ng-if="program.LWL_Dimension__c === 'Neighborhood and Natural Environment'" class="neighborIcon inline-block"></div>
+							<div ng-if="program.LWL_Dimension__c === 'Physical Health'" class="physicalIcon inline-block"></div>
+							<div ng-if="program.LWL_Dimension__c === 'Relationships'" class="relastionlIcon inline-block"></div>
+							<div ng-if="program.LWL_Dimension__c === 'Security/Basic Needs'" class="securityIcon inline-block"></div>
+							<div ng-if="program.LWL_Dimension__c === 'Work/Learning & Growth'" class="workIcon inline-block"></div>
+						</div>
 						<span class="service-name">
 							{{program.Name}}
 						</span>
@@ -67,7 +73,7 @@
 					<div class="divider"></div>
 					<div class="desc col-sm-8">
 						<h4>Description</h4>
-						<p class="desc-content hidden-print">
+						<p class="desc-content">
 			  				{{program.Description__c | cut:true:215:' ...'}}
 		  				</p>
 					</div>

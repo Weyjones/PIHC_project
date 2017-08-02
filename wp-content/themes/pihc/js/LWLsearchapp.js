@@ -120,11 +120,11 @@ app.component('searchWidget', {
 
         /************ Filter ********/
         var filterValuesIncluded = {
-            'Dimension': [],
+            'Dimension': []
         };
 
         var keyToPropMap = {
-            'Dimension': 'LWL_Dimension__c',
+            'Dimension': 'LWL_Dimension__c'
         };
 
         $scope.includeFilter = function (key, value) {
@@ -232,7 +232,7 @@ app.component('searchMapview', {
       }
 
       var $ctrl = this;
-      //console.log($location);
+
       $ctrl.orderProp = '';
       $ctrl.keyword = $stateParams.query || '';
       console.log($stateParams);
