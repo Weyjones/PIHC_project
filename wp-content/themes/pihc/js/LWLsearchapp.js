@@ -81,6 +81,7 @@ app.component('searchWidget', {
             //populateLatLong(0);
         }
 
+<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
         // function populateLatLong(i) {
         //     var program = $ctrl.programs[i];
         //     codeAddress(program, i);
@@ -120,6 +121,47 @@ app.component('searchWidget', {
         //           }
         //     });
         // }
+=======
+        function populateLatLong(i) {
+            var program = $ctrl.programs[i];
+            codeAddress(program, i);
+        }
+
+        function codeAddress(program, i) {
+
+            var address = '';
+            if (program.Address__c) {
+              address += program.Address__c + ',';
+            }
+            if (program.City__c) {
+              address += program.City__c + ', ';
+            }
+            if (program.State__c) {
+              address += program.State__c + ' ';
+            }
+            if (program.Zip_Postal_Code__c) {
+              address += program.Zip_Postal_Code__c;
+            }
+
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == 'OK') {
+                    var location = results[0].geometry.location;
+                    var latlng = "[" + location.lat() + ", " + location.lng() + "]";
+                    program.lat = location.lat();
+                    program.long = location.lng();
+                    console.log(address);
+                    console.log(program.lat + ' ' + program.long);
+                    updateLatLng(program);
+                  }
+                  if (i < $ctrl.programs.length - 1) {
+                    setTimeout(function() {
+                      populateLatLong(i+1);
+                    }, 1000);
+                  }
+            });
+        }
+>>>>>>> Style changes
 
         function errorCallback(response) {
             console.log(response);
@@ -139,7 +181,7 @@ app.component('searchWidget', {
         var updateLatLng = function(program) {
             //var parameter = {id: 'a016100000CZFzKAAX', lat: 15, long: -144};
             var parameter = {id: program.Id, lat: program.lat, long: program.long};
-            var url = 'https://pihc-pihccommunity.cs91.force.com/members/services/apexrest/setLatLongbyId';
+            var url = 'https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getAllLocations';
             var requestUrl = url + '?id=' + parameter.id + '&lat='+ parameter.lat +'&long=' + parameter.long;
             //console.log(requestUrl);
             $http.post(requestUrl).then(updateSuccess, updateError);
@@ -154,8 +196,13 @@ app.component('searchWidget', {
             $location.url(url);
         };
 
+<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
         if (dataCache.isProgramEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
+=======
+        if (dataCache.isEmpty()) {
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getAllLocations').then(successCallback, errorCallback);
+>>>>>>> Style changes
         } else {
             $ctrl.programs = dataCache.getProgramCache();
         }
@@ -277,6 +324,7 @@ app.component('searchDetail', {
             console.log(response);
         }
 
+<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
         function getAdditionInfo(){
           $ctrl.currentProgram.otherLocations = [];
 
@@ -308,6 +356,10 @@ app.component('searchDetail', {
         if (dataCache.isProgramEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
 
+=======
+        if (dataCache.isEmpty()) {
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgra').then(successCallback, errorCallback);
+>>>>>>> Style changes
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
@@ -397,8 +449,13 @@ app.component('searchMapview', {
           $location.url(url);
       };
 
+<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
       if (dataCache.isProgramEmpty()) {
           $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
+=======
+      if (dataCache.isEmpty()) {
+          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgra').then(successCallback, errorCallback);
+>>>>>>> Style changes
       } else {
           $ctrl.programs = dataCache.getProgramCache();
           setupMap();

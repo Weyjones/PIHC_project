@@ -5,7 +5,7 @@ app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location',
+            url: '/?query&location&age',
             component: 'searchWidget'
         },
         {
@@ -27,6 +27,7 @@ app.config(function($stateProvider, $locationProvider) {
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams) {
+
       function successCallback(response) {
         var programLocations = response.data;
         $ctrl.programs = programLocations.map(function(program) {

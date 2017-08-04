@@ -114,6 +114,7 @@
 <script>
 $("#lh-search-form").submit(function( event ) {
   var params = $(this).serializeArray();
+  params.push({name: 'age', value: '["senior", "junior"]'});
   var keypairs = [];
   var searchStr = '?';
   for(var i in params) {
