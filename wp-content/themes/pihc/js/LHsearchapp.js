@@ -5,7 +5,7 @@ app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location&age',
+            url: '/?query&location&age&gender&household&focus&objective&type&ethnic',
             component: 'searchWidget'
         },
         {
@@ -26,54 +26,54 @@ app.config(function($stateProvider, $locationProvider) {
 
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
-    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams) {
+    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
 
-      function successCallback(response) {
-        var programLocations = response.data;
-        $ctrl.programs = programLocations.map(function(program) {
-          var result = {
-            Id: program.Id,
-            Address__c: program.Address__c,
-            City__c: program.City__c,
-            State__c: program.Program__r.State__c,
-            Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-            GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-            GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-            AccountId: program.Program__r.Account__r.Id,
-            AccountName: program.Program__r.Account__r.Name,
-            ProgramId: program.Program__r.Id,
-            ProgramName: program.Program__r.Name,
-            Description__c: program.Program__r.Description__c,
-            Program_Focus__c: program.Program__r.Program_Focus__c,
-            Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
-            What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
-            Do_you_serve__c: program.Program__r.Do_you_serve__c,
-            LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
-            Program_Type__c: program.Program__r.Program_Type__c,
-            Program_Objective__c: program.Program__r.Program_Objective__c,
-            Geographic_Scope__c: program.Program__r.Geographic_Scope__c
-          };
-          if(result.Address__c != 'Website Only'){
-            var fullAddress = result.Address__c;
-            if(result.City__c){
-              fullAddress = fullAddress + ' ' + result.City__c;
-            }
-            if(result.State__c){
-              fullAddress = fullAddress + ', ' + result.State__c;
-            }
-            if(result.Zip_Postal_Code__c){
-              fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-            }
-            result.fullAddress = fullAddress;
+        function successCallback(response) {
+            var programLocations = response.data;
+            $ctrl.programs = programLocations.map(function(program) {
+              var result = {
+                Id: program.Id,
+                Address__c: program.Address__c,
+                City__c: program.City__c,
+                State__c: program.Program__r.State__c,
+                Zip_Postal_Code__c: program.Zip_Postal_Code__c,
+                GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
+                GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
+                AccountId: program.Program__r.Account__r.Id,
+                AccountName: program.Program__r.Account__r.Name,
+                ProgramId: program.Program__r.Id,
+                ProgramName: program.Program__r.Name,
+                Description__c: program.Program__r.Description__c,
+                Program_Focus__c: program.Program__r.Program_Focus__c,
+                Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
+                What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
+                Do_you_serve__c: program.Program__r.Do_you_serve__c,
+                LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
+                Program_Type__c: program.Program__r.Program_Type__c,
+                Program_Objective__c: program.Program__r.Program_Objective__c,
+                Geographic_Scope__c: program.Program__r.Geographic_Scope__c
+              };
+              if(result.Address__c != 'Website Only'){
+                var fullAddress = result.Address__c;
+                if(result.City__c){
+                  fullAddress = fullAddress + ' ' + result.City__c;
+                }
+                if(result.State__c){
+                  fullAddress = fullAddress + ', ' + result.State__c;
+                }
+                if(result.Zip_Postal_Code__c){
+                  fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
+                }
+                result.fullAddress = fullAddress;
+              }
+              if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
+                result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
+              }
+              return result;
+            });
+            console.log($ctrl.programs);
+            dataCache.setProgramCache($ctrl.programs);
           }
-          if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-          }
-          return result;
-        });
-        console.log($ctrl.programs);
-        dataCache.setProgramCache($ctrl.programs);
-      }
 
         function errorCallback(response) {
             console.log(response);
@@ -81,10 +81,18 @@ app.component('searchWidget', {
 
         var $ctrl = this;
 
-        //console.log($location);
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
-        console.log($stateParams);
+
+        var ageFilterValues = $stateParams.age ? $stateParams.age.split(',') : [];
+        var genderFilterValues = $stateParams.gender ? $stateParams.gender.split(',') : [];
+        var householdFilterValues = $stateParams.household ? $stateParams.household.split(',') : [];
+        var focusFilterValues = $stateParams.focus ? $stateParams.focus.split(',') : [];
+        var objectiveFilterValues = $stateParams.objective ? $stateParams.objective.split(',') : [];
+        var typeFilterValues = $stateParams.type ? $stateParams.type.split(',') : [];
+        var ethnicFilterValues = $stateParams.ethnic ? $stateParams.ethnic.split(',') : [];
+
+        console.log(ageFilterValues);
 
         $ctrl.openDetailPage = function(program) {
             var url = '/detail/' + program.Id;
@@ -99,13 +107,13 @@ app.component('searchWidget', {
 
         /************ Filter ********/
         var filterValuesIncluded = {
-            'age': [],
-            'gender': [],
-            'household': [],
-            'focus': [],
-            'objective': [],
-            'type': [],
-            'ethnic': []
+            'age': ageFilterValues,
+            'gender': genderFilterValues,
+            'household': householdFilterValues,
+            'focus': focusFilterValues,
+            'objective': objectiveFilterValues,
+            'type': typeFilterValues,
+            'ethnic': ethnicFilterValues
         };
 
         var keyToPropMap = {
@@ -117,7 +125,12 @@ app.component('searchWidget', {
             'type': 'Program_Type__c',
             'ethnic': 'Sub_community_or_ethnic_group_reach__c'
         };
-
+        $scope.checkFilter = function (key, value) {
+          return filterValuesIncluded[key].indexOf(value) > -1;
+        };
+        $scope.expandFilterSection = function (key) {
+          return filterValuesIncluded[key].length === 0;
+        };
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
 
@@ -128,11 +141,14 @@ app.component('searchWidget', {
             } else {
                 currentValues.push(value);
             }
-
-            for(var key in filterValuesIncluded) {
-                console.log(key + ":" + filterValuesIncluded[key]);
+            
+            var params = {};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
             }
+            $state.go('search', params);
         };
+        
         $scope.programFilter = function(program) {
             var containAll = true;
 

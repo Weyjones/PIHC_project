@@ -5,7 +5,7 @@ app.config(function($stateProvider, $locationProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location',
+            url: '/?query&location&topic&dimension',
             component: 'searchWidget'
         },
         {
@@ -31,7 +31,8 @@ app.config(function($stateProvider, $locationProvider) {
 
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchwidget.template.html',
-    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams) {
+    controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
+        console.log($stateParams);
         function successCallback(response) {
             //dataCache.setProgramCache(response.data);
 
@@ -77,91 +78,9 @@ app.component('searchWidget', {
             });
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
-
+            setupTopicFilter();
             //populateLatLong(0);
         }
-
-<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
-        // function populateLatLong(i) {
-        //     var program = $ctrl.programs[i];
-        //     codeAddress(program, i);
-        // };
-        //
-        // function codeAddress(program, i) {
-        //
-        //     var address = '';
-        //     if (program.Address__c) {
-        //       address += program.Address__c + ',';
-        //     }
-        //     if (program.City__c) {
-        //       address += program.City__c + ', ';
-        //     }
-        //     if (program.State__c) {
-        //       address += program.State__c + ' ';
-        //     }
-        //     if (program.Postal_Code__c) {
-        //       address += program.Postal_Code__c;
-        //     }
-        //
-        //     var geocoder = new google.maps.Geocoder();
-        //     geocoder.geocode( { 'address': address}, function(results, status) {
-        //         if (status == 'OK') {
-        //             var location = results[0].geometry.location;
-        //             var latlng = "[" + location.lat() + ", " + location.lng() + "]";
-        //             program.lat = location.lat();
-        //             program.long = location.lng();
-        //             console.log(address);
-        //             console.log(program.lat + ' ' + program.long);
-        //             updateLatLng(program);
-        //           }
-        //           if (i < $ctrl.programs.length - 1) {
-        //             setTimeout(function() {
-        //               populateLatLong(i+1);
-        //             }, 1000);
-        //           }
-        //     });
-        // }
-=======
-        function populateLatLong(i) {
-            var program = $ctrl.programs[i];
-            codeAddress(program, i);
-        }
-
-        function codeAddress(program, i) {
-
-            var address = '';
-            if (program.Address__c) {
-              address += program.Address__c + ',';
-            }
-            if (program.City__c) {
-              address += program.City__c + ', ';
-            }
-            if (program.State__c) {
-              address += program.State__c + ' ';
-            }
-            if (program.Zip_Postal_Code__c) {
-              address += program.Zip_Postal_Code__c;
-            }
-
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode( { 'address': address}, function(results, status) {
-                if (status == 'OK') {
-                    var location = results[0].geometry.location;
-                    var latlng = "[" + location.lat() + ", " + location.lng() + "]";
-                    program.lat = location.lat();
-                    program.long = location.lng();
-                    console.log(address);
-                    console.log(program.lat + ' ' + program.long);
-                    updateLatLng(program);
-                  }
-                  if (i < $ctrl.programs.length - 1) {
-                    setTimeout(function() {
-                      populateLatLong(i+1);
-                    }, 1000);
-                  }
-            });
-        }
->>>>>>> Style changes
 
         function errorCallback(response) {
             console.log(response);
@@ -183,10 +102,9 @@ app.component('searchWidget', {
             var parameter = {id: program.Id, lat: program.lat, long: program.long};
             var url = 'https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getAllLocations';
             var requestUrl = url + '?id=' + parameter.id + '&lat='+ parameter.lat +'&long=' + parameter.long;
-            //console.log(requestUrl);
             $http.post(requestUrl).then(updateSuccess, updateError);
         };
-        //console.log($location);
+
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
         console.log($stateParams);
@@ -196,24 +114,38 @@ app.component('searchWidget', {
             $location.url(url);
         };
 
-<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
         if (dataCache.isProgramEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
-=======
-        if (dataCache.isEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getAllLocations').then(successCallback, errorCallback);
->>>>>>> Style changes
         } else {
             $ctrl.programs = dataCache.getProgramCache();
+            setupTopicFilter();
         }
 
         /************ Filter ********/
+        var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
+        function setupTopicFilter() {
+            for(var i in topicFilterValues) {
+                var topic = topicFilterValues[i];
+                var topicDimension = dataCache.getDimensionByTopic(topic);
+                if (dimensions.indexOf(topicDimension) < 0) {
+                    dimensions.push(topicDimension);
+                }
+            }
+        }
+
+        var dimensionFilterValues = $stateParams.dimension ? $stateParams.dimension.split(',') : [];
+        var dimensions = dimensionFilterValues;
+
+        //console.log(dimensions);
+        $scope.checkFilter = function (key, value) {
+            return filterValuesIncluded[key].indexOf(value) > -1;
+        };
         var filterValuesIncluded = {
-            'Dimension': []
+            'dimension': dimensions
         };
 
         var keyToPropMap = {
-            'Dimension': 'LWL_Dimension__c'
+            'dimension': 'LWL_Dimension__c'
         };
 
         $scope.includeFilter = function (key, value) {
@@ -227,9 +159,14 @@ app.component('searchWidget', {
                 currentValues.push(value);
             }
 
-            for(var key in filterValuesIncluded) {
-                console.log(key + ":" + filterValuesIncluded[key]);
+            var params = {};
+            if (topicFilterValues.length > 0) {
+                params.topic = topicFilterValues.join(',');
             }
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
         };
         //var prop = keyToPropMap[key];
         $scope.programFilter = function(program) {
@@ -313,6 +250,7 @@ app.component('searchDetail', {
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
 
+
             //populateLatLong(0);
 
             if (programId) {
@@ -324,7 +262,6 @@ app.component('searchDetail', {
             console.log(response);
         }
 
-<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
         function getAdditionInfo(){
           $ctrl.currentProgram.otherLocations = [];
 
@@ -356,10 +293,7 @@ app.component('searchDetail', {
         if (dataCache.isProgramEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
 
-=======
-        if (dataCache.isEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgra').then(successCallback, errorCallback);
->>>>>>> Style changes
+
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
@@ -449,13 +383,9 @@ app.component('searchMapview', {
           $location.url(url);
       };
 
-<<<<<<< 3df82ff76c4476d43266243326f3a299b19e909e
       if (dataCache.isProgramEmpty()) {
           $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
-=======
-      if (dataCache.isEmpty()) {
-          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgra').then(successCallback, errorCallback);
->>>>>>> Style changes
+
       } else {
           $ctrl.programs = dataCache.getProgramCache();
           setupMap();
@@ -509,6 +439,8 @@ app.component('searchMapview', {
           for(var key in filterValuesIncluded) {
               console.log(key + ":" + filterValuesIncluded[key]);
           }
+          console.log($stateParams);
+          
       };
       $scope.programFilter = function(program) {
           var containAll = true;
@@ -542,14 +474,18 @@ app.component('searchMapview', {
 
 app.factory('dataCache', function() {
     var programCache;
-    var locationCache;
-
+    var topicToDimensionMap = {};
+    function setupTopicMap() {
+        for(var i in programCache) {
+            var program = programCache[i];
+            if (program.LWL_Topic__c && program.LWL_Dimension__c && !topicToDimensionMap[program.LWL_Topic__c]) {
+                topicToDimensionMap[program.LWL_Topic__c] = program.LWL_Dimension__c;
+            }
+        }
+    }
     return {
         isProgramEmpty: function() {
             return programCache === undefined;
-        },
-        isLocationEmpty: function() {
-            return locationCache === undefined;
         },
         getProgramNumber: function() {
             return programCache === undefined? 0:programCache.length;
@@ -559,20 +495,25 @@ app.factory('dataCache', function() {
         },
         setProgramCache: function(state) {
             programCache = state;
+            setupTopicMap();
         },
-        getLocationCache: function(programId) {
-            return locationCache;
-        },
-        setLocationCache: function(state) {
-            locationCache = state;
-        },
-
         findProgramById: function (id) {
             for(var i in programCache){
                 if(programCache[i].Id == id){
                     return programCache[i];
                 }
             }
+        },
+        getDimensionByTopic: function (topic) {
+            if (topicToDimensionMap[topic]) {
+                return topicToDimensionMap[topic];
+            }
+        },
+        getAllTopics: function () {
+            return Object.keys(topicToDimensionMap);
+        },
+        getAllDimensions: function () {
+            return Object.values(topicToDimensionMap);
         },
         findProgramByName: function(name, account, address ){
             for(var i in programCache){

@@ -1,4 +1,4 @@
-<button ng-click="$ctrl.updateLatLng()">Update LatLng</button>
+
 <div class="search-container container">
 	<div class="row">
 		<div class="filter-container col-sm-3">
@@ -6,7 +6,6 @@
 			<div>
 				{{filteredPrograms.length}} result(s)
 			</div>
-			<button class="view-map-btn">See Listings in Map View</button>
 			<hr/>
 			<div class="filters">
 				<!-- <h2 class="filter-header">Search Filter</h2>
@@ -23,12 +22,12 @@
 				</div>
 				<div class="treeview hover">
 					<ul style="list-style:none" class="lwl-topics-filter-list">
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon icon inline-block"></div><label class="inline-block">Mental, Emotional & Spiritual</label></li>
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon icon inline-block"></div><label class="inline-block">Neighborhood/Natural Environment</label></li>
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Physical Health')"><div class="physicalIcon icon inline-block"></div><label class="inline-block">Physical Health</label></li>
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Relationships')"><div class="relastionlIcon icon inline-block"></div><label class="inline-block">Relationships & Social Connection</label></li>
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Security/Basic Needs')"><div class="securityIcon icon inline-block"></div><label class="inline-block">Security & Basic Need</label></li>
-						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('Dimension', 'Work/Learning & Growth')"><div class="workIcon icon inline-block"></div><label class="inline-block">Work, Learning & Growth</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Mental/Emotional/Spiritual')" ng-checked="checkFilter('dimension', 'Mental/Emotional/Spiritual')"><div class="mentalIcon icon inline-block"></div><label class="inline-block">Mental, Emotional & Spiritual</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Neighborhood and Natural Environment')" ng-checked="checkFilter('dimension', 'Neighborhood and Natural Environment')"><div class="neighborIcon icon inline-block"></div><label class="inline-block">Neighborhood/Natural Environment</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Physical Health')" ng-checked="checkFilter('dimension', 'Physical Health')"><div class="physicalIcon icon inline-block"></div><label class="inline-block">Physical Health</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Relationships')" ng-checked="checkFilter('dimension', 'Relationships')"><div class="relastionlIcon icon inline-block"></div><label class="inline-block">Relationships & Social Connection</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Security/Basic Needs')" ng-checked="checkFilter('dimension', 'Security/Basic Needs')"><div class="securityIcon icon inline-block"></div><label class="inline-block">Security & Basic Need</label></li>
+						<li><input class="inline-block" type="checkbox" ng-click="includeFilter('dimension', 'Work/Learning & Growth')" ng-checked="checkFilter('dimension', 'Work/Learning & Growth')"><div class="workIcon icon inline-block"></div><label class="inline-block">Work, Learning & Growth</label></li>
 					</ul>
 				</div>
 			</div>

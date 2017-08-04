@@ -114,7 +114,7 @@
 <script>
 $("#lh-search-form").submit(function( event ) {
   var params = $(this).serializeArray();
-  params.push({name: 'age', value: '["senior", "junior"]'});
+  //params.push({name: 'age', value: ["Seniors (60+)", "Adult (26-59)"]});
   var keypairs = [];
   var searchStr = '?';
   for(var i in params) {
@@ -127,6 +127,7 @@ $("#lh-search-form").submit(function( event ) {
   }
   searchStr += keypairs.join('&');
   window.location.href += 'search/#/' + searchStr;
+  //console.log(window.location.href + 'search/#/' + searchStr);
   event.preventDefault();
 });
 </script>
