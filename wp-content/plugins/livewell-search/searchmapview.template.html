@@ -10,8 +10,8 @@
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
 					<select ng-model="$ctrl.orderProp">
-						<option value="Name">Program Name</option>
-						<option value="Account__r.Name">Service Name</option>
+						<option value="ProgramName">Program Name</option>
+						<option value="AccountName">Service Name</option>
 						<option value="">Relevance</option>
 					</select>
 				</div>
@@ -36,21 +36,28 @@
 							</marker>
 						</div>
 						<info-window id="map-lwl">
-							<div ng-non-bindable="">
-								id: {{$ctrl.selectedProgram.Id}}<br/>
-								name: {{$ctrl.selectedProgram.name}}<br/>
-								Position 1: {{$ctrl.selectedProgram.latlng}}<br/>
-								Position 2: {{anchor.getPosition()}}<br/>
-								Position 3: {{$ctrl.map.markers[$ctrl.selectedProgram.Id].getPosition()}}<br/>
-								<a href="#" ng-click="$ctrl.clicked()">Click Here</a>
+
+							<div ng-non-bindable>
+								<div id="siteNotice"></div>
+								<h4 style="color:#06c">{{$ctrl.selectedProgram.AccountName}}</h4>
+								<div id="bodyContent">
+									<p>
+										<b>{{$ctrl.selectedProgram.ProgramName}}</b><br>
+										{{$ctrl.selectedProgram.fullAddress}}<br>
+
+										<a href="https://maps.google.com/?daddr={{$ctrl.selectedProgram.fullAddress}}&saddr=Current%20Location">
+											Directions
+										</a>
+									</p>
+								</div>
 							</div>
 						</info-window>
 					</ng-map>
 				</div>
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
-						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">{{program.Account__r.Name}}</h3>
-						<div class="icon-list">
+						<a><h2 class="program-name" ng-click="$ctrl.openDetailPage(program)">{{program.AccountName}}</h2>
+						<div class="icon-list"></a>
 							<div ng-if="program.LWL_Dimension__c === 'Mental/Emotional/Spiritual'" class="mentalIcon inline-block"></div>
 							<div ng-if="program.LWL_Dimension__c === 'Neighborhood and Natural Environment'" class="neighborIcon inline-block"></div>
 							<div ng-if="program.LWL_Dimension__c === 'Physical Health'" class="physicalIcon inline-block"></div>
@@ -58,14 +65,11 @@
 							<div ng-if="program.LWL_Dimension__c === 'Security/Basic Needs'" class="securityIcon inline-block"></div>
 							<div ng-if="program.LWL_Dimension__c === 'Work/Learning & Growth'" class="workIcon inline-block"></div>
 						</div>
-						<span class="service-name">
-							  {{program.Name}}
+						<span class="program-name">
+							  {{program.ProgramName}}
 						</span>
 						<div class="address" id="address-{{$index}}">
-							{{program.Address__c}} , {{program.City__c}}
-						</div>
-						<div>
-								{{program.latlng}}
+							{{program.fullAddress}}
 						</div>
 						<div class="distance">
 							2 miles - <a href="#">Get Directions</a>
@@ -74,7 +78,7 @@
 							206-123-4567
 						</div>
 						<div class="website">
-							<a href="#">Website</a>
+							<a href="">Website</a>
 						</div>
 					</div>
 					<div class="desc col-sm-8">

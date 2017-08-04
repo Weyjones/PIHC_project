@@ -16,8 +16,8 @@
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
 					<select ng-model="$ctrl.orderProp">
-						<option value="Name">Program Name</option>
-						<option value="Account__r.Name">Service Name</option>
+						<option value="ProgramName">Program Name</option>
+						<option value="AccountName">Service Name</option>
 						<option value="">Relevance</option>
 					</select>
 				</div>
@@ -37,9 +37,9 @@
 			<div>
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
-						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
-				  			{{program.Account__r.Name}}
-			  			</h3>
+						<a><h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
+				  			{{program.AccountName}}
+			  			</h3></a>
 						<div class="icon-list">
 							<div ng-if="program.LWL_Dimension__c === 'Mental/Emotional/Spiritual'" class="mentalIcon inline-block"></div>
 							<div ng-if="program.LWL_Dimension__c === 'Neighborhood and Natural Environment'" class="neighborIcon inline-block"></div>
@@ -49,10 +49,13 @@
 							<div ng-if="program.LWL_Dimension__c === 'Work/Learning & Growth'" class="workIcon inline-block"></div>
 						</div>
 						<span class="service-name">
-							{{program.Name}}
+							{{program.ProgramName}}
 						</span>
 						<div class="address" id="address-{{$index}}">
-							{{program.Address__c}} , {{program.City__c}}
+							{{program.fullAddress}}
+						</div>
+						<div class="website" id="website-{{$index}}">
+							<a href="{{program.LWL_program_website__c}}">Website</a>
 						</div>
 						<!--
 						<div>

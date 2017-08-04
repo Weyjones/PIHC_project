@@ -15,8 +15,8 @@
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
 					<select ng-model="$ctrl.orderProp">
-						<option value="Name">Program Name</option>
-						<option value="Account__r.Name">Service Name</option>
+						<option value="ProgramName">Program Name</option>
+						<option value="AccountName">Service Name</option>
 						<option value="">Relevance</option>
 					</select>
 				</div>
@@ -120,16 +120,16 @@
 			<div>
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
-						<!-- <a href="livehealthy2020/detail/?name={{program.Name}}&account={{program.Account__c}}&address={{program.Address__c}}"> -->
-						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
-				  			{{program.Account__r.Name}}
+						<!-- <a href="livehealthy2020/detail/?name={{program.Program__r.Name}}&account={{program.Program__r.Account__c}}&address={{program.Program__r.Address__c}}"> -->
+						<h3 class="server-name" ng-click="$ctrl.openDetailPage(program)">
+				  			{{program.AccountName}}
 			  			</h3>
 						<!-- </a> -->
-						<span class="service-name">
-							{{program.Name}}
+						<span class="program-name">
+							{{program.ProgramName}}
 						</span>
 						<div class="address" id="address-{{$index}}">
-							{{program.Address__c}} , {{program.City__c}}
+							{{program.fullAddress}}
 						</div>
 						<!--
 						<div>
