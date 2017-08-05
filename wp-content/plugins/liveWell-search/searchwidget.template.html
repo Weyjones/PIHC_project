@@ -10,7 +10,74 @@
 
 			<hr/>
 			<h3>Export Results</h3>
-			<a ng-click="outputPDF(filteredPrograms)">Export Results as PDF</a>
+			<a data-toggle="modal" data-target="#pdfModal">Export Results as PDF</a>
+
+			<!-- Modal -->
+		  <div class="modal fade" id="pdfModal" role="dialog">
+		    <div class="modal-dialog">
+
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Export Results as PDF</h4>
+		        </div>
+		        <div class="modal-body">
+		                <p><strong>Note:</strong> If you export too many result, <em>it takes more time.</em></p>
+		                <fieldset>
+		                    <legend>Header Options</legend>
+		                    <div class="row">
+		                        <div class="col-sm-7">
+		                            <div class="form-group has-feedback">
+		                                <label for="dirTitle">Title (max. 60 characters)</label>
+		                                <input class="form-control" type="text" id="dirTitle" maxlength="60" placeholder="Please Enter a Title"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		                            </div>
+		                        </div>
+		                        <div class="col-sm-5">
+		                            <div class="form-group has-feedback">
+		                                <label for="dirSubtitle">Referred to</label>
+		                                <input class="form-control" type="text" id="referredTo" maxlength="140"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="row">
+		                        <div class="col-sm-7">
+		                            <div class="form-group has-feedback">
+		                                <label for="dirDatePrinted">Date Printed</label>
+		                                <input class="form-control" type="date" id="dirDatePrinted" value="2017-08-05"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		                            </div>
+		                        </div>
+		                        <div class="col-sm-5">
+		                            <div class="form-group has-feedback">
+		                                <label for="dirCreatedBy">Prepared By</label>
+		                                <input class="form-control" type="text" id="preparedBy" value=""><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		                            </div>
+		                        </div>
+
+		                    </div>
+		                    <div class="row">
+		                    	<div class="col-sm-12">
+		                            <div class="form-group has-feedback">
+		                                <label for="dirDescription">Description</label>
+		                                <textarea class="form-control" id="PDFdescription" rows="3">This tailored list includes:</textarea>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </fieldset>
+		            </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="outputPDF(filteredPrograms)">Open PDF in new Window</button>
+		          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="downloadPDF(filteredPrograms)">Download PDF</button>
+		          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="printPDF(filteredPrograms)">Print PDF</button>
+		        </div>
+		      </div>
+
+		    </div>
+		  </div>
+
+
+			<!----Filter--->
+
 			<div class="filters">
 				<!-- <h2 class="filter-header">Search Filter</h2>
 				<div class="function-area">
