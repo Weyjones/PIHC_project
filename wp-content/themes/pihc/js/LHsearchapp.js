@@ -96,7 +96,7 @@ app.component('searchWidget', {
         };
 
         $scope.openMapview = function(){
-            $location.url(/mapview/);
+            //$location.url(/mapview/);
             //TODO: pass in query and location
             var params = {};
             for(var k in filterValuesIncluded) {

@@ -10,12 +10,12 @@ app.config(function($stateProvider) {
         },
         {
             name: 'detail',
-            url: '/detail/:programId',
+            url: '/detail/:programId?query&location&topic&dimension',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&location',
+            url: '/mapview/?query&location&topic&dimension',
             component: 'searchMapview'
         }];
 
@@ -23,11 +23,11 @@ app.config(function($stateProvider) {
         $stateProvider.state(state);
     });
 })
-    .run(function($rootScope, NgMap) {
-        NgMap.getMap().then(function(map) {
-            $rootScope.map = map;
-        });
+.run(function($rootScope, NgMap) {
+    NgMap.getMap().then(function(map) {
+        $rootScope.map = map;
     });
+});
 
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchwidget.template.html',
@@ -38,8 +38,13 @@ app.component('searchWidget', {
         $ctrl.keyword = $stateParams.query || '';
 
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
         };
 
         function successCallback(response) {
@@ -56,7 +61,13 @@ app.component('searchWidget', {
         }
 
         $scope.openMapview = function(){
-            $location.url(/mapview/);
+            //$location.url(/mapview/);
+            //TODO: pass in query and location
+            var params = {};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('mapview', params);
         };
 
         $scope.outputPDF = function (programs) {
@@ -246,7 +257,7 @@ app.component('searchWidget', {
 
 app.component('searchDetail', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchdetail.template.html',
-    controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location) {
+    controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location, $state) {
         console.log($stateParams);
         var $ctrl = this;
         var programId = $stateParams.programId;
@@ -259,6 +270,7 @@ app.component('searchDetail', {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
                 getAdditionInfo();
             }
+            setupTopicFilter();
         }
 
         function getAdditionInfo(){
@@ -282,8 +294,14 @@ app.component('searchDetail', {
             }
         }
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
+
             $ctrl.currentProgram = program;//dataCache.findProgramById(program.Id);;
             getAdditionInfo();
         };
@@ -293,22 +311,49 @@ app.component('searchDetail', {
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
+            setupTopicFilter()
         }
 
         $scope.backToSearch = function () {
-            $location.url('/');
+            //$location.url('/');
+            var params = {};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
+        };
+
+        /********Filter********/
+        function setupTopicFilter() {
+            for(var i in topicFilterValues) {
+                var topic = topicFilterValues[i];
+                var topicDimension = dataCache.getDimensionByTopic(topic);
+                if (dimensionFilterValues.indexOf(topicDimension) < 0) {
+                    dimensionFilterValues.push(topicDimension);
+                }
+            }
+        }
+        var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
+        var dimensionFilterValues = $stateParams.dimension ? $stateParams.dimension.split(',') : [];
+
+        $scope.checkFilter = function (key, value) {
+            return filterValuesIncluded[key].indexOf(value) > -1;
+        };
+        var filterValuesIncluded = {
+            'dimension': dimensionFilterValues
         };
     }
 });
 
 app.component('searchMapview', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchmapview.template.html',
-    controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
+    controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormData(response.data);
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
             setupMap();
+            setupTopicFilter();
         }
 
         var $ctrl = this;
@@ -318,8 +363,13 @@ app.component('searchMapview', {
         console.log($stateParams);
 
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
         };
 
         if (dataCache.isProgramEmpty()) {
@@ -328,6 +378,7 @@ app.component('searchMapview', {
         } else {
             $ctrl.programs = dataCache.getProgramCache();
             setupMap();
+            setupTopicFilter();
         }
 
         /****** Info Window *********/
@@ -355,12 +406,28 @@ app.component('searchMapview', {
         }
 
         /************ Filter ********/
+        function setupTopicFilter() {
+            for(var i in topicFilterValues) {
+                var topic = topicFilterValues[i];
+                var topicDimension = dataCache.getDimensionByTopic(topic);
+                if (dimensionFilterValues.indexOf(topicDimension) < 0) {
+                    dimensionFilterValues.push(topicDimension);
+                }
+            }
+        }
+        var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
+        var dimensionFilterValues = $stateParams.dimension ? $stateParams.dimension.split(',') : [];
+
+        $scope.checkFilter = function (key, value) {
+            return filterValuesIncluded[key].indexOf(value) > -1;
+        };
+
         var filterValuesIncluded = {
-            'Dimension': []
+            'dimension': dimensionFilterValues
         };
 
         var keyToPropMap = {
-            'Dimension': 'LWL_Dimension__c'
+            'dimension': 'LWL_Dimension__c'
         };
 
         $scope.includeFilter = function (key, value) {
