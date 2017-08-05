@@ -98,7 +98,7 @@
 </div>
 
 <!--Navigation-->
-<div class="container-fluid main-body">
+<div id="resource-home-nav-mobile-view" class="container-fluid main-body" style="display:none">
 	<div class="col-xs-12 col-md-4 col nav-block">
 	    <div class="title-block">
             <a href="http://www.pihcsnohomish.org/about/staff/">
@@ -125,7 +125,7 @@
 			<p><?php the_field(live_well_navigation_description); ?></p>
 		</div>
 		<div class="nav-btn">
-            <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">LOCAL RESOURCE</a>
+            <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">Local Well-being Resources</a>
 		</div>
 	</div>
 
@@ -143,8 +143,76 @@
 		    <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">CONNECT TO PORTAL</a>
 		</div>
 	</div>
-
 </div>
+
+<div id="resource-home-nav-table-view" class="table-responsive" style="display:none">
+    <table class="table">
+        <tr class="img-row">
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/">
+                    <img src="<?php the_field(live_healthy_navigation_image); ?>" alt="Leadership &amp; Staff">
+                    <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_healthy_navigation_title); ?></h5>
+                </a>
+            </td>
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/">
+                    <img src="<?php the_field(live_well_navigation_image); ?>" alt="Leadership &amp; Staff">
+                    <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(live_well_navigation_title); ?></h5>
+                </a>
+            </td>
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/">
+                    <img src="<?php the_field(provider_portal_navigation_image); ?>" alt="Leadership &amp; Staff">
+                    <h3 class="title" style="color:<?php the_field(navigation_title_color); ?>"><?php the_field(provider_portal_navigation_title); ?></h5>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><?php the_field(live_well_navigation_description); ?></p>
+            </td>
+            <td>
+                <p><?php the_field(live_well_navigation_description); ?></p>
+            </td>
+            <td>
+                <p><?php the_field(provider_portal_navigation_description); ?></p>
+            </td>
+        </tr>
+        <tr class="btn-row">
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORER COMMUNITY</a>
+            </td>
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">Local Well-being Resources</a>
+            </td>
+            <td>
+                <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">CONNECT TO PORTAL</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    console.log($(document).width());
+    var initWindowWidth = $(document).width();
+    toggleNav(initWindowWidth);
+
+    function toggleNav(newWidth) {
+        if (newWidth > 800) {
+         $('#resource-home-nav-table-view').show();
+         $('#resource-home-nav-mobile-view').hide();
+        } else {
+         $('#resource-home-nav-table-view').hide();
+         $('#resource-home-nav-mobile-view').show();
+        }
+    }
+
+    $( window ).resize(function() {
+        var newWidth = $(document).width();
+        toggleNav(newWidth);
+    });
+</script>
+
 
 
 <!--Lower Body-->

@@ -1,4 +1,4 @@
-<?php /* Template Name: LiveWell Local Home */ ?>
+ <?php /* Template Name: LiveWell Local Home */ ?>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/slideTabs-style.css') ?>' type='text/css' />
 <script src="<?php echo (get_template_directory_uri().'/js/slideTabs-script.js') ?>"></script>

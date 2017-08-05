@@ -1501,11 +1501,15 @@ object {
   background: white;
   max-width: 30px;
 }
-.nav-block{
-  /*position: relative;*/
-}
+
 .nav-block .title-block {
   height: 130px;
+  position: relative;
+}
+.nav-block .title-block h3.title{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .nav-block{
@@ -1514,9 +1518,26 @@ object {
 .nav-block .excerpt{
   padding: 0 35px;
   text-align: left;
-  /*height: 144px;*/
 }
-.nav-block .nav-btn{
-  /*position: absolute;*/
-  /*bottom: 0;*/
+.nav-block .nav-btn a.btn{
+  margin-top: 0;
+}
+#resource-home-nav-table-view{
+  display: block;
+  padding: 0 11%;
+}
+@media only screen and (max-width: 500px) {
+  #resource-home-nav-table-view{
+    display: none;
+  }
+}
+#resource-home-nav-table-view .img-row td{
+  vertical-align: bottom;
+  text-align: center;
+}
+#resource-home-nav-table-view .btn-row td{
+  text-align: center;
+}
+#resource-home-nav-table-view td{
+  border-top: none;
 }

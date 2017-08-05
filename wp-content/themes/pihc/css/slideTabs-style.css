@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 .center-div{
     margin: auto;
     width: 998px;
@@ -90,8 +93,18 @@
     background: none !important;
 }
 
-#liveWell-slideTabs .bellows .bellows-nav .bellows-target>.bellows-target-text{
+#liveWell-slideTabs nav.bellows-source-menu>ul.bellows-nav>li.bellows-menu-item>a.bellows-target>.bellows-target-text
+{
     margin-left: 50px;
+}
+#liveWell-slideTabs nav.bellows-source-menu>ul.bellows-nav>li.bellows-menu-item>ul.bellows-submenu{
+    padding-left: 50px;
+}
+#liveWell-slideTabs nav.bellows-source-menu>ul.bellows-nav>li.bellows-menu-item>ul.bellows-submenu>li.bellows-menu-item span.bellows-subtoggle{
+    margin-left: -38px;
+}
+#liveWell-slideTabs nav.bellows-source-menu>ul.bellows-nav>li.bellows-menu-item>ul.bellows-submenu ul.bellows-submenu{
+    padding-left: 25px;
 }
 #liveWell-slideTabs .bellows .bellows-nav .bellows-subtoggle{
     right: auto;
