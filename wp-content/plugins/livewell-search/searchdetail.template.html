@@ -15,11 +15,22 @@
 				</div> -->
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
-					<select ng-model="$ctrl.orderProp">
-						<option value="ProgramName">Program Name</option>
-						<option value="AccountName">Service Name</option>
-						<option value="">Relevance</option>
-					</select>
+					<label>
+						<input type="radio" ng-model="$ctrl.orderProp" value="">
+						Relevance
+					</label><br/>
+					<label>
+						<input type="radio" ng-model="$ctrl.orderProp" value="ProgramName">
+						ProgramName
+					</label><br/>
+					<label>
+						<input type="radio" ng-model="$ctrl.orderProp" value="AccountName">
+						AccountName
+					</label><br/>
+					<label>
+						<input type="radio" ng-model="$ctrl.orderProp" value="Distance">
+						Distance
+					</label><br/>
 				</div>
 				<div class="treeview hover">
 					<ul style="list-style:none" class="lwl-topics-filter-list">
