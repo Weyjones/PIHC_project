@@ -41,7 +41,6 @@ app.component('searchWidget', {
         $ctrl.openDetailPage = function(program) {
             var url = '/detail/' + program.Id;
             $location.url(url);
-            // pass all the params in the URL via stateParams
         };
 
         if (dataCache.isEmpty()) {
@@ -92,6 +91,12 @@ app.component('searchWidget', {
 
         $scope.openMapview = function(){
             $location.url(/mapview/);
+
+            var params = {};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('mapview', params);
         };
 
         $scope.outputPDF = function (programs) {
