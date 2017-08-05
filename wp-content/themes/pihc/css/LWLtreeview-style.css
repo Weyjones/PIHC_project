@@ -14,20 +14,20 @@ label {
 }
 
 .mentalIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/mental_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/mental_icon.png');
 }
 .neighborIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/neighborhood_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/neighborhood_icon.png');
 }
 .physicalIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/physical_health_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/physical_health_icon.png');
 }
 .relastionlIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/relationships_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/relationships_icon.png');
 }
 .securityIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/security_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/security_icon.png');
 }
 .workIcon{
-  content:url('/wp-content/plugins/liveWell-search/images/work_icon.png');
+  content:url('/wp-content/plugins/livewell-search/images/work_icon.png');
 }

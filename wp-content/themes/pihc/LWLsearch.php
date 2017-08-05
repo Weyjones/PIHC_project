@@ -1,6 +1,9 @@
 <?php /* Template Name: LiveWell Local search */ ?>
 
 <?php get_header(); ?>
+<script src="<?php echo (get_template_directory_uri().'/js/pdfmake.js') ?>"></script>
+<script src="<?php echo (get_template_directory_uri().'/js/vfs_fonts.js') ?>"></script>
+
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/LWLtreeview-style.css') ?>' type='text/css' />
 
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
@@ -10,7 +13,7 @@
 	<div class="container-fluid">
 
 		<div class="col-sm-12 col-md-8 site-branding">
-			<a href="http://www.pihcsnohomish.org/"><img style="padding-left: 40px;" src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
+			<a href=""><img style="padding-left: 40px;" src="http://www.pihcsnohomish.org/wp-content/uploads/2016/06/logo.png" alt="" class="logo"></a>
 		</div>
 
 		<div class="col-sm-12 col-md-4 site-details">
@@ -43,15 +46,13 @@
 <div class="col-sm-12 col-md-2">
 <div class="diamond" style="background:<?php the_field(menu_color); ?>">
 	<div class="diamond-inner">
-		<a href="<?php get_site_url('/livewell/')?>">
 			<img src="<?php the_field(menu_icon); ?>" alt="">
 			<span style="line-height: 90%;">LIVE WELL</span>
-		</a>
 	</div>
 </div>
 </div>
 <div class="col-sm-12 col-md-9">
-<div id="breadcrumbs"><a rel="nofollow" href="http://www.pihcsnohomish.org/"><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
+<div id="breadcrumbs"><a rel="nofollow" href=""><?php the_field(menu_title); ?></a></div>	<div class="menu-livewell-submenu-container"><ul id="menu-livewell-submenu" class="menu">
 <?php
 	$menulinks = get_field( 'menu_links' );
 	if ( $menulinks ) {
@@ -159,16 +160,16 @@ $("#lwl-search-form").submit(function( event ) {
 				<div class="container-fluid" style="text-align:right;">
 					<p><div class="contact-info">
 						<ul>
-							<li> <a href="">LIVEHEALTHY 2020</a></li>
-							<li> <a href="">LIVEWILL LOCAL</a></li>
-							<li> <a href="">PARTNER PORTAL</a></li>
+							<li> <a href="<?php echo get_site_url(); echo'/livehealthy2020/' ;?>">LIVEHEALTHY 2020</a></li>
+							<li> <a href="<?php echo get_site_url(); echo'/livewell/' ;?>">LIVEWELL LOCAL</a></li>
+							<li> <a href="http://www.pihcsnohomish.org/">PARTNER PORTAL</a></li>
 							<li> <a href="">PRIVACY POLICY</a></li>
 							<li> <a href="">ACCESSIBILITY POLICY</a></li>
 							<li> <a href="">CONTACT US</a></li>
 						</ul>
 						<ul style="margin-bottom: 0;">
-							<li> <a href="">PIHC SNOHOMISH</a></li>
-							<li> <a href="">WASHINGTON.PROVIDENCE.ORG</a></li>
+							<li> <a href="<?php echo get_site_url(); echo'/pihc/' ;?>">PIHC SNOHOMISH</a></li>
+							<li> <a href="http://WASHINGTON.PROVIDENCE.ORG">WASHINGTON.PROVIDENCE.ORG</a></li>
 						</ul>
 					</div></p>
 

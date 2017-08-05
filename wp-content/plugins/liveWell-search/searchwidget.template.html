@@ -6,7 +6,11 @@
 			<div>
 				{{filteredPrograms.length}} result(s)
 			</div>
+			<button class="view-map-btn" ng-click="openMapview()">See Listings in Map View</button>
+
 			<hr/>
+			<h3>Export Results</h3>
+			<a ng-click="outputPDF(filteredPrograms)">Export Results as PDF</a>
 			<div class="filters">
 				<!-- <h2 class="filter-header">Search Filter</h2>
 				<div class="function-area">
