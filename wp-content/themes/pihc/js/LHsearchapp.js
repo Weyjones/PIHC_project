@@ -15,7 +15,7 @@ app.config(function($stateProvider) {
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&location',
+            url: '/mapview/?query&location&age&gender&household&focus&objective&type&ethnic',
             component: 'searchMapview'
         }];
 
@@ -41,6 +41,7 @@ app.component('searchWidget', {
         $ctrl.openDetailPage = function(program) {
             var url = '/detail/' + program.Id;
             $location.url(url);
+            // pass all the params in the URL via stateParams
         };
 
         if (dataCache.isEmpty()) {
@@ -66,15 +67,7 @@ app.component('searchWidget', {
             'type': typeFilterValues,
             'ethnic': ethnicFilterValues
         };
-        var keyToPropMap = {
-            'age': 'What_ages_do_you_reach__c',
-            'gender': 'Do_you_serve__c',
-            'household': 'LH2020_Does_your_program_serve__c',
-            'focus': 'Program_Focus__c',
-            'objective': 'Program_Objective__c',
-            'type': 'Program_Type__c',
-            'ethnic': 'Sub_community_or_ethnic_group_reach__c'
-        };
+        var keyToPropMap = dataCache.getKeyToPropMap();
         $scope.checkFilter = function (key, value) {
             return filterValuesIncluded[key].indexOf(value) > -1;
         };
@@ -343,26 +336,29 @@ app.component('searchMapview', {
             };
         }
         /************ Filter ********/
+        var ageFilterValues = $stateParams.age ? $stateParams.age.split(',') : [];
+        var genderFilterValues = $stateParams.gender ? $stateParams.gender.split(',') : [];
+        var householdFilterValues = $stateParams.household ? $stateParams.household.split(',') : [];
+        var focusFilterValues = $stateParams.focus ? $stateParams.focus.split(',') : [];
+        var objectiveFilterValues = $stateParams.objective ? $stateParams.objective.split(',') : [];
+        var typeFilterValues = $stateParams.type ? $stateParams.type.split(',') : [];
+        var ethnicFilterValues = $stateParams.ethnic ? $stateParams.ethnic.split(',') : [];
         var filterValuesIncluded = {
-            'age': [],
-            'gender': [],
-            'household': [],
-            'focus': [],
-            'objective': [],
-            'type': [],
-            'ethnic': []
+            'age': ageFilterValues,
+            'gender': genderFilterValues,
+            'household': householdFilterValues,
+            'focus': focusFilterValues,
+            'objective': objectiveFilterValues,
+            'type': typeFilterValues,
+            'ethnic': ethnicFilterValues
         };
-
-        var keyToPropMap = {
-            'age': 'What_ages_do_you_reach__c',
-            'gender': 'Do_you_serve__c',
-            'household': 'LH2020_Does_your_program_serve__c',
-            'focus': 'Program_Focus__c',
-            'objective': 'Program_Objective__c',
-            'type': 'Program_Type__c',
-            'ethnic': 'Sub_community_or_ethnic_group_reach__c'
+        var keyToPropMap = dataCache.getKeyToPropMap();
+        $scope.checkFilter = function (key, value) {
+            return filterValuesIncluded[key].indexOf(value) > -1;
         };
-
+        $scope.expandFilterSection = function (key) {
+            return filterValuesIncluded[key].length === 0;
+        };
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
 
@@ -410,6 +406,17 @@ app.component('searchMapview', {
 
 app.factory('dataCache', function() {
     var programCache;
+
+    var keyToPropMap = {
+        'age': 'What_ages_do_you_reach__c',
+        'gender': 'Do_you_serve__c',
+        'household': 'LH2020_Does_your_program_serve__c',
+        'focus': 'Program_Focus__c',
+        'objective': 'Program_Objective__c',
+        'type': 'Program_Type__c',
+        'ethnic': 'Sub_community_or_ethnic_group_reach__c'
+    };
+
     function errorCallback(response) {
         console.log(response);
     }
@@ -456,6 +463,10 @@ app.factory('dataCache', function() {
         return result;
     }
 
+    function getKeyToPropMap() {
+        return keyToPropMap;
+    }
+
     function transFormData(programLocations) {
         return programLocations.map(dataMapper);
     }
@@ -463,6 +474,7 @@ app.factory('dataCache', function() {
     return {
         errorCallback: errorCallback,
         transFormData: transFormData,
+        getKeyToPropMap: getKeyToPropMap,
         isEmpty: function() {
             return programCache === undefined;
         },

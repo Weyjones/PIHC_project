@@ -19,93 +19,94 @@
 				<div class="treeview hover">
 					<ul>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-1" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-1" ng-checked="expandFilterSection('age')">
 							<label for="cb-1">Ages Reached by Program</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Seniors (60+)')">Seniors (60+)</li>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Adult (26-59)')">Adults (26-59)</li>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Young Adults (19-25)')">Young Adults (19-25)</li>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Teens (11-18)')">Teens (11-18)</li>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Youth (6-10)')">Youth (6-10)</li>
-								<li><input type="checkbox" ng-click="includeFilter('age', 'Children (0-5)')">Children (0-5)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Seniors (60+)')" ng-checked="checkFilter('age', 'Seniors (60+)')">Seniors (60+)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Adult (26-59)')" ng-checked="checkFilter('age', 'Adult (26-59)')">Adults (26-59)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Young Adults (19-25)')" ng-checked="checkFilter('age', 'Young Adults (19-25)')">Young Adults (19-25)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Teens (11-18)')" ng-checked="checkFilter('age', 'Teens (11-18)')">Teens (11-18)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Youth (6-10)')" ng-checked="checkFilter('age', 'Youth (6-10)')">Youth (6-10)</li>
+								<li><input type="checkbox" ng-click="includeFilter('age', 'Children (0-5)')" ng-checked="checkFilter('age', 'Children (0-5)')">Children (0-5)</li>
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-2" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-2" ng-checked="expandFilterSection('gender')">
 							<label for="cb-2">Genders Served</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('gender', 'Female')">Female</li>
-								<li><input type="checkbox" ng-click="includeFilter('gender', 'Male')">Male</li>
-								<li><input type="checkbox" ng-click="includeFilter('gender', 'Gender Fluid')">Gender Fluid</li>
+								<li><input type="checkbox" ng-click="includeFilter('gender', 'Female')" ng-checked="checkFilter('gender', 'Female')">Female</li>
+								<li><input type="checkbox" ng-click="includeFilter('gender', 'Male')" ng-checked="checkFilter('gender', 'Male')">Male</li>
+								<li><input type="checkbox" ng-click="includeFilter('gender', 'Gender Fluid')" ng-checked="checkFilter('gender', 'Gender Fluid')">Gender Fluid</li>
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-3" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-3" ng-checked="expandFilterSection('household')">
 							<label for="cb-3">Household Type Served</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults')">Multiple Adults</li>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults with children')">Multiple Adults with Children</li>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Open to all (general community)')">Open to All (General Community)</li>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Single adult')">Single Adult</li>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Single adult with children')">Single Adult with Children</li>
-								<li><input type="checkbox" ng-click="includeFilter('household', 'Supportive living')">Supportive Living</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults')" ng-checked="checkFilter('household', 'Multiple adults')">Multiple Adults</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults with children')" ng-checked="checkFilter('household', 'Multiple adults')">Multiple Adults with Children</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Open to all (general community)')" ng-checked="checkFilter('household', 'Open to all (general community)')">Open to All (General Community)</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Single adult')" ng-checked="checkFilter('household', 'Single adult')">Single Adult</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Single adult with children')" ng-checked="checkFilter('household', 'Single adult with children')">Single Adult with Children</li>
+								<li><input type="checkbox" ng-click="includeFilter('household', 'Supportive living')" ng-checked="checkFilter('household', 'Supportive living')">Supportive Living</li>
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-4" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-4" ng-checked="expandFilterSection('focus')">
 							<label for="cb-4">Program Focus</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Adult activity programs')">Adult Activity Programs</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Child nutrition')">Child Nutrition</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Community nutrition education')">Community Nutrition Education</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Emergency food access')">Emergency Food Access</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Employee wellness')">Employee Wellness</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Farmers markets/community gardens')">Farmers Markets/Community Gardens</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Health education')">Health Education</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Safety net programs')">Safety Net Programs</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Senior nutrition')">Senior Nutrition</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Youth activity programs')">Youth Activity Programs</li>
-								<li><input type="checkbox" ng-click="includeFilter('focus', 'Other')">Other</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Adult activity programs')" ng-checked="checkFilter('focus', 'Adult activity programs')">Adult Activity Programs</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Child nutrition')" ng-checked="checkFilter('focus', 'Child nutrition')">Child Nutrition</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Community nutrition education')" ng-checked="checkFilter('focus', 'Community nutrition education')">Community Nutrition Education</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Emergency food access')" ng-checked="checkFilter('focus', 'Emergency food access')">Emergency Food Access</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Employee wellness')" ng-checked="checkFilter('focus', 'Employee wellness')">Employee Wellness</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Farmers markets/community gardens')" ng-checked="checkFilter('focus', 'Farmers markets/community gardens')">Farmers Markets/Community Gardens</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Health education')" ng-checked="checkFilter('focus', 'Health education')">Health Education</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Safety net programs')" ng-checked="checkFilter('focus', 'Safety net programs')">Safety Net Programs</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Senior nutrition')" ng-checked="checkFilter('focus', 'Senior nutrition')">Senior Nutrition</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Youth activity programs')" ng-checked="checkFilter('focus', 'Youth activity programs')">Youth Activity Programs</li>
+								<li><input type="checkbox" ng-click="includeFilter('focus', 'Other')" ng-checked="checkFilter('focus', 'Other')">Other</li>
 
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-5" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-5" ng-checked="expandFilterSection('objective')">
 							<label for="cb-5">Program Objective</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Capacity Building')">Capacity Building</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Ensuring a healthy weight')">Ensuring a Healthy Weight</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Increasing adult activity')">Increasing Adult Activity</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Increasing youth activity')">Increasing Youth Activity</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Promoting a balanced diet')">Promoting a Balanced Diet</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Promoting a healthy weight')">Promoting a Healthy Weight</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Reducing food insecurity')">Reducing Food Insecurity</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Reducing sedentary behavior')">Reducing Sedentary Behavior</li>
-								<li><input type="checkbox" ng-click="includeFilter('objective', 'Other')">Other</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Capacity Building')" ng-checked="checkFilter('objective', 'Capacity Building')">Capacity Building</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Ensuring a healthy weight')" ng-checked="checkFilter('objective', 'Ensuring a healthy weight')">Ensuring a Healthy Weight</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Increasing adult activity')" ng-checked="checkFilter('objective', 'Increasing adult activity')">Increasing Adult Activity</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Increasing youth activity')" ng-checked="checkFilter('objective', 'Increasing youth activity')">Increasing Youth Activity</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Promoting a balanced diet')" ng-checked="checkFilter('objective', 'Promoting a balanced diet')">Promoting a Balanced Diet</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Promoting a healthy weight')" ng-checked="checkFilter('objective', 'Promoting a healthy weight')">Promoting a Healthy Weight</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Reducing food insecurity')" ng-checked="checkFilter('objective', 'Reducing food insecurity')">Reducing Food Insecurity</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Reducing sedentary behavior')" ng-checked="checkFilter('objective', 'Reducing sedentary behavior')">Reducing Sedentary Behavior</li>
+								<li><input type="checkbox" ng-click="includeFilter('objective', 'Other')" ng-checked="checkFilter('objective', 'Other')">Other</li>
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-6" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-6" ng-checked="expandFilterSection('type')">
 							<label for="cb-6">Program Type</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('type', 'ctivity')">Increase Activity</li>
-								<li><input type="checkbox" ng-click="includeFilter('type', 'utrition')">Improve Nutrition</li>
+								<li><input type="checkbox" ng-click="includeFilter('type', 'ctivity')" ng-checked="checkFilter('type', 'ctivity')">Increase Activity</li>
+								<li><input type="checkbox" ng-click="includeFilter('type', 'utrition')" ng-checked="checkFilter('type', 'utrition')">Improve Nutrition</li>
 							</ul>
 						</li>
 						<li class="level-1">
-							<input class="expand-label" type="checkbox" id="cb-7" checked="false">
+							<input class="expand-label" type="checkbox" id="cb-7" ng-checked="expandFilterSection('ethnic')">
 							<label for="cb-7">Sub-Community or Ethnic Group Reach</label>
 							<ul>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'African American')">African American</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Caucasian')">Caucasian</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Chinese')">Chinese</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Filipino')">Filipino</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Japanese')">Japanese</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Korean')">Korean</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Latino')">Latino</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Open to all (general community)')">Open to All (General Community)</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'People with diverse abilities')">People With Diverse Abilities</li>
-								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Russian')">Russian</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'African American')" ng-checked="checkFilter('ethnic', 'African American')">African American</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Caucasian')" ng-checked="checkFilter('ethnic', 'Caucasian')">Caucasian</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Chinese')" ng-checked="checkFilter('ethnic', 'Chinese')">Chinese</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Filipino')" ng-checked="checkFilter('ethnic', 'Filipino')">Filipino</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Japanese')" ng-checked="checkFilter('ethnic', 'Japanese')">Japanese</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Korean')" ng-checked="checkFilter('ethnic', 'Korean')">Korean</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Latino')" ng-checked="checkFilter('ethnic', 'Latino')">Latino</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Open to all (general community)')"
+										   ng-checked="checkFilter('ethnic', 'Open to all (general community)')">Open to All (General Community)</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'People with diverse abilities')" ng-checked="checkFilter('ethnic', 'People with diverse abilities')">People With Diverse Abilities</li>
+								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Russian')" ng-checked="checkFilter('ethnic', 'Russian')">Russian</li>
 							</ul>
 						</li>
 					</ul>
