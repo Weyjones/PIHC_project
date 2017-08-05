@@ -10,7 +10,7 @@ app.config(function($stateProvider) {
         },
         {
             name: 'detail',
-            url: '/detail/:programId',
+            url: '/detail/:programId?query&location&age&gender&household&focus&objective&type&ethnic',
             component: 'searchDetail'
         },
         {
@@ -39,8 +39,14 @@ app.component('searchWidget', {
         $ctrl.keyword = $stateParams.query || '';
 
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            //TODO: pass in query and location
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
         };
 
         if (dataCache.isEmpty()) {
@@ -91,7 +97,7 @@ app.component('searchWidget', {
 
         $scope.openMapview = function(){
             $location.url(/mapview/);
-
+            //TODO: pass in query and location
             var params = {};
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
@@ -237,7 +243,7 @@ app.component('searchWidget', {
 
 app.component('searchDetail', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchdetail.template.html',
-    controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location) {
+    controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location, $state) {
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
@@ -272,8 +278,14 @@ app.component('searchDetail', {
         }
 
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            //TODO: pass in query and location
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
             $ctrl.currentProgram = program;
             getAdditionInfo();
         };
@@ -287,14 +299,42 @@ app.component('searchDetail', {
         }
 
         $scope.backToSearch = function () {
-            $location.url('/');
+            var params = {};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
+        };
+
+        /*********Filter************/
+        var ageFilterValues = $stateParams.age ? $stateParams.age.split(',') : [];
+        var genderFilterValues = $stateParams.gender ? $stateParams.gender.split(',') : [];
+        var householdFilterValues = $stateParams.household ? $stateParams.household.split(',') : [];
+        var focusFilterValues = $stateParams.focus ? $stateParams.focus.split(',') : [];
+        var objectiveFilterValues = $stateParams.objective ? $stateParams.objective.split(',') : [];
+        var typeFilterValues = $stateParams.type ? $stateParams.type.split(',') : [];
+        var ethnicFilterValues = $stateParams.ethnic ? $stateParams.ethnic.split(',') : [];
+        var filterValuesIncluded = {
+            'age': ageFilterValues,
+            'gender': genderFilterValues,
+            'household': householdFilterValues,
+            'focus': focusFilterValues,
+            'objective': objectiveFilterValues,
+            'type': typeFilterValues,
+            'ethnic': ethnicFilterValues
+        };
+        $scope.checkFilter = function (key, value) {
+            return filterValuesIncluded[key].indexOf(value) > -1;
+        };
+        $scope.expandFilterSection = function (key) {
+            return filterValuesIncluded[key].length === 0;
         };
     }
 });
 
 app.component('searchMapview', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
-    controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
+    controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormData(response.data);
             dataCache.setProgramCache($ctrl.programs);
@@ -308,8 +348,14 @@ app.component('searchMapview', {
         console.log($stateParams);
 
         $ctrl.openDetailPage = function(program) {
-            var url = '/detail/' + program.Id;
-            $location.url(url);
+            //var url = '/detail/' + program.Id;
+            //$location.url(url);
+            //TODO: pass in query and location
+            var params = {programId: program.Id};
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('detail', params);
         };
 
         if (dataCache.isEmpty()) {
