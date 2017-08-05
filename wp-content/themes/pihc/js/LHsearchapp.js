@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('LHsearch', ['ui.router', 'ngMap']);
-app.config(function($stateProvider, $locationProvider) {
+app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
@@ -29,54 +29,9 @@ app.component('searchWidget', {
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
 
         function successCallback(response) {
-            var programLocations = response.data;
-            $ctrl.programs = programLocations.map(function(program) {
-              var result = {
-                Id: program.Id,
-                Address__c: program.Address__c,
-                City__c: program.City__c,
-                State__c: program.Program__r.State__c,
-                Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-                GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-                GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-                AccountId: program.Program__r.Account__r.Id,
-                AccountName: program.Program__r.Account__r.Name,
-                ProgramId: program.Program__r.Id,
-                ProgramName: program.Program__r.Name,
-                Description__c: program.Program__r.Description__c,
-                Program_Focus__c: program.Program__r.Program_Focus__c,
-                Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
-                What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
-                Do_you_serve__c: program.Program__r.Do_you_serve__c,
-                LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
-                Program_Type__c: program.Program__r.Program_Type__c,
-                Program_Objective__c: program.Program__r.Program_Objective__c,
-                Geographic_Scope__c: program.Program__r.Geographic_Scope__c
-              };
-              if(result.Address__c != 'Website Only'){
-                var fullAddress = result.Address__c;
-                if(result.City__c){
-                  fullAddress = fullAddress + ' ' + result.City__c;
-                }
-                if(result.State__c){
-                  fullAddress = fullAddress + ', ' + result.State__c;
-                }
-                if(result.Zip_Postal_Code__c){
-                  fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-                }
-                result.fullAddress = fullAddress;
-              }
-              if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-                result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-              }
-              return result;
-            });
+            $ctrl.programs = dataCache.transFormData(response.data);
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
-          }
-
-        function errorCallback(response) {
-            console.log(response);
         }
 
         var $ctrl = this;
@@ -100,7 +55,7 @@ app.component('searchWidget', {
         };
 
         if (dataCache.isEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, errorCallback);
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
         } else {
             $ctrl.programs = dataCache.getProgramCache();
         }
@@ -302,67 +257,20 @@ app.component('searchWidget', {
 app.component('searchDetail', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchdetail.template.html',
     controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location) {
-        console.log($stateParams);
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
-          var programLocations = response.data;
-          $ctrl.programs = programLocations.map(function(program) {
-            var result = {
-              Id: program.Id,
-              Address__c: program.Address__c,
-              City__c: program.City__c,
-              State__c: program.Program__r.State__c,
-              Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-              GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-              GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-              AccountId: program.Program__r.Account__r.Id,
-              AccountName: program.Program__r.Account__r.Name,
-              ProgramId: program.Program__r.Id,
-              ProgramName: program.Program__r.Name,
-              Description__c: program.Program__r.Description__c,
-              Program_Focus__c: program.Program__r.Program_Focus__c,
-              Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
-              What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
-              Do_you_serve__c: program.Program__r.Do_you_serve__c,
-              LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
-              Program_Type__c: program.Program__r.Program_Type__c,
-              Program_Objective__c: program.Program__r.Program_Objective__c,
-              Geographic_Scope__c: program.Program__r.Geographic_Scope__c
-            };
-            if(result.Address__c != 'Website Only'){
-              var fullAddress = result.Address__c;
-              if(result.City__c){
-                fullAddress = fullAddress + ' ' + result.City__c;
-              }
-              if(result.State__c){
-                fullAddress = fullAddress + ', ' + result.State__c;
-              }
-              if(result.Zip_Postal_Code__c){
-                fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-              }
-              result.fullAddress = fullAddress;
-            }
-            if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-              result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-            }
-            return result;
-          });
-          console.log($ctrl.programs);
-          dataCache.setProgramCache($ctrl.programs);
+            $ctrl.programs = dataCache.transFormData(response.data);
+            console.log($ctrl.programs);
+            dataCache.setProgramCache($ctrl.programs);
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
-                //codeAddress($ctrl.currentProgram);
                 getAdditionInfo();
             }
-        }
-        function errorCallback(response) {
-            console.log(response);
         }
 
         function getAdditionInfo(){
           $ctrl.currentProgram.otherLocations = [];
-
           $ctrl.currentProgram.otherServices = [];
           $ctrl.currentProgram.relatedServices = [];
           if(!$ctrl.programs){
@@ -385,12 +293,12 @@ app.component('searchDetail', {
         $ctrl.openDetailPage = function(program) {
             var url = '/detail/' + program.Id;
             $location.url(url);
-            $ctrl.currentProgram = program;//dataCache.findProgramById(program.Id);;
+            $ctrl.currentProgram = program;
             getAdditionInfo();
         };
 
         if (dataCache.isEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, errorCallback);
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             //codeAddress($ctrl.currentProgram);
@@ -400,21 +308,6 @@ app.component('searchDetail', {
         $scope.backToSearch = function () {
             $location.url('/');
         };
-
-        // function codeAddress(program) {
-        //     var address = program.Address__c + program.City__c;
-        //     var geocoder = new google.maps.Geocoder();
-        //     geocoder.geocode( { 'address': address}, function(results, status) {
-        //         if (status == 'OK') {
-        //             var location = results[0].geometry.location;
-        //             var latlng = "[" + location.lat() + ", " + location.lng() + "]";
-        //
-        //             $scope.$apply(function () {
-        //                 $ctrl.currentProgram.latlng = latlng;
-        //             });
-        //         }
-        //     });
-        // }
     }
 });
 
@@ -422,55 +315,9 @@ app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
   controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
       function successCallback(response) {
-        var programLocations = response.data;
-        $ctrl.programs = programLocations.map(function(program) {
-          var result = {
-            Id: program.Id,
-            Address__c: program.Address__c,
-            City__c: program.City__c,
-            State__c: program.Program__r.State__c,
-            Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-            GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-            GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-            AccountId: program.Program__r.Account__r.Id,
-            AccountName: program.Program__r.Account__r.Name,
-            ProgramId: program.Program__r.Id,
-            ProgramName: program.Program__r.Name,
-            Description__c: program.Program__r.Description__c,
-            Program_Focus__c: program.Program__r.Program_Focus__c,
-            Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
-            What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
-            Do_you_serve__c: program.Program__r.Do_you_serve__c,
-            LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
-            Program_Type__c: program.Program__r.Program_Type__c,
-            Program_Objective__c: program.Program__r.Program_Objective__c,
-            Geographic_Scope__c: program.Program__r.Geographic_Scope__c
-          };
-          if(result.Address__c != 'Website Only'){
-            var fullAddress = result.Address__c;
-            if(result.City__c){
-              fullAddress = fullAddress + ' ' + result.City__c;
-            }
-            if(result.State__c){
-              fullAddress = fullAddress + ', ' + result.State__c;
-            }
-            if(result.Zip_Postal_Code__c){
-              fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-            }
-            result.fullAddress = fullAddress;
-          }
-          if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-          }
-          return result;
-        });
-        dataCache.setProgramCache($ctrl.programs);
-          setupMap()
-          console.log($ctrl.programs);
-      }
-
-      function errorCallback(response) {
-          console.log(response);
+          $ctrl.programs = dataCache.transFormData(response.data);
+          dataCache.setProgramCache($ctrl.programs);
+          setupMap();
       }
 
       var $ctrl = this;
@@ -485,7 +332,7 @@ app.component('searchMapview', {
       };
 
       if (dataCache.isEmpty()) {
-          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, errorCallback);
+          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
       } else {
           $ctrl.programs = dataCache.getProgramCache();
           setupMap();
@@ -500,7 +347,6 @@ app.component('searchMapview', {
           $ctrl.clicked = function() {
               alert('Clicked a link inside infoWindow');
           };
-
 
           $ctrl.selectedProgram = $ctrl.programs[0];
 
@@ -581,8 +427,59 @@ app.component('searchMapview', {
 
 app.factory('dataCache', function() {
     var programCache;
+    function errorCallback(response) {
+        console.log(response);
+    }
+
+    function dataMapper(program) {
+        var result = {
+            Id: program.Id,
+            Address__c: program.Address__c,
+            City__c: program.City__c,
+            State__c: program.Program__r.State__c,
+            Zip_Postal_Code__c: program.Zip_Postal_Code__c,
+            GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
+            GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
+            AccountId: program.Program__r.Account__r.Id,
+            AccountName: program.Program__r.Account__r.Name,
+            ProgramId: program.Program__r.Id,
+            ProgramName: program.Program__r.Name,
+            Description__c: program.Program__r.Description__c,
+            Program_Focus__c: program.Program__r.Program_Focus__c,
+            Sub_community_or_ethnic_group_reach__c: program.Program__r.Sub_community_or_ethnic_group_reach__c,
+            What_ages_do_you_reach__c: program.Program__r.What_ages_do_you_reach__c,
+            Do_you_serve__c: program.Program__r.Do_you_serve__c,
+            LH2020_Does_your_program_serve__c: program.Program__r.LH2020_Does_your_program_serve__c,
+            Program_Type__c: program.Program__r.Program_Type__c,
+            Program_Objective__c: program.Program__r.Program_Objective__c,
+            Geographic_Scope__c: program.Program__r.Geographic_Scope__c
+        };
+        if(result.Address__c != 'Website Only'){
+            var fullAddress = result.Address__c;
+            if(result.City__c){
+                fullAddress = fullAddress + ' ' + result.City__c;
+            }
+            if(result.State__c){
+                fullAddress = fullAddress + ', ' + result.State__c;
+            }
+            if(result.Zip_Postal_Code__c){
+                fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
+            }
+            result.fullAddress = fullAddress;
+        }
+        if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
+            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
+        }
+        return result;
+    }
+
+    function transFormData(programLocations) {
+        return programLocations.map(dataMapper);
+    }
 
     return {
+        errorCallback: errorCallback,
+        transFormData: transFormData,
         isEmpty: function() {
             return programCache === undefined;
         },

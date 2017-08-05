@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('LWLsearch', ['ui.router', 'ngMap']);
-app.config(function($stateProvider, $locationProvider) {
+app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
@@ -32,97 +32,30 @@ app.config(function($stateProvider, $locationProvider) {
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
-        console.log($stateParams);
-        function successCallback(response) {
-            //dataCache.setProgramCache(response.data);
-
-            var programLocations = response.data;
-            $ctrl.programs = programLocations.map(function(program) {
-              var result = {
-                Id: program.Id,
-                Address__c: program.Address__c,
-                City__c: program.City__c,
-                State__c: program.Program__r.State__c,
-                Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-                GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-                GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-                AccountId: program.Program__r.Account__r.Id,
-                AccountName: program.Program__r.Account__r.Name,
-                ProgramId: program.Program__r.Id,
-                ProgramName: program.Program__r.Name,
-                Description__c: program.Program__r.Description__c,
-                LWL_Dimension__c: program.Program__r.LWL_Dimension__c,
-                LWL_program_website__c: program.Program__r.LWL_program_website__c,
-                LWL_Sub_category__c: program.Program__r.LWL_Sub_category__c,
-                LWL_Topic__c: program.Program__r.LWL_Topic__c,
-                LWL_Hours_of_Operation__c: program.Program__r.LWL_Hours_of_Operation__c
-              };
-              if(result.Address__c != 'Website Only'){
-                var fullAddress = result.Address__c;
-                if(result.City__c){
-                  fullAddress = fullAddress + ' ' + result.City__c;
-                }
-                if(result.State__c){
-                  fullAddress = fullAddress + ', ' + result.State__c;
-                }
-                if(result.Zip_Postal_Code__c){
-                  fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-                }
-                result.fullAddress = fullAddress;
-              }
-              if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-                result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-              }
-
-              return result;
-            });
-            console.log($ctrl.programs);
-            dataCache.setProgramCache($ctrl.programs);
-            setupTopicFilter();
-            //populateLatLong(0);
-        }
-
-        function errorCallback(response) {
-            console.log(response);
-        }
-
-        function updateSuccess(response) {
-          console.log('success update:');
-          console.log(response);
-        }
-
-        function updateError(response) {
-          console.log('failed update:');
-          console.log(response);
-        }
-
         var $ctrl = this;
-        var updateLatLng = function(program) {
-            //var parameter = {id: 'a016100000CZFzKAAX', lat: 15, long: -144};
-            var parameter = {id: program.Id, lat: program.lat, long: program.long};
-            var url = 'https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getAllLocations';
-            var requestUrl = url + '?id=' + parameter.id + '&lat='+ parameter.lat +'&long=' + parameter.long;
-            $http.post(requestUrl).then(updateSuccess, updateError);
-        };
 
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
-        console.log($stateParams);
 
         $ctrl.openDetailPage = function(program) {
             var url = '/detail/' + program.Id;
             $location.url(url);
         };
 
+        function successCallback(response) {
+            $ctrl.programs = dataCache.transFormData(response.data);
+            dataCache.setProgramCache($ctrl.programs);
+            setupTopicFilter();
+        }
+
         if (dataCache.isProgramEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
         } else {
             $ctrl.programs = dataCache.getProgramCache();
             setupTopicFilter();
         }
 
         /************ Filter ********/
-        var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
         function setupTopicFilter() {
             for(var i in topicFilterValues) {
                 var topic = topicFilterValues[i];
@@ -132,11 +65,10 @@ app.component('searchWidget', {
                 }
             }
         }
-
+        var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
         var dimensionFilterValues = $stateParams.dimension ? $stateParams.dimension.split(',') : [];
         var dimensions = dimensionFilterValues;
 
-        //console.log(dimensions);
         $scope.checkFilter = function (key, value) {
             return filterValuesIncluded[key].indexOf(value) > -1;
         };
@@ -150,7 +82,7 @@ app.component('searchWidget', {
 
         $scope.openMapview = function(){
           $location.url(/mapview/);
-        }
+        };
 
         $scope.outputPDF = function (programs) {
           // playground requires you to assign document definition to a variable called dd
@@ -180,7 +112,6 @@ app.component('searchWidget', {
 
                   return  { text: '© 2017 Providence Institute for a Healthier Community. All rights reserved.                          ' + currentPage + '/' + pageCount, alignment: 'center', margin: [0,10,0,0] };
               },
-
 
           	content: [
           		{
@@ -268,7 +199,6 @@ app.component('searchWidget', {
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
 
-            //var i = $.inArray(value, currentValues);
             var i = currentValues.indexOf(value);
             if (i > -1) {
                 currentValues.splice(i, 1);
@@ -285,7 +215,7 @@ app.component('searchWidget', {
             }
             $state.go('search', params);
         };
-        //var prop = keyToPropMap[key];
+
         $scope.programFilter = function(program) {
             var containAll = true;
 
@@ -324,64 +254,18 @@ app.component('searchDetail', {
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
-              //dataCache.setProgramCache(response.data);
-
-            var programLocations = response.data;
-            $ctrl.programs = programLocations.map(function(program) {
-              var result = {
-                Id: program.Id,
-                Address__c: program.Address__c,
-                City__c: program.City__c,
-                State__c: program.Program__r.State__c,
-                Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-                GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-                GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-                AccountId: program.Program__r.Account__r.Id,
-                AccountName: program.Program__r.Account__r.Name,
-                ProgramId: program.Program__r.Id,
-                ProgramName: program.Program__r.Name,
-                Description__c: program.Program__r.Description__c,
-                LWL_Dimension__c: program.Program__r.LWL_Dimension__c,
-                LWL_program_website__c: program.Program__r.LWL_program_website__c,
-                LWL_Sub_category__c: program.Program__r.LWL_Sub_category__c,
-                LWL_Topic__c: program.Program__r.LWL_Topic__c
-              };
-              if(result.Address__c != 'Website Only'){
-                var fullAddress = result.Address__c;
-                if(result.City__c){
-                  fullAddress = fullAddress + ' ' + result.City__c;
-                }
-                if(result.State__c){
-                  fullAddress = fullAddress + ', ' + result.State__c;
-                }
-                if(result.Zip_Postal_Code__c){
-                  fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-                }
-                result.fullAddress = fullAddress;
-              }
-              if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-                result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-              }
-              return result;
-            });
+            $ctrl.programs = dataCache.transFormData(response.data);
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
 
-
-            //populateLatLong(0);
-
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
-                getAdditionInfo();                //codeAddress($ctrl.currentProgram);
+                getAdditionInfo();
             }
-        }
-        function errorCallback(response) {
-            console.log(response);
         }
 
         function getAdditionInfo(){
           $ctrl.currentProgram.otherLocations = [];
-
           $ctrl.currentProgram.otherServices = [];
           $ctrl.currentProgram.relatedServices = [];
           if(!$ctrl.programs){
@@ -408,33 +292,15 @@ app.component('searchDetail', {
         };
 
         if (dataCache.isProgramEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
-
-
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
-            //codeAddress($ctrl.currentProgram);
         }
 
         $scope.backToSearch = function () {
             $location.url('/');
         };
-
-        // function codeAddress(program) {
-        //     var address = program.Address__c + program.City__c;
-        //     var geocoder = new google.maps.Geocoder();
-        //     geocoder.geocode( { 'address': address}, function(results, status) {
-        //         if (status == 'OK') {
-        //             var location = results[0].geometry.location;
-        //             var latlng = "[" + location.lat() + ", " + location.lng() + "]";
-        //
-        //             $scope.$apply(function () {
-        //                 $ctrl.currentProgram.latlng = latlng;
-        //             });
-        //           }
-        //       });
-        //   }
       }
   });
 
@@ -442,51 +308,10 @@ app.component('searchMapview', {
   templateUrl: '../../wp-content/plugins/livewell-search/searchmapview.template.html',
   controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap) {
       function successCallback(response) {
-        var programLocations = response.data;
-        $ctrl.programs = programLocations.map(function(program) {
-          var result = {
-            Id: program.Id,
-            Address__c: program.Address__c,
-            City__c: program.City__c,
-            State__c: program.Program__r.State__c,
-            Zip_Postal_Code__c: program.Zip_Postal_Code__c,
-            GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
-            GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
-            AccountId: program.Program__r.Account__r.Id,
-            AccountName: program.Program__r.Account__r.Name,
-            ProgramId: program.Program__r.Id,
-            ProgramName: program.Program__r.Name,
-            Description__c: program.Program__r.Description__c,
-            LWL_Dimension__c: program.Program__r.LWL_Dimension__c,
-            LWL_program_website__c: program.Program__r.LWL_program_website__c,
-            LWL_Sub_category__c: program.Program__r.LWL_Sub_category__c,
-            LWL_Topic__c: program.Program__r.LWL_Topic__c
-          };
-          if(result.Address__c != 'Website Only'){
-            var fullAddress = result.Address__c;
-            if(result.City__c){
-              fullAddress = fullAddress + ' ' + result.City__c;
-            }
-            if(result.State__c){
-              fullAddress = fullAddress + ', ' + result.State__c;
-            }
-            if(result.Zip_Postal_Code__c){
-              fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
-            }
-            result.fullAddress = fullAddress;
-          }
-          if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-          }
-          return result;
-        });
+        $ctrl.programs = dataCache.transFormData(response.data);
         console.log($ctrl.programs);
         dataCache.setProgramCache($ctrl.programs);
         setupMap();
-      }
-
-      function errorCallback(response) {
-          console.log(response);
       }
 
       var $ctrl = this;
@@ -501,7 +326,7 @@ app.component('searchMapview', {
       };
 
       if (dataCache.isProgramEmpty()) {
-          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, errorCallback);
+          $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
 
       } else {
           $ctrl.programs = dataCache.getProgramCache();
@@ -519,7 +344,6 @@ app.component('searchMapview', {
               alert('Clicked a link inside infoWindow');
           };
 
-
           $ctrl.selectedProgram = $ctrl.programs[0];
 
           $ctrl.showDetail = function(e, program) {
@@ -535,17 +359,16 @@ app.component('searchMapview', {
 
       /************ Filter ********/
       var filterValuesIncluded = {
-          'Dimension': [],
+          'Dimension': []
       };
 
       var keyToPropMap = {
-          'Dimension': 'LWL_Dimension__c',
+          'Dimension': 'LWL_Dimension__c'
       };
 
       $scope.includeFilter = function (key, value) {
           var currentValues = filterValuesIncluded[key];
 
-          //var i = $.inArray(value, currentValues);
           var i = currentValues.indexOf(value);
           if (i > -1) {
               currentValues.splice(i, 1);
@@ -600,7 +423,58 @@ app.factory('dataCache', function() {
             }
         }
     }
+
+    function errorCallback(response) {
+        console.log(response);
+    }
+
+    function transFormData(programLocations) {
+        return programLocations.map(dataMapper);
+    }
+
+    function dataMapper(program) {
+        var result = {
+            Id: program.Id,
+            Address__c: program.Address__c,
+            City__c: program.City__c,
+            State__c: program.Program__r.State__c,
+            Zip_Postal_Code__c: program.Zip_Postal_Code__c,
+            GeoInfo__Latitude__s: program.GeoInfo__Latitude__s,
+            GeoInfo__Longitude__s: program.GeoInfo__Longitude__s,
+            AccountId: program.Program__r.Account__r.Id,
+            AccountName: program.Program__r.Account__r.Name,
+            ProgramId: program.Program__r.Id,
+            ProgramName: program.Program__r.Name,
+            Description__c: program.Program__r.Description__c,
+            LWL_Dimension__c: program.Program__r.LWL_Dimension__c,
+            LWL_program_website__c: program.Program__r.LWL_program_website__c,
+            LWL_Sub_category__c: program.Program__r.LWL_Sub_category__c,
+            LWL_Topic__c: program.Program__r.LWL_Topic__c,
+            LWL_Hours_of_Operation__c: program.Program__r.LWL_Hours_of_Operation__c
+        };
+        if(result.Address__c != 'Website Only'){
+            var fullAddress = result.Address__c;
+            if(result.City__c){
+                fullAddress = fullAddress + ' ' + result.City__c;
+            }
+            if(result.State__c){
+                fullAddress = fullAddress + ', ' + result.State__c;
+            }
+            if(result.Zip_Postal_Code__c){
+                fullAddress = fullAddress + ', ' + result.Zip_Postal_Code__c;
+            }
+            result.fullAddress = fullAddress;
+        }
+        if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
+            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
+        }
+
+        return result;
+    }
+
     return {
+        errorCallback: errorCallback,
+        transFormData: transFormData,
         isProgramEmpty: function() {
             return programCache === undefined;
         },
@@ -625,12 +499,6 @@ app.factory('dataCache', function() {
             if (topicToDimensionMap[topic]) {
                 return topicToDimensionMap[topic];
             }
-        },
-        getAllTopics: function () {
-            return Object.keys(topicToDimensionMap);
-        },
-        getAllDimensions: function () {
-            return Object.values(topicToDimensionMap);
         },
         findProgramByName: function(name, account, address ){
             for(var i in programCache){
@@ -664,5 +532,3 @@ app.filter('cut', function () {
         return value + (tail || ' …');
     };
 });
-
-//
