@@ -161,6 +161,9 @@ app.component('searchWidget', {
                 return;
             }
         };
+        
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 });
 
@@ -251,6 +254,10 @@ app.component('searchDetail', {
         var filterValuesIncluded = {
             'dimension': dimensionFilterValues
         };
+
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 });
 
@@ -403,6 +410,9 @@ app.component('searchMapview', {
                 return;
             }
         };
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 });
 
@@ -465,10 +475,24 @@ app.factory('dataCache', function() {
 
         return result;
     }
+    function addFavorite(program) {
+        var data = {
+            title: program.Id,
+            excerpt: program.AccountName,
+            status: "publish"
+        };
+        program.saved = true;
+        var createPost = new XMLHttpRequest();
+        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
+        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        createPost.send(JSON.stringify(data));
+    }
 
     return {
         errorCallback: errorCallback,
         transFormData: transFormData,
+        addFavorite: addFavorite,
         isProgramEmpty: function() {
             return programCache === undefined;
         },

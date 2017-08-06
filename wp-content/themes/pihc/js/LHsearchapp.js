@@ -393,6 +393,9 @@ app.component('searchMapview', {
                 return;
             }
         };
+        
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 });
 

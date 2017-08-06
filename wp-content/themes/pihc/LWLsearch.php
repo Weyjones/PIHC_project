@@ -5,9 +5,8 @@
 <script src="<?php echo (get_template_directory_uri().'/js/vfs_fonts.js') ?>"></script>
 
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/LWLtreeview-style.css') ?>' type='text/css' />
-
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
-
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/fav_icon.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
