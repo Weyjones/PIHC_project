@@ -5,9 +5,8 @@
 <script src="<?php echo (get_template_directory_uri().'/js/vfs_fonts.js') ?>"></script>
 
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/LWLtreeview-style.css') ?>' type='text/css' />
-
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/search-app.css') ?>' type='text/css' />
-
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/fav_icon.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
@@ -83,7 +82,23 @@
 </div>
 </li>
 
-<li><a href="">SIGN IN</a></li>
+<?php
+if ( is_user_logged_in() ) {
+global $current_user;
+      echo '<li>';
+      echo '<a href="/account/" title="My Account">My Account</a>';
+      echo '</li>';
+}
+?>
+<li>
+<?php
+if ( is_user_logged_in() ) {
+		echo '<a href="'.wp_logout_url().'" title="Logout">Log out</a>';
+	} else {
+		echo '<a href="/login/" title="Login">Sign In</a>';
+}
+?>
+</li>
 </ul></div></div>
 	</div>
 </div>

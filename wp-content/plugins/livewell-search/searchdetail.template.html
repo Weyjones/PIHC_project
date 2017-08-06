@@ -3,11 +3,41 @@
 	<div class="row">
 		<div class="filter-container col-sm-3">
 			<!-- <search-filter></search-filter> -->
-			<div>
+			<div ng-if="filteredPrograms">
 				{{filteredPrograms.length}} result(s)
 			</div>
 			<button class="view-map-btn">See Listings in Map View</button>
 			<hr/>
+			<h3>Save Search Results</h3>
+			<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save This Search</a><br>
+			<!-- Modal -->
+			<div class="modal fade" id="saveSearchModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Save This Search</h4>
+						</div>
+						<div class="modal-body">
+							<fieldset>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirTitle">Title</label>
+											<input class="form-control" type="text" id="searchName" placeholder="Please Enter a Title for this search"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveSearchURL()">Save</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 			<div class="filters">
 				<!-- <h2 class="filter-header">Search Filter</h2>
 				<div class="function-area">
@@ -51,9 +81,16 @@
 						<div class="back-to-list">
 							<span class="back-to-list-link" ng-click="backToSearch()">back to listing</span>
 						</div>
-						<h3 class="title">
-							{{$ctrl.currentProgram.AccountName}}
-						</h3>
+						<div class="row">
+							<div class="col-sm-10">
+								<h3 class="title">
+									{{$ctrl.currentProgram.AccountName}}
+								</h3>
+							</div>
+							<div class="col-sm-2">
+								<span class="star-icon" ng-click="addFavorite($ctrl.currentProgram)" ng-class="{'active': $ctrl.currentProgram.saved}"></span>
+							</div>
+						</div>
 						<div class="description">
 							{{$ctrl.currentProgram.Description__c}}
 						</div>

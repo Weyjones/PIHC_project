@@ -48,10 +48,8 @@ app.component('searchWidget', {
         };
 
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
-            dataCache.setProgramCache($ctrl.programs);
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
             dataCache.updateDistance($stateParams.lat, $stateParams.lng);
-            $ctrl.programs = dataCache.getProgramCache();
             setupTopicFilter();
         }
 
@@ -168,6 +166,14 @@ app.component('searchWidget', {
                 return;
             }
         };
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -177,9 +183,7 @@ app.component('searchDetail', {
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
-            dataCache.setProgramCache($ctrl.programs);
-
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
                 getAdditionInfo();
@@ -256,6 +260,15 @@ app.component('searchDetail', {
         var filterValuesIncluded = {
             'dimension': dimensionFilterValues
         };
+
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -263,8 +276,7 @@ app.component('searchMapview', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchmapview.template.html',
     controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
-            dataCache.setProgramCache($ctrl.programs);
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
             setupMap();
             setupTopicFilter();
         }
@@ -373,10 +385,14 @@ app.component('searchMapview', {
                 currentValues.push(value);
             }
 
-            for(var key in filterValuesIncluded) {
-                console.log(key + ":" + filterValuesIncluded[key]);
+            var params = {};
+            if (topicFilterValues.length > 0) {
+                params.topic = topicFilterValues.join(',');
             }
-            console.log($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('mapview', params);
 
         };
         $scope.programFilter = function(program) {
@@ -406,10 +422,18 @@ app.component('searchMapview', {
                 return;
             }
         };
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
-app.factory('dataCache', function($stateParams) {
+app.factory('dataCache', function($http) {
     var programCache;
     var topicToDimensionMap = {};
     function setupTopicMap() {
@@ -425,8 +449,14 @@ app.factory('dataCache', function($stateParams) {
         console.log(response);
     }
 
-    function transFormData(programLocations) {
-        return programLocations.map(dataMapper);
+    function transFormAndSaveData(programLocations) {
+        programCache = programLocations.map(dataMapper);
+        setupTopicMap();
+        // populated programs with data from fav_programs
+        var favPromsURL = '/wp-json/wp/v2/favorite_program?author=' + currentAuthor.id;
+        $http.get(favPromsURL).then(saveFavPrograms);
+
+        return programCache;
     }
 
     function dataMapper(program) {
@@ -462,21 +492,56 @@ app.factory('dataCache', function($stateParams) {
             }
             result.fullAddress = fullAddress;
         }
-        if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
-            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
-            mylat = $stateParams.lat;
-            mylng = $stateParams.lng;
-            if(mylat && mylng){
-              result.distance = distance(Number(mylat), Number(mylng), Number(result.GeoInfo__Latitude__s), Number(result.GeoInfo__Longitude__s));
-            }
-        }
 
         return result;
     }
+    function addFavorite(program) {
+        if (!program.saved) {
+            var data = {
+                title: program.Id,
+                excerpt: program.AccountName,
+                status: "publish"
+            };
+            program.saved = true;
+            var createPost = new XMLHttpRequest();
+            createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
+            createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+            createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            createPost.send(JSON.stringify(data));
+        }
+    }
 
+    function saveSearchURL(title, url){
+        var data = {
+            title: title,
+            excerpt: url,
+            status: "publish"
+        };
+        var createPost = new XMLHttpRequest();
+        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/saved_search');
+        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        createPost.send(JSON.stringify(data));
+    }
+
+    function saveFavPrograms(response) {
+        var favPrograms = response.data;
+        var favProgramIds = favPrograms.map(function (p) {
+            return p.title.rendered;
+        });
+        console.log(favProgramIds);
+        console.log(programCache);
+        programCache.forEach(function(p) {
+            if(favProgramIds.indexOf(p.Id) > -1) {
+                p.saved = true;
+            }
+        });
+    }
     return {
         errorCallback: errorCallback,
-        transFormData: transFormData,
+        transFormAndSaveData: transFormAndSaveData,
+        addFavorite: addFavorite,
+        saveSearchURL: saveSearchURL,
         isProgramEmpty: function() {
             return programCache === undefined;
         },
@@ -485,10 +550,6 @@ app.factory('dataCache', function($stateParams) {
         },
         getProgramCache: function() {
             return programCache;
-        },
-        setProgramCache: function(state) {
-            programCache = state;
-            setupTopicMap();
         },
         findProgramById: function (id) {
             for(var i in programCache){
