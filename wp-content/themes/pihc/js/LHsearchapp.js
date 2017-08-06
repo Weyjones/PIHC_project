@@ -28,8 +28,7 @@ app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
-            dataCache.setProgramCache($ctrl.programs);
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
         }
 
         var $ctrl = this;
@@ -169,9 +168,8 @@ app.component('searchDetail', {
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
             console.log($ctrl.programs);
-            dataCache.setProgramCache($ctrl.programs);
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
                 getAdditionInfo();
@@ -266,8 +264,7 @@ app.component('searchMapview', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchmapview.template.html',
     controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
-            $ctrl.programs = dataCache.transFormData(response.data);
-            dataCache.setProgramCache($ctrl.programs);
+            $ctrl.programs = dataCache.transFormAndSaveData(response.data);
             setupMap();
         }
 
@@ -413,7 +410,7 @@ app.component('searchMapview', {
     }
 });
 
-app.factory('dataCache', function() {
+app.factory('dataCache', function($http) {
     var programCache;
 
     var keyToPropMap = {
@@ -476,22 +473,30 @@ app.factory('dataCache', function() {
         return keyToPropMap;
     }
 
-    function transFormData(programLocations) {
-        return programLocations.map(dataMapper);
+    function transFormAndSaveData(programLocations) {
+        programCache = programLocations.map(dataMapper);
+
+        // populated programs with data from fav_programs
+        var favPromsURL = '/wp-json/wp/v2/favorite_program?author=' + currentAuthor.id;
+        $http.get(favPromsURL).then(saveFavPrograms);
+
+        return programCache;
     }
 
     function addFavorite(program) {
-        var data = {
-            title: program.Id,
-            excerpt: program.AccountName,
-            status: "publish"
-        };
-        program.saved = true;
-        var createPost = new XMLHttpRequest();
-        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
-        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
-        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        createPost.send(JSON.stringify(data));
+        if (!program.saved) {
+            var data = {
+                title: program.Id,
+                excerpt: program.AccountName,
+                status: "publish"
+            };
+            program.saved = true;
+            var createPost = new XMLHttpRequest();
+            createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
+            createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+            createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            createPost.send(JSON.stringify(data));
+        }
     }
 
     function saveSearchURL(title, url){
@@ -507,9 +512,23 @@ app.factory('dataCache', function() {
         createPost.send(JSON.stringify(data));
     }
 
+    function saveFavPrograms(response) {
+        var favPrograms = response.data;
+        var favProgramIds = favPrograms.map(function (p) {
+            return p.title.rendered;
+        });
+        console.log(favProgramIds);
+        console.log(programCache);
+        programCache.forEach(function(p) {
+            if(favProgramIds.indexOf(p.Id) > -1) {
+                p.saved = true;
+            }
+        });
+    }
+
     return {
         errorCallback: errorCallback,
-        transFormData: transFormData,
+        transFormAndSaveData: transFormAndSaveData,
         getKeyToPropMap: getKeyToPropMap,
         isEmpty: function() {
             return programCache === undefined;
@@ -520,9 +539,6 @@ app.factory('dataCache', function() {
         getProgramCache: function() {
             return programCache;
         },
-        setProgramCache: function(state) {
-            programCache = state;
-        },
         findProgramById: function (id) {
             for(var i in programCache){
                 if(programCache[i].Id == id){
@@ -532,6 +548,7 @@ app.factory('dataCache', function() {
         },
         addFavorite: addFavorite,
         saveSearchURL: saveSearchURL,
+        saveFavPrograms: saveFavPrograms,
         findProgramByName: function(name, account, address ){
             for(var i in programCache){
                 if(programCache[i].Name == name && programCache[i].Account__c == account && programCache[i].Address__c == address){

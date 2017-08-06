@@ -183,6 +183,7 @@ function pihc_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	wp_localize_script('pihc-navigation', 'magicalData', array('nonce' => wp_create_nonce('wp_rest')));
+	wp_localize_script('pihc-navigation', 'currentAuthor', array('id' => get_current_user_id()));
 }
 add_action( 'wp_enqueue_scripts', 'pihc_scripts' );
 
