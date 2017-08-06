@@ -48,19 +48,22 @@ app.component('searchWidget', {
         };
 
         function successCallback(response) {
-          console.log(response);
             $ctrl.programs = dataCache.transFormData(response.data);
             dataCache.setProgramCache($ctrl.programs);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
+            $ctrl.programs = dataCache.getProgramCache();
             setupTopicFilter();
         }
 
         if (dataCache.isProgramEmpty()) {
-          mylat = $stateParams.lat;
-          mylng = $stateParams.lng;
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng).then(successCallback, dataCache.errorCallback);
+
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
         } else {
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             $ctrl.programs = dataCache.getProgramCache();
+
             setupTopicFilter();
+
         }
 
         $scope.openMapview = function(){
@@ -171,13 +174,10 @@ app.component('searchWidget', {
 app.component('searchDetail', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchdetail.template.html',
     controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location, $state) {
-        console.log($stateParams);
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
-            console.log(response);
             $ctrl.programs = dataCache.transFormData(response.data);
-            console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
 
             if (programId) {
@@ -221,9 +221,7 @@ app.component('searchDetail', {
         };
 
         if (dataCache.isProgramEmpty()) {
-            mylat = $stateParams.lat;
-            mylng = $stateParams.lng;
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng).then(successCallback, dataCache.errorCallback);
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
@@ -266,7 +264,6 @@ app.component('searchMapview', {
     controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormData(response.data);
-            console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
             setupMap();
             setupTopicFilter();
@@ -276,7 +273,6 @@ app.component('searchMapview', {
 
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
-        console.log($stateParams);
 
         $ctrl.openDetailPage = function(program) {
             //var url = '/detail/' + program.Id;
@@ -289,11 +285,7 @@ app.component('searchMapview', {
         };
 
         if (dataCache.isProgramEmpty()) {
-            mylat = $stateParams.lat;
-            mylng = $stateParams.lng;
-            var url = 'https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng;
-            console.log(url);
-            $http.get(url).then(successCallback, dataCache.errorCallback);
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
 
         } else {
             $ctrl.programs = dataCache.getProgramCache();
@@ -417,7 +409,7 @@ app.component('searchMapview', {
     }
 });
 
-app.factory('dataCache', function() {
+app.factory('dataCache', function($stateParams) {
     var programCache;
     var topicToDimensionMap = {};
     function setupTopicMap() {
@@ -472,6 +464,11 @@ app.factory('dataCache', function() {
         }
         if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
             result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
+            mylat = $stateParams.lat;
+            mylng = $stateParams.lng;
+            if(mylat && mylng){
+              result.distance = distance(Number(mylat), Number(mylng), Number(result.GeoInfo__Latitude__s), Number(result.GeoInfo__Longitude__s));
+            }
         }
 
         return result;
@@ -511,6 +508,13 @@ app.factory('dataCache', function() {
                     return programCache[i];
                 }
             }
+        },
+        updateDistance: function(mylat, mylng) {
+          for(var i in programCache){
+              if(!programCache[i].distance && programCache[i].GeoInfo__Latitude__s && programCache[i].GeoInfo__Latitude__s && mylat && mylng){
+                programCache[i].distance = distance(Number(mylat), Number(mylng), Number(programCache[i].GeoInfo__Latitude__s), Number(programCache[i].GeoInfo__Longitude__s));
+              }
+          }
         }
     };
 });
@@ -689,3 +693,17 @@ function generatePDF(programs){
 var myAddress;
 var mylat;
 var mylng;
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+	var radlat1 = Math.PI * lat1/180;
+	var radlat2 = Math.PI * lat2/180;
+	var theta = lon1-lon2;
+	var radtheta = Math.PI * theta/180;
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist);
+	dist = dist * 180/Math.PI;
+	dist = dist * 60 * 1.1515;
+	if (unit=="K") { dist = dist * 1.609344 };
+	if (unit=="N") { dist = dist * 0.8684 };
+	return dist;
+}

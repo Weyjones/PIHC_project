@@ -191,24 +191,17 @@
 						<div class="address" id="address-{{$index}}">
 							{{program.fullAddress}}
 						</div>
-						<div class="website" id="website-{{$index}}">
-							<a href="{{program.LWL_program_website__c}}">Website</a>
-						</div>
-						<!--
-						<div>
-							{{program.latlng}}
-						</div>
 
-						<div class="distance">
-							2 miles - <a href="#">Get Directions</a>
+						<div ng-if="program.distance" class="distance">
+							{{program.distance}} miles - <a href="#">Get Directions</a>
 						</div>
 						<div class="phone">
 							206-123-4567
 						</div>
-						<div class="website">
-							<a href="#">Website</a>
+						<div ng-if="program.LWL_program_website__c"class="website">
+							<a href="{{program.LWL_program_website__c}}">Website</a>
 						</div>
-						-->
+
 					</div>
 					<div class="divider"></div>
 					<div class="desc col-sm-8">
