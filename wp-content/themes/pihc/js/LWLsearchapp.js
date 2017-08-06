@@ -5,17 +5,17 @@ app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location&topic&dimension',
+            url: '/?query&location&topic&dimension&lat&lng',
             component: 'searchWidget'
         },
         {
             name: 'detail',
-            url: '/detail/:programId?query&location&topic&dimension',
+            url: '/detail/:programId?query&location&topic&dimension&lat&lng',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&location&topic&dimension',
+            url: '/mapview/?query&location&topic&dimension&lat&lng',
             component: 'searchMapview'
         }];
 
@@ -48,13 +48,16 @@ app.component('searchWidget', {
         };
 
         function successCallback(response) {
+          console.log(response);
             $ctrl.programs = dataCache.transFormData(response.data);
             dataCache.setProgramCache($ctrl.programs);
             setupTopicFilter();
         }
 
         if (dataCache.isProgramEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
+          mylat = $stateParams.lat;
+          mylng = $stateParams.lng;
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng).then(successCallback, dataCache.errorCallback);
         } else {
             $ctrl.programs = dataCache.getProgramCache();
             setupTopicFilter();
@@ -103,6 +106,7 @@ app.component('searchWidget', {
         var topicFilterValues = $stateParams.topic ? $stateParams.topic.split(',') : [];
         var dimensionFilterValues = $stateParams.dimension ? $stateParams.dimension.split(',') : [];
 
+        var myAddress = $stateParams.formatted_address;
         $scope.checkFilter = function (key, value) {
             return filterValuesIncluded[key].indexOf(value) > -1;
         };
@@ -171,6 +175,7 @@ app.component('searchDetail', {
         var $ctrl = this;
         var programId = $stateParams.programId;
         function successCallback(response) {
+            console.log(response);
             $ctrl.programs = dataCache.transFormData(response.data);
             console.log($ctrl.programs);
             dataCache.setProgramCache($ctrl.programs);
@@ -216,7 +221,9 @@ app.component('searchDetail', {
         };
 
         if (dataCache.isProgramEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
+            mylat = $stateParams.lat;
+            mylng = $stateParams.lng;
+            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng).then(successCallback, dataCache.errorCallback);
         } else if (programId){
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
@@ -282,7 +289,11 @@ app.component('searchMapview', {
         };
 
         if (dataCache.isProgramEmpty()) {
-            $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
+            mylat = $stateParams.lat;
+            mylng = $stateParams.lng;
+            var url = 'https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram?lat='+mylat+'&lng='+mylng;
+            console.log(url);
+            $http.get(url).then(successCallback, dataCache.errorCallback);
 
         } else {
             $ctrl.programs = dataCache.getProgramCache();
@@ -674,3 +685,7 @@ function generatePDF(programs){
       }
   }
 }
+
+var myAddress;
+var mylat;
+var mylng;

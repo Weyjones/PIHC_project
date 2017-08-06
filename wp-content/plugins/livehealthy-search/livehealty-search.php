@@ -22,7 +22,9 @@ wp_enqueue_script('angular-route', plugins_url( 'lib/angular-ui-router.js', __FI
 //wp_enqueue_script('angular-route', plugins_url( 'lib/angular-route.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('basetag', plugins_url( 'lib/setup.js', __FILE__ ), array(), true);
 
-wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk', array(), true);
+wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDxcqlp2yAzg0UeyqkZHCLebZx8Qq96XYk&libraries=places', array(), true);
+// wp_enqueue_script('geocomplete', get_template_directory_uri().'/js/jquery.geocomplete.min.js', array(), true);
+// wp_enqueue_script('geocomp', get_template_directory_uri().'/js/geocomp.js', array(), true);
 
 wp_enqueue_script('ng-map', plugins_url( 'lib/ng-map.min.js', __FILE__ ), array(), true);
 //wp_enqueue_script('app', plugins_url( 'app.js', __FILE__ ), array(), true);

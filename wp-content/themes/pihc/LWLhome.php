@@ -106,7 +106,11 @@
 			<input type="text" class="form-control" name="query" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
-			<input type="text" class="form-control" name="location" placeholder="Enter your Location (City or Zip Code) ">
+			<input id="geocomplete" name="formatted_address" class="form-control"type="text" placeholder="Enter your Location (City or Zip Code)"/>
+      <div hidden >
+        Latitude:   <input name="lat" type="text" value="">
+        Longitude:  <input name="lng" type="text" value="">
+      </div>
 		</div>
 		<button type="submit" class="btn-search"><img src="<?php the_field(search_button_icon); ?>"></button>
 	</form>
@@ -207,5 +211,13 @@ $("#lwl-search-form").submit(function( event ) {
 		</div>
 	</footer><!-- #colophon -->
 
-
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type='text/javascript' src="<?php echo (get_template_directory_uri().'/js/jquery.geocomplete.min.js') ?>"></script>
+  <script type='text/javascript'>
+        $(function(){
+          $("#geocomplete").geocomplete({
+            details: "form"
+          });
+        });
+  </script>
 <?php get_footer(); ?>
