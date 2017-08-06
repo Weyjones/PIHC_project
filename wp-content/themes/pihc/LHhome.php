@@ -115,7 +115,7 @@ if ( is_user_logged_in() ) {
 <div class="container-fluid main-body">
 	<form id="lh-search-form" class="search-bar" action="/livehealthy2020/search/#/">
 		<div class="keyword-search col-md-5">
-			<input type="text" name="query" class="form-control" placeholder="Search by Keyword">
+			<input id="LHautocomplete" type="text" name="query" class="form-control" placeholder="Search by Keyword">
 		</div>
 		<div class="address-search col-md-5">
 			<input id="geocomplete" name="formatted_address" class="form-control"type="text" placeholder="Enter your Location (City or Zip Code)"/>
@@ -227,6 +227,10 @@ $("#lh-search-form").submit(function( event ) {
 
 	<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type='text/javascript' src="<?php echo (get_template_directory_uri().'/js/jquery.geocomplete.min.js') ?>"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="<?php echo (get_template_directory_uri().'/js/autocomplete.js') ?>"></script>
 	<script type='text/javascript'>
 		$(function(){
 			$("#geocomplete").geocomplete({

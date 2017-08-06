@@ -126,9 +126,9 @@
 							{{$ctrl.currentProgram.fullAddress}}
 							</span>
 							</br>
-							<span>
-								Distance: TBD
-							</span>
+						</div>
+						<div ng-if="$ctrl.currentProgram.distance" class="distance">
+							{{$ctrl.currentProgram.distance}} miles - <a href="https://maps.google.com/?daddr={{$ctrl.currentProgram.fullAddress}}&saddr=Current%20Location">Get Directions</a>
 						</div>
 						<div>
 							<strong>Phone: </strong>206-123-4567

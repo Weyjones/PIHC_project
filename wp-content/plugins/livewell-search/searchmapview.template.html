@@ -237,8 +237,8 @@
 						<div class="address" id="address-{{$index}}">
 							{{program.fullAddress}}
 						</div>
-						<div class="distance">
-							2 miles - <a href="#">Get Directions</a>
+						<div ng-if="program.distance" class="distance">
+							{{program.distance}} miles - <a href="https://maps.google.com/?daddr={{program.fullAddress}}&saddr=Current%20Location">Get Directions</a>
 						</div>
 						<div class="phone">
 							206-123-4567

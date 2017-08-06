@@ -5,17 +5,17 @@ app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location&topic&dimension&lat&lng',
+            url: '/?query&formatted_address&topic&dimension&lat&lng',
             component: 'searchWidget'
         },
         {
             name: 'detail',
-            url: '/detail/:programId?query&location&topic&dimension&lat&lng',
+            url: '/detail/:programId?query&formatted_address&topic&dimension&lat&lng',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&location&topic&dimension&lat&lng',
+            url: '/mapview/?query&formatted_address&topic&dimension&lat&lng',
             component: 'searchMapview'
         }];
 
@@ -184,6 +184,7 @@ app.component('searchDetail', {
         var programId = $stateParams.programId;
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
                 getAdditionInfo();
@@ -227,6 +228,8 @@ app.component('searchDetail', {
         if (dataCache.isProgramEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
         } else if (programId){
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
+
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             getAdditionInfo();
             setupTopicFilter()
@@ -277,6 +280,7 @@ app.component('searchMapview', {
     controller: function ($rootScope, $scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             setupMap();
             setupTopicFilter();
         }
@@ -300,7 +304,9 @@ app.component('searchMapview', {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLWLProgram').then(successCallback, dataCache.errorCallback);
 
         } else {
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             $ctrl.programs = dataCache.getProgramCache();
+
             setupMap();
             setupTopicFilter();
         }
@@ -766,5 +772,5 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	dist = dist * 60 * 1.1515;
 	if (unit=="K") { dist = dist * 1.609344 };
 	if (unit=="N") { dist = dist * 0.8684 };
-	return dist;
+	return dist.toFixed(0);
 }

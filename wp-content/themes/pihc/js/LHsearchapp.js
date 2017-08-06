@@ -5,17 +5,17 @@ app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&location&age&gender&household&focus&objective&type&ethnic',
+            url: '/?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchWidget'
         },
         {
             name: 'detail',
-            url: '/detail/:programId?query&location&age&gender&household&focus&objective&type&ethnic',
+            url: '/detail/:programId?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&location&age&gender&household&focus&objective&type&ethnic',
+            url: '/mapview/?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchMapview'
         }];
 
@@ -29,6 +29,7 @@ app.component('searchWidget', {
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
         }
 
         var $ctrl = this;
@@ -50,6 +51,7 @@ app.component('searchWidget', {
         if (dataCache.isEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
         } else {
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             $ctrl.programs = dataCache.getProgramCache();
         }
 
@@ -169,6 +171,7 @@ app.component('searchDetail', {
         var programId = $stateParams.programId;
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             console.log($ctrl.programs);
             if (programId) {
                 $ctrl.currentProgram = dataCache.findProgramById(programId);
@@ -213,6 +216,8 @@ app.component('searchDetail', {
         if (dataCache.isEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
         } else if (programId){
+          dataCache.updateDistance($stateParams.lat, $stateParams.lng);
+
             $ctrl.currentProgram = dataCache.findProgramById(programId);
             //codeAddress($ctrl.currentProgram);
             getAdditionInfo();
@@ -265,6 +270,7 @@ app.component('searchMapview', {
     controller: function ($scope, $http, dataCache, $timeout, $location, $stateParams, NgMap, $state) {
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             setupMap();
         }
 
@@ -308,6 +314,7 @@ app.component('searchMapview', {
         if (dataCache.isEmpty()) {
             $http.get('https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/getLHProgram').then(successCallback, dataCache.errorCallback);
         } else {
+            dataCache.updateDistance($stateParams.lat, $stateParams.lng);
             $ctrl.programs = dataCache.getProgramCache();
             setupMap();
         }
@@ -555,6 +562,13 @@ app.factory('dataCache', function($http) {
                     return programCache[i];
                 }
             }
+        },
+        updateDistance: function(mylat, mylng) {
+          for(var i in programCache){
+              if(!programCache[i].distance && programCache[i].GeoInfo__Latitude__s && programCache[i].GeoInfo__Latitude__s && mylat && mylng){
+                programCache[i].distance = distance(Number(mylat), Number(mylng), Number(programCache[i].GeoInfo__Latitude__s), Number(programCache[i].GeoInfo__Longitude__s));
+              }
+          }
         }
     };
 });
@@ -729,4 +743,23 @@ function generatePDF(programs){
           columnGap: 10,
       }
   }
+}
+
+
+var myAddress;
+var mylat;
+var mylng;
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+	var radlat1 = Math.PI * lat1/180;
+	var radlat2 = Math.PI * lat2/180;
+	var theta = lon1-lon2;
+	var radtheta = Math.PI * theta/180;
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist);
+	dist = dist * 180/Math.PI;
+	dist = dist * 60 * 1.1515;
+	if (unit=="K") { dist = dist * 1.609344 };
+	if (unit=="N") { dist = dist * 0.8684 };
+	return dist.toFixed(0);
 }
