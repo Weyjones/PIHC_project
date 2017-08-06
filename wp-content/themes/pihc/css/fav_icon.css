@@ -1,0 +1,9 @@
+.star-icon:after{
+    content: "\2605";
+    font-size: 1.5em;
+    color: #bbb;
+}
+.star-icon:hover:after, .star-icon.active:after{
+    color: #FFAC33;
+    cursor: pointer;
+}

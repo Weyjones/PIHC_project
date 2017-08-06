@@ -27,7 +27,6 @@ app.config(function($stateProvider) {
 app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livehealthy-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
-
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormData(response.data);
             dataCache.setProgramCache($ctrl.programs);
@@ -153,6 +152,9 @@ app.component('searchWidget', {
                 return;
             }
         };
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 
 });
@@ -245,6 +247,9 @@ app.component('searchDetail', {
         $scope.expandFilterSection = function (key) {
             return filterValuesIncluded[key].length === 0;
         };
+
+        /*********** Favorite **********/
+        $scope.addFavorite = dataCache.addFavorite;
     }
 });
 
@@ -458,6 +463,20 @@ app.factory('dataCache', function() {
         return programLocations.map(dataMapper);
     }
 
+    function addFavorite(program) {
+        var data = {
+            title: program.Id,
+            excerpt: program.AccountName,
+            status: "publish"
+        };
+        program.saved = true;
+        var createPost = new XMLHttpRequest();
+        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
+        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        createPost.send(JSON.stringify(data));
+    }
+
     return {
         errorCallback: errorCallback,
         transFormData: transFormData,
@@ -481,6 +500,7 @@ app.factory('dataCache', function() {
                 }
             }
         },
+        addFavorite: addFavorite,
         findProgramByName: function(name, account, address ){
             for(var i in programCache){
                 if(programCache[i].Name == name && programCache[i].Account__c == account && programCache[i].Address__c == address){

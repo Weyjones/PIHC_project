@@ -182,6 +182,7 @@ function pihc_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	wp_localize_script('pihc-navigation', 'magicalData', array('nonce' => wp_create_nonce('wp_rest')));
 }
 add_action( 'wp_enqueue_scripts', 'pihc_scripts' );
 
