@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="filter-container col-sm-3">
 			<!-- <search-filter></search-filter> -->
-			<div>
+			<div ng-if="filteredPrograms">
 				{{filteredPrograms.length}} result(s)
 			</div>
 			<button class="view-map-btn" ng-click="openMapview()">See Listings in Map View</button>
