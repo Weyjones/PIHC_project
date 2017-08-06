@@ -493,8 +493,8 @@ app.factory('dataCache', function($http) {
     function addFavorite(program) {
         if (!program.saved) {
             var data = {
-                title: program.Id,
-                excerpt: program.AccountName,
+                title: program.AccountName,
+                excerpt: window.location.pathname + '#/detail/' + program.Id,
                 status: "publish"
             };
             program.saved = true;
@@ -522,10 +522,11 @@ app.factory('dataCache', function($http) {
     function saveFavPrograms(response) {
         var favPrograms = response.data;
         var favProgramIds = favPrograms.map(function (p) {
-            return p.title.rendered;
+            var excerpt = p.excerpt.rendered;
+            var excerptSplits = excerpt.substring(3, excerpt.length-5).split('/');
+            return excerptSplits[excerptSplits.length-1];
         });
-        console.log(favProgramIds);
-        console.log(programCache);
+
         programCache.forEach(function(p) {
             if(favProgramIds.indexOf(p.Id) > -1) {
                 p.saved = true;
