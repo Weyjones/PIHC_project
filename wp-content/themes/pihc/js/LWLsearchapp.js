@@ -161,9 +161,14 @@ app.component('searchWidget', {
                 return;
             }
         };
-        
+
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -258,6 +263,11 @@ app.component('searchDetail', {
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -377,10 +387,14 @@ app.component('searchMapview', {
                 currentValues.push(value);
             }
 
-            for(var key in filterValuesIncluded) {
-                console.log(key + ":" + filterValuesIncluded[key]);
+            var params = {};
+            if (topicFilterValues.length > 0) {
+                params.topic = topicFilterValues.join(',');
             }
-            console.log($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('mapview', params);
 
         };
         $scope.programFilter = function(program) {
@@ -413,6 +427,11 @@ app.component('searchMapview', {
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -489,10 +508,24 @@ app.factory('dataCache', function() {
         createPost.send(JSON.stringify(data));
     }
 
+    function saveSearchURL(title, url){
+        var data = {
+            title: title,
+            excerpt: url,
+            status: "publish"
+        };
+        var createPost = new XMLHttpRequest();
+        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/saved_search');
+        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        createPost.send(JSON.stringify(data));
+    }
+
     return {
         errorCallback: errorCallback,
         transFormData: transFormData,
         addFavorite: addFavorite,
+        saveSearchURL: saveSearchURL,
         isProgramEmpty: function() {
             return programCache === undefined;
         },

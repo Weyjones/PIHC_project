@@ -155,8 +155,12 @@ app.component('searchWidget', {
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
-
 });
 
 app.component('searchDetail', {
@@ -250,6 +254,11 @@ app.component('searchDetail', {
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -393,9 +402,14 @@ app.component('searchMapview', {
                 return;
             }
         };
-        
+
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
+        $scope.saveSearchURL = function() {
+            var title = document.getElementById("searchName").value;
+            var URL = document.URL;
+            dataCache.saveSearchURL(title, URL);
+        };
     }
 });
 
@@ -480,6 +494,19 @@ app.factory('dataCache', function() {
         createPost.send(JSON.stringify(data));
     }
 
+    function saveSearchURL(title, url){
+        var data = {
+            title: title,
+            excerpt: url,
+            status: "publish"
+        };
+        var createPost = new XMLHttpRequest();
+        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/saved_search');
+        createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
+        createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        createPost.send(JSON.stringify(data));
+    }
+
     return {
         errorCallback: errorCallback,
         transFormData: transFormData,
@@ -504,6 +531,7 @@ app.factory('dataCache', function() {
             }
         },
         addFavorite: addFavorite,
+        saveSearchURL: saveSearchURL,
         findProgramByName: function(name, account, address ){
             for(var i in programCache){
                 if(programCache[i].Name == name && programCache[i].Account__c == account && programCache[i].Address__c == address){
