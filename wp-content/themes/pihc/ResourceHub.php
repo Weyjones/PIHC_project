@@ -78,8 +78,23 @@
 	?>
 </div>
 </li>
-
-<li><a href="">SIGN IN</a></li>
+<?php
+if ( is_user_logged_in() ) {
+global $current_user;
+      echo '<li>';
+      echo '<a href="/account/" title="My Account">My Account</a>';
+      echo '</li>';
+}
+?>
+<li>
+<?php
+if ( is_user_logged_in() ) {
+		echo '<a href="'.wp_logout_url().'" title="Logout">Log out</a>';
+	} else {
+		echo '<a href="/login/" title="Login">Sign In</a>';
+}
+?>
+</li>
 </ul></div></div>
 	</div>
 </div>

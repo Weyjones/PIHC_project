@@ -135,9 +135,17 @@
 						<div class="back-to-list">
 							<span class="back-to-list-link" ng-click="backToSearch()">back to listing</span>
 						</div>
-						<h3 class="title">
-							{{$ctrl.currentProgram.AccountName}}
-						</h3>
+						<div class="row">
+							<div class="col-sm-10">
+								<h3 class="title">
+									{{$ctrl.currentProgram.AccountName}}
+								</h3>
+							</div>
+							<div class="col-sm-2">
+								<span class="star-icon" ng-click="addFavorite($ctrl.currentProgram)" ng-class="{'active': $ctrl.currentProgram.saved}"></span>
+							</div>
+						</div>
+
 						<div class="description">
 							{{$ctrl.currentProgram.Description__c}}
 						</div>

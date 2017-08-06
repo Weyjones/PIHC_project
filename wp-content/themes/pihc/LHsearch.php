@@ -1,9 +1,10 @@
 <?php /* Template Name: Live Healthy 2020 search */ ?>
-
+<?php wp_localize_script('LHsearchapp.js', 'magicalData', array('nonce' => wp_create_nonce('wp_rest')));?>
 <?php get_header(); ?>
 <script src="<?php echo (get_template_directory_uri().'/js/pdfmake.js') ?>"></script>
 <script src="<?php echo (get_template_directory_uri().'/js/vfs_fonts.js') ?>"></script>
 <link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/treeview-style.css') ?>' type='text/css' />
+<link rel='stylesheet' href='<?php echo (get_template_directory_uri().'/css/fav_icon.css') ?>' type='text/css' />
 
 <header id="header">
 	<div class="container-fluid">
