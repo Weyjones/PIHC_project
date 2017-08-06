@@ -70,6 +70,10 @@ app.component('searchWidget', {
             $state.go('mapview', params);
         };
 
+        $scope.sendResult = function () {
+            sentFilledResult();
+        }
+
         $scope.outputPDF = function (programs) {
             // playground requires you to assign document definition to a variable called dd
             generatePDF(programs);
@@ -310,6 +314,27 @@ app.component('searchMapview', {
             };
         }
 
+
+        $scope.sendResult = function () {
+            sentFilledResult();
+        }
+
+        $scope.outputPDF = function (programs) {
+            // playground requires you to assign document definition to a variable called dd
+            generatePDF(programs);
+            pdfMake.createPdf(dd).open('LiveWellLocart_Program_Report.pdf');
+        }
+        $scope.downloadPDF = function (programs) {
+            // playground requires you to assign document definition to a variable called dd
+            generatePDF(programs);
+            pdfMake.createPdf(dd).download('LiveWellLocart_Program_Report.pdf');
+        }
+        $scope.printPDF = function (programs) {
+            // playground requires you to assign document definition to a variable called dd
+            generatePDF(programs);
+            pdfMake.createPdf(dd).print('LiveWellLocart_Program_Report.pdf');
+        }
+
         /************ Filter ********/
         function setupTopicFilter() {
             for(var i in topicFilterValues) {
@@ -501,6 +526,29 @@ app.filter('cut', function () {
         return value + (tail || ' …');
     };
 });
+
+function sentFilledResult(){
+  var senderName = document.getElementById("senderName").value;
+
+  var reciver = document.getElementById("reciver").value;
+
+  var subject = document.getElementById("subject").value;
+
+  var textbody = document.getElementById("textbody").value;
+
+  var currentURL = window.location.href;
+  textbody = textbody + '<br/>' + currentURL
+  // var data = new FormData();
+  // data.append('senderName', senderName);
+  // data.append('reciver', reciver);
+  // data.append('subject', subject);
+  // data.append('textbody', textbody);
+
+  $.post( "https://pihc-pihccommunity.cs21.force.com/members/services/apexrest/sendResults", { senderName: senderName, reciver: reciver, subject: subject, textbody: textbody } ).done(function( data ) {
+    alert( 'The email was sent successfully.' );
+  });
+
+}
 
 var dd;
 function generatePDF(programs){
