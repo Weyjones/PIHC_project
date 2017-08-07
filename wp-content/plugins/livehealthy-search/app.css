@@ -13,10 +13,6 @@ button.view-map-btn{
     margin: auto 120px;
     padding-top: 30px;
 }
-.function-area .function-header{
-    font-size: 1.3em;
-    font-weight: bold;
-}
 ul.function-options{
     list-style: none;
     padding-left: 0;

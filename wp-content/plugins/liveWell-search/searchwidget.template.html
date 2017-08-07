@@ -2,17 +2,20 @@
 <div class="search-container container">
 	<div class="row">
 		<div class="filter-container col-sm-3">
-			<!-- <search-filter></search-filter> -->
-			<div ng-if="filteredPrograms">
-				{{filteredPrograms.length}} result(s)
-			</div>
 			<button class="view-map-btn" ng-click="openMapview()">See Listings in Map View</button>
-
+			<h3 class="color-teal">Export Results</h3>
+			<ul class="filter-list">
+				<li>
+					<a class="exportButton" data-toggle="modal" data-target="#emailModal">E-mail a link to your results</a>
+				</li>
+				<li ng-if="$ctrl.allowSave">
+					<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save your search</a>
+				</li>
+				<li>
+					<a class="exportButton" data-toggle="modal" data-target="#pdfModal">Export listings to PDF</a>
+				</li>
+			</ul>
 			<hr/>
-			<div ng-if="$ctrl.allowSave">
-				<h3>Save Search Results</h3>
-				<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save This Search</a>
-			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="saveSearchModal" role="dialog">
 				<div class="modal-dialog">
@@ -41,12 +44,9 @@
 
 				</div>
 			</div>
-			<h3>Export Results</h3>
-			<a class="exportButton" data-toggle="modal" data-target="#emailModal">E-mail a Link to Results</a><br>
 			<!-- Modal -->
 		  <div class="modal fade" id="emailModal" role="dialog">
 		    <div class="modal-dialog">
-
 		      <!-- Modal content-->
 		      <div class="modal-content">
 		        <div class="modal-header">
@@ -97,13 +97,9 @@
 
 		    </div>
 		  </div>
-
-			<a class="exportButton" data-toggle="modal" data-target="#pdfModal">Export Results as PDF</a>
-
 			<!-- Modal -->
 		  <div class="modal fade" id="pdfModal" role="dialog">
 		    <div class="modal-dialog">
-
 		      <!-- Modal content-->
 		      <div class="modal-content">
 		        <div class="modal-header">
@@ -163,32 +159,28 @@
 		    </div>
 		  </div>
 
-
-			<!----Filter--->
-
 			<div class="filters">
-				<!-- <h2 class="filter-header">Search Filter</h2>
-				<div class="function-area">
-					<input ng-model="$ctrl.query" />
-				</div> -->
+				<h3 class="color-orange">Search Filter</h3>
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="">
-						Relevance
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="ProgramName">
-						ProgramName
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="AccountName">
-						AccountName
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="Distance">
-						Distance
-					</label><br/>
+					<ul class="filter-list">
+						<li ng-click="updateOrderBy('')" ng-class="{'selected': $ctrl.orderProp === ''}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="">-->
+							Relevance
+						</li>
+						<li ng-click="updateOrderBy('ProgramName')" ng-class="{'selected': $ctrl.orderProp === 'ProgramName'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">-->
+							ProgramName
+						</li>
+						<li ng-click="updateOrderBy('AccountName')" ng-class="{'selected': $ctrl.orderProp === 'AccountName'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">-->
+							AccountName
+						</li>
+						<li ng-click="updateOrderBy('distance')" ng-class="{'selected': $ctrl.orderProp === 'distance'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">-->
+							Distance
+						</li>
+					</ul>
 				</div>
 				<div class="treeview hover">
 					<ul style="list-style:none" class="lwl-topics-filter-list">
@@ -203,6 +195,9 @@
 			</div>
 		</div>
 		<div class="result-container col-sm-9">
+			<div ng-if="filteredPrograms">
+				{{filteredPrograms.length}} result(s)
+			</div>
 			<div>
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">

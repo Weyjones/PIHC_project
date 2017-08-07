@@ -5,17 +5,17 @@ app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
+            url: '/?query&orderBy&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchWidget'
         },
         {
             name: 'detail',
-            url: '/detail/:programId?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
+            url: '/detail/:programId?query&orderBy&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
+            url: '/mapview/?query&orderBy&formatted_address&age&gender&household&focus&objective&type&ethnic&lat&lng',
             component: 'searchMapview'
         }];
 
@@ -37,14 +37,14 @@ app.component('searchWidget', {
 
         $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
 
-        $ctrl.orderProp = '';
+        $ctrl.orderProp = $stateParams.orderBy || '';
         $ctrl.keyword = $stateParams.query || '';
 
         $ctrl.openDetailPage = function(program) {
-            //var url = '/detail/' + program.Id;
-            //$location.url(url);
-            //TODO: pass in query and location
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -82,6 +82,12 @@ app.component('searchWidget', {
         $scope.expandFilterSection = function (key) {
             return filterValuesIncluded[key].length === 0;
         };
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('search', params);
+        };
         $scope.includeFilter = function (key, value) {
             var currentValues = filterValuesIncluded[key];
             var i = currentValues.indexOf(value);
@@ -90,8 +96,7 @@ app.component('searchWidget', {
             } else {
                 currentValues.push(value);
             }
-
-            var params = {};
+            var params = angular.copy($stateParams);
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -99,9 +104,7 @@ app.component('searchWidget', {
         };
 
         $scope.openMapview = function(){
-            //$location.url(/mapview/);
-            //TODO: pass in query and location
-            var params = {};
+            var params = angular.copy($stateParams);
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -110,7 +113,7 @@ app.component('searchWidget', {
 
         $scope.sendResult = function () {
             sentFilledResult();
-        }
+        };
 
         $scope.outputPDF = function (programs) {
             // playground requires you to assign document definition to a variable called dd
@@ -205,16 +208,23 @@ app.component('searchDetail', {
         }
 
         $ctrl.openDetailPage = function(program) {
-            //var url = '/detail/' + program.Id;
-            //$location.url(url);
-            //TODO: pass in query and location
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
             $state.go('detail', params);
             $ctrl.currentProgram = program;
             getAdditionInfo();
+        };
+        $scope.openMapview = function(){
+            var params = angular.copy($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('mapview', params);
         };
 
         if (dataCache.isEmpty()) {
@@ -228,7 +238,7 @@ app.component('searchDetail', {
         }
 
         $scope.backToSearch = function () {
-            var params = {};
+            var params = angular.copy($stateParams);
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -258,6 +268,12 @@ app.component('searchDetail', {
         $scope.expandFilterSection = function (key) {
             return filterValuesIncluded[key].length === 0;
         };
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('detail', params);
+        };
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
@@ -281,7 +297,7 @@ app.component('searchMapview', {
         var $ctrl = this;
         $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
 
-        $ctrl.orderProp = '';
+        $ctrl.orderProp = $stateParams.orderBy || '';
         $ctrl.keyword = $stateParams.query || '';
         console.log($stateParams);
 
@@ -303,13 +319,22 @@ app.component('searchMapview', {
             // playground requires you to assign document definition to a variable called dd
             generatePDF(programs);
             pdfMake.createPdf(dd).print('LiveWellLocart_Program_Report.pdf');
-        }
-
+        };
+        $scope.openListView = function(){
+            var params = angular.copy($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
+        };
         $ctrl.openDetailPage = function(program) {
             //var url = '/detail/' + program.Id;
             //$location.url(url);
             //TODO: pass in query and location
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -380,9 +405,11 @@ app.component('searchMapview', {
                 currentValues.push(value);
             }
 
-            for(var key in filterValuesIncluded) {
-                console.log(key + ":" + filterValuesIncluded[key]);
+            var params = angular.copy($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
             }
+            $state.go('search', params);
         };
         $scope.programFilter = function(program) {
             var containAll = true;
@@ -411,7 +438,12 @@ app.component('searchMapview', {
                 return;
             }
         };
-
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('mapview', params);
+        };
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
         $scope.saveSearchURL = function() {

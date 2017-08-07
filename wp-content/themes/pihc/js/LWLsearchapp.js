@@ -5,17 +5,17 @@ app.config(function($stateProvider) {
     var states = [
         {
             name: 'search',
-            url: '/?query&formatted_address&topic&dimension&lat&lng',
+            url: '/?query&orderBy&formatted_address&topic&dimension&lat&lng',
             component: 'searchWidget'
         },
         {
             name: 'detail',
-            url: '/detail/:programId?query&formatted_address&topic&dimension&lat&lng',
+            url: '/detail/:programId?query&orderBy&formatted_address&topic&dimension&lat&lng',
             component: 'searchDetail'
         },
         {
             name: 'mapview',
-            url: '/mapview/?query&formatted_address&topic&dimension&lat&lng',
+            url: '/mapview/?query&orderBy&formatted_address&topic&dimension&lat&lng',
             component: 'searchMapview'
         }];
 
@@ -34,13 +34,16 @@ app.component('searchWidget', {
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
         var $ctrl = this;
         $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
-        $ctrl.orderProp = '';
+        $ctrl.orderProp = $stateParams.orderBy || '';
         $ctrl.keyword = $stateParams.query || '';
 
         $ctrl.openDetailPage = function(program) {
             //var url = '/detail/' + program.Id;
             //$location.url(url);
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -67,7 +70,7 @@ app.component('searchWidget', {
         $scope.openMapview = function(){
             //$location.url(/mapview/);
             //TODO: pass in query and location
-            var params = {};
+            var params = angular.copy($stateParams);
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -128,7 +131,7 @@ app.component('searchWidget', {
                 currentValues.push(value);
             }
 
-            var params = {};
+            var params = angular.copy($stateParams);
             if (topicFilterValues.length > 0) {
                 params.topic = topicFilterValues.join(',');
             }
@@ -166,7 +169,12 @@ app.component('searchWidget', {
                 return;
             }
         };
-
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('search', params);
+        };
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
         $scope.saveSearchURL = function() {
@@ -214,9 +222,10 @@ app.component('searchDetail', {
             }
         }
         $ctrl.openDetailPage = function(program) {
-            //var url = '/detail/' + program.Id;
-            //$location.url(url);
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -238,7 +247,7 @@ app.component('searchDetail', {
 
         $scope.backToSearch = function () {
             //$location.url('/');
-            var params = {};
+            var params = angular.copy($stateParams);
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -264,7 +273,12 @@ app.component('searchDetail', {
         var filterValuesIncluded = {
             'dimension': dimensionFilterValues
         };
-
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('detail', params);
+        };
 
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
@@ -288,13 +302,16 @@ app.component('searchMapview', {
 
         var $ctrl = this;
         $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
-        $ctrl.orderProp = '';
+        $ctrl.orderProp = $stateParams.orderBy || '';
         $ctrl.keyword = $stateParams.query || '';
 
         $ctrl.openDetailPage = function(program) {
             //var url = '/detail/' + program.Id;
             //$location.url(url);
-            var params = {programId: program.Id};
+            var params = angular.copy($stateParams);
+            if (program.Id){
+                params.programId = program.Id;
+            }
             for(var k in filterValuesIncluded) {
                 params[k] = filterValuesIncluded[k].join(',');
             }
@@ -356,7 +373,13 @@ app.component('searchMapview', {
             generatePDF(programs);
             pdfMake.createPdf(dd).print('LiveWellLocart_Program_Report.pdf');
         }
-
+        $scope.openListView = function(){
+            var params = angular.copy($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
+        };
         /************ Filter ********/
         function setupTopicFilter() {
             for(var i in topicFilterValues) {
@@ -392,7 +415,7 @@ app.component('searchMapview', {
                 currentValues.push(value);
             }
 
-            var params = {};
+            var params = angular.copy($stateParams);
             if (topicFilterValues.length > 0) {
                 params.topic = topicFilterValues.join(',');
             }
@@ -430,6 +453,12 @@ app.component('searchMapview', {
             }
         };
 
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
+            var params = angular.copy($stateParams);
+            params.orderBy = $ctrl.orderProp;
+            $state.go('mapview', params);
+        };
         /*********** Favorite **********/
         $scope.addFavorite = dataCache.addFavorite;
         $scope.saveSearchURL = function() {

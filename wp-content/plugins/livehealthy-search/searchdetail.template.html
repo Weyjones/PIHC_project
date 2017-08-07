@@ -1,17 +1,21 @@
 <div class="search-container container">
 	<div class="row">
 		<div class="filter-container col-sm-3">
-			<!-- <search-filter></search-filter> -->
-			<div ng-if="filteredPrograms">
-				{{filteredPrograms.length}} result(s)
-			</div>
-			<button class="view-map-btn">See Listings in Map View</button>
-			<hr/>
-			<div ng-if="$ctrl.allowSave">
-				<h3>Save Search Results</h3>
-				<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save This Search</a>
-			</div>
+			<button class="view-map-btn" ng-click="openMapview()">See Listings in Map View</button>
 
+			<h3 class="color-teal">Export Results</h3>
+			<ul class="filter-list">
+				<li>
+					<a class="exportButton" data-toggle="modal" data-target="#emailModal">E-mail a link to your results</a>
+				</li>
+				<li ng-if="$ctrl.allowSave">
+					<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save your search</a>
+				</li>
+				<li>
+					<a class="exportButton" data-toggle="modal" data-target="#pdfModal">Export listings to PDF</a>
+				</li>
+			</ul>
+			<hr/>
 			<!-- Modal -->
 			<div class="modal fade" id="saveSearchModal" role="dialog">
 				<div class="modal-dialog">
@@ -40,36 +44,152 @@
 
 				</div>
 			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="emailModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">E-mail a link to your results</h4>
+						</div>
+						<div class="modal-body">
+							<fieldset>
+								<legend>Email Options</legend>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirTitle">Your Name</label>
+											<input class="form-control" type="text" id="senderName" placeholder="Please Enter a Title"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirCreatedBy">E-mail To (required)</label>
+											<input class="form-control" type="text" id="reciver" value=""><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirDescription">Subject</label>
+											<input class="form-control" type="text" id="subject" value="Resources I found at Providence"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirDescription">textbody</label>
+											<textarea class="form-control" id="textbody" rows="3">I found these resources at LiveWell Local</textarea>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="sendResult()">Send</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="pdfModal" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Export Results as PDF</h4>
+						</div>
+						<div class="modal-body">
+							<p><strong>Note:</strong> If you export too many result, <em>it takes more time.</em></p>
+							<fieldset>
+								<legend>Header Options</legend>
+								<div class="row">
+									<div class="col-sm-7">
+										<div class="form-group has-feedback">
+											<label for="dirTitle">Title (max. 60 characters)</label>
+											<input class="form-control" type="text" id="dirTitle" maxlength="60" placeholder="Please Enter a Title"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+									<div class="col-sm-5">
+										<div class="form-group has-feedback">
+											<label for="dirSubtitle">Referred to</label>
+											<input class="form-control" type="text" id="referredTo" maxlength="140"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-7">
+										<div class="form-group has-feedback">
+											<label for="dirDatePrinted">Date Printed</label>
+											<input class="form-control" type="date" id="dirDatePrinted" value="2017-08-05"><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+									<div class="col-sm-5">
+										<div class="form-group has-feedback">
+											<label for="dirCreatedBy">Prepared By</label>
+											<input class="form-control" type="text" id="preparedBy" value=""><span class="hidden glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+										</div>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group has-feedback">
+											<label for="dirDescription">Description</label>
+											<textarea class="form-control" id="PDFdescription" rows="3">This tailored list includes:</textarea>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="outputPDF(filteredPrograms)">Open PDF in new Window</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="downloadPDF(filteredPrograms)">Download PDF</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="printPDF(filteredPrograms)">Print PDF</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 			<div class="filters">
-				<!-- <h2 class="filter-header">Search Filter</h2>
-				<div class="function-area">
-					<input ng-model="$ctrl.query" />
-				</div> -->
+				<h3 class="color-orange">Search Filter</h3>
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="">
-						Relevance
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="ProgramName">
-						ProgramName
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="AccountName">
-						AccountName
-					</label><br/>
-					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="Distance">
-						Distance
-					</label><br/>
+					<ul class="filter-list">
+						<li ng-click="updateOrderBy('')" ng-class="{'selected': $ctrl.orderProp === ''}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="">-->
+							Relevance
+						</li>
+						<li ng-click="updateOrderBy('ProgramName')" ng-class="{'selected': $ctrl.orderProp === 'ProgramName'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">-->
+							ProgramName
+						</li>
+						<li ng-click="updateOrderBy('AccountName')" ng-class="{'selected': $ctrl.orderProp === 'AccountName'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">-->
+							AccountName
+						</li>
+						<li ng-click="updateOrderBy('distance')" ng-class="{'selected': $ctrl.orderProp === 'distance'}">
+							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">-->
+							Distance
+						</li>
+					</ul>
 				</div>
 				<div class="treeview hover">
 					<ul>
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-1" ng-checked="expandFilterSection('age')">
 							<label for="cb-1">Ages Reached by Program</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('age', 'Seniors (60+)')" ng-checked="checkFilter('age', 'Seniors (60+)')">Seniors (60+)</li>
 								<li><input type="checkbox" ng-click="includeFilter('age', 'Adult (26-59)')" ng-checked="checkFilter('age', 'Adult (26-59)')">Adults (26-59)</li>
 								<li><input type="checkbox" ng-click="includeFilter('age', 'Young Adults (19-25)')" ng-checked="checkFilter('age', 'Young Adults (19-25)')">Young Adults (19-25)</li>
@@ -81,7 +201,7 @@
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-2" ng-checked="expandFilterSection('gender')">
 							<label for="cb-2">Genders Served</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('gender', 'Female')" ng-checked="checkFilter('gender', 'Female')">Female</li>
 								<li><input type="checkbox" ng-click="includeFilter('gender', 'Male')" ng-checked="checkFilter('gender', 'Male')">Male</li>
 								<li><input type="checkbox" ng-click="includeFilter('gender', 'Gender Fluid')" ng-checked="checkFilter('gender', 'Gender Fluid')">Gender Fluid</li>
@@ -90,7 +210,7 @@
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-3" ng-checked="expandFilterSection('household')">
 							<label for="cb-3">Household Type Served</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults')" ng-checked="checkFilter('household', 'Multiple adults')">Multiple Adults</li>
 								<li><input type="checkbox" ng-click="includeFilter('household', 'Multiple adults with children')" ng-checked="checkFilter('household', 'Multiple adults')">Multiple Adults with Children</li>
 								<li><input type="checkbox" ng-click="includeFilter('household', 'Open to all (general community)')" ng-checked="checkFilter('household', 'Open to all (general community)')">Open to All (General Community)</li>
@@ -102,7 +222,7 @@
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-4" ng-checked="expandFilterSection('focus')">
 							<label for="cb-4">Program Focus</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('focus', 'Adult activity programs')" ng-checked="checkFilter('focus', 'Adult activity programs')">Adult Activity Programs</li>
 								<li><input type="checkbox" ng-click="includeFilter('focus', 'Child nutrition')" ng-checked="checkFilter('focus', 'Child nutrition')">Child Nutrition</li>
 								<li><input type="checkbox" ng-click="includeFilter('focus', 'Community nutrition education')" ng-checked="checkFilter('focus', 'Community nutrition education')">Community Nutrition Education</li>
@@ -120,7 +240,7 @@
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-5" ng-checked="expandFilterSection('objective')">
 							<label for="cb-5">Program Objective</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('objective', 'Capacity Building')" ng-checked="checkFilter('objective', 'Capacity Building')">Capacity Building</li>
 								<li><input type="checkbox" ng-click="includeFilter('objective', 'Ensuring a healthy weight')" ng-checked="checkFilter('objective', 'Ensuring a healthy weight')">Ensuring a Healthy Weight</li>
 								<li><input type="checkbox" ng-click="includeFilter('objective', 'Increasing adult activity')" ng-checked="checkFilter('objective', 'Increasing adult activity')">Increasing Adult Activity</li>
@@ -143,7 +263,7 @@
 						<li class="level-1">
 							<input class="expand-label" type="checkbox" id="cb-7" ng-checked="expandFilterSection('ethnic')">
 							<label for="cb-7">Sub-Community or Ethnic Group Reach</label>
-							<ul>
+							<ul class="filter-list">
 								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'African American')" ng-checked="checkFilter('ethnic', 'African American')">African American</li>
 								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Caucasian')" ng-checked="checkFilter('ethnic', 'Caucasian')">Caucasian</li>
 								<li><input type="checkbox" ng-click="includeFilter('ethnic', 'Chinese')" ng-checked="checkFilter('ethnic', 'Chinese')">Chinese</li>
@@ -162,6 +282,9 @@
 			</div>
 		</div>
 		<div class="result-container col-sm-9">
+			<div ng-if="filteredPrograms">
+				{{filteredPrograms.length}} result(s)
+			</div>
 			<div>
 				<div class="detail-view row">
 					<div class="info col-sm-7">
