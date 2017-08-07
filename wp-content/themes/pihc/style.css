@@ -1591,3 +1591,9 @@ ul.filter-list input[type='radio']{
 .entry-header, .entry-footer{
   display: none;
 }
+.content-intro .container-fluid{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: auto !important;
+  margin-bottom: 0;
+}

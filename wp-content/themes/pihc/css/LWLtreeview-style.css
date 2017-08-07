@@ -12,22 +12,25 @@ li {
 label {
   font-size: medium;
 }
-
+.mentalIcon, .neighborIcon, .physicalIcon, .relastionlIcon, .securityIcon, .workIcon{
+  width: 26.5px;
+  height: 25.5px;
+}
 .mentalIcon{
-  content:url('/wp-content/plugins/livewell-search/images/mental_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/mental_icon.png');
 }
 .neighborIcon{
-  content:url('/wp-content/plugins/livewell-search/images/neighborhood_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/neighborhood_icon.png');
 }
 .physicalIcon{
-  content:url('/wp-content/plugins/livewell-search/images/physical_health_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/physical_health_icon.png');
 }
 .relastionlIcon{
-  content:url('/wp-content/plugins/livewell-search/images/relationships_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/relationships_icon.png');
 }
 .securityIcon{
-  content:url('/wp-content/plugins/livewell-search/images/security_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/security_icon.png');
 }
 .workIcon{
-  content:url('/wp-content/plugins/livewell-search/images/work_icon.png');
+  background-image:url('/wp-content/plugins/livewell-search/images/work_icon.png');
 }

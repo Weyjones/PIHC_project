@@ -106,7 +106,6 @@ if ( is_user_logged_in() ) {
 		<h1 style="color:<?php the_field(intro_title_color); ?>"><?php the_field(intro_title); ?></h1>
 		<p>
 			<?php the_field(intro_description); ?>
-
 		</p>
 	</div>
 </div>
