@@ -82,7 +82,8 @@ app.component('searchWidget', {
         $scope.expandFilterSection = function (key) {
             return filterValuesIncluded[key].length === 0;
         };
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('search', params);
@@ -267,7 +268,8 @@ app.component('searchDetail', {
         $scope.expandFilterSection = function (key) {
             return filterValuesIncluded[key].length === 0;
         };
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('detail', params);
@@ -436,7 +438,8 @@ app.component('searchMapview', {
                 return;
             }
         };
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('mapview', params);

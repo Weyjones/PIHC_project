@@ -169,7 +169,8 @@ app.component('searchWidget', {
                 return;
             }
         };
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('search', params);
@@ -272,7 +273,8 @@ app.component('searchDetail', {
         var filterValuesIncluded = {
             'dimension': dimensionFilterValues
         };
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('detail', params);
@@ -371,7 +373,13 @@ app.component('searchMapview', {
             generatePDF(programs);
             pdfMake.createPdf(dd).print('LiveWellLocart_Program_Report.pdf');
         }
-
+        $scope.openListView = function(){
+            var params = angular.copy($stateParams);
+            for(var k in filterValuesIncluded) {
+                params[k] = filterValuesIncluded[k].join(',');
+            }
+            $state.go('search', params);
+        };
         /************ Filter ********/
         function setupTopicFilter() {
             for(var i in topicFilterValues) {
@@ -445,7 +453,8 @@ app.component('searchMapview', {
             }
         };
 
-        $scope.updateOrderBy = function(){
+        $scope.updateOrderBy = function(value){
+            $ctrl.orderProp = value;
             var params = angular.copy($stateParams);
             params.orderBy = $ctrl.orderProp;
             $state.go('mapview', params);
