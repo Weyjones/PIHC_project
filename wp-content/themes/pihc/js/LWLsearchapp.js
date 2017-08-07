@@ -540,7 +540,7 @@ app.factory('dataCache', function($http) {
             };
             program.saved = true;
             var createPost = new XMLHttpRequest();
-            createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/favorite_program');
+            createPost.open('POST', '/wp-json/wp/v2/favorite_program');
             createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
             createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             createPost.send(JSON.stringify(data));
@@ -554,7 +554,7 @@ app.factory('dataCache', function($http) {
             status: "publish"
         };
         var createPost = new XMLHttpRequest();
-        createPost.open('POST', 'http://localhost:8888/wp-json/wp/v2/saved_search');
+        createPost.open('POST', '/wp-json/wp/v2/saved_search');
         createPost.setRequestHeader('X-WP-Nonce', magicalData.nonce);
         createPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         createPost.send(JSON.stringify(data));

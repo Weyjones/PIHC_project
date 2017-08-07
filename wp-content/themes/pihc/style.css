@@ -1596,4 +1596,8 @@ ul.filter-list input[type='radio']{
   margin-right: 0 !important;
   width: auto !important;
   margin-bottom: 0;
+
+}
+.search-container{
+  margin-bottom: 45px;
 }
