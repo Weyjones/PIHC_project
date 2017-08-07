@@ -49,19 +49,19 @@
 				<div class="function-area">
 					<h4 class="function-header">Sort by</h4>
 					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="">
+						<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="">
 						Relevance
 					</label><br/>
 					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="ProgramName">
+						<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">
 						ProgramName
 					</label><br/>
 					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="AccountName">
+						<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">
 						AccountName
 					</label><br/>
 					<label>
-						<input type="radio" ng-model="$ctrl.orderProp" value="Distance">
+						<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">
 						Distance
 					</label><br/>
 				</div>
