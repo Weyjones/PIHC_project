@@ -769,3 +769,21 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="N") { dist = dist * 0.8684 };
 	return dist.toFixed(0);
 }
+
+function getUrlParams(url) {
+  var queryString = url.split("?")[1];
+  var keyValuePairs = queryString.split("&");
+  var keyValue, params = {};
+  keyValuePairs.forEach(function(pair) {
+    keyValue = pair.split("=");
+    params[keyValue[0]] = decodeURIComponent(keyValue[1]).replace("+", " ");
+});
+  return params
+}
+var currentURL =  window.location.href;
+
+
+var qd = getUrlParams(currentURL) ;
+
+
+document.getElementById("LHautocomplete").value = qd["query"];
