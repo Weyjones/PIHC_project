@@ -822,5 +822,6 @@ var currentURL =  window.location.href;
 
 var qd = getUrlParams(currentURL) ;
 
-
-document.getElementById("LWLautocomplete").value = qd["query"];
+if(qd["query"]){
+  document.getElementById("LWLautocomplete").value = qd["query"];
+}
