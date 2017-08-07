@@ -1585,3 +1585,15 @@ ul.filter-list input[type='radio']{
 .map-view-container{
   margin-bottom: 15px;
 }
+#menu-livewell-submenu .dropdown-content, .ui-autocomplete{
+  z-index: 7000 !important;
+}
+.entry-header, .entry-footer{
+  display: none;
+}
+.content-intro .container-fluid{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: auto !important;
+  margin-bottom: 0;
+}

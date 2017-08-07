@@ -10,7 +10,6 @@ button.view-map-btn{
     font-weight: normal;
 }
 .search-container{
-    margin: auto 120px;
     padding-top: 30px;
 }
 .function-area{
@@ -102,11 +101,12 @@ ul.function-options>li:hover{
     display: inline-block;
     vertical-align: middle;
 }
+/*
 .lwl-topics-filter-list>li .icon{
-    width: 10%;
-    min-width: 26px;
-    max-width: 26px;
+    width: 26.5px;
+    height: 26.5px;
 }
+*/
 .lwl-topics-filter-list>li label{
     font-size: 1em;
     width: 80%;

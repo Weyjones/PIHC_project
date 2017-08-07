@@ -81,7 +81,7 @@
 if ( is_user_logged_in() ) {
 global $current_user;
       echo '<li>';
-      echo '<a href="/account/" title="My Account">My Account</a>';
+      echo '<a href="/account/favorite/" title="My Account">My Account</a>';
       echo '</li>';
 }
 ?>
@@ -106,7 +106,6 @@ if ( is_user_logged_in() ) {
 		<h1 style="color:<?php the_field(intro_title_color); ?>"><?php the_field(intro_title); ?></h1>
 		<p>
 			<?php the_field(intro_description); ?>
-
 		</p>
 	</div>
 </div>
