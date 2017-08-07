@@ -7,8 +7,11 @@
 			</div>
 			<button class="view-map-btn" ng-click="openMapview()">See Listings in Map View</button>
 			<hr/>
-			<h3>Save Search Results</h3>
-			<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save This Search</a><br>
+			<div ng-if="$ctrl.allowSave">
+				<h3>Save Search Results</h3>
+				<a class="saveSearchButton" data-toggle="modal" data-target="#saveSearchModal">Save This Search</a>
+			</div>
+
 			<!-- Modal -->
 			<div class="modal fade" id="saveSearchModal" role="dialog">
 				<div class="modal-dialog">
@@ -330,7 +333,7 @@
 								<h4>Description</h4>
 							</div>
 							<div class="col-sm-2">
-								<span class="star-icon" ng-click="addFavorite(program)" ng-class="{'active': program.saved}"></span>
+								<span ng-if="$ctrl.allowSave" class="star-icon" ng-click="addFavorite(program)" ng-class="{'active': program.saved}"></span>
 							</div>
 						</div>
 						<p class="desc-content hidden-print">

@@ -33,7 +33,7 @@ app.component('searchWidget', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchwidget.template.html',
     controller: function PrpgramListController($scope, $http, dataCache, $timeout, $location, $stateParams, $state) {
         var $ctrl = this;
-
+        $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
 
@@ -181,6 +181,7 @@ app.component('searchDetail', {
     templateUrl: '../../wp-content/plugins/livewell-search/searchdetail.template.html',
     controller: function PrpgramDetailController($scope, $http, dataCache, $stateParams, $location, $state) {
         var $ctrl = this;
+        $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
         var programId = $stateParams.programId;
         function successCallback(response) {
             $ctrl.programs = dataCache.transFormAndSaveData(response.data);
@@ -286,7 +287,7 @@ app.component('searchMapview', {
         }
 
         var $ctrl = this;
-
+        $ctrl.allowSave = currentAuthor && currentAuthor.id > 0;
         $ctrl.orderProp = '';
         $ctrl.keyword = $stateParams.query || '';
 

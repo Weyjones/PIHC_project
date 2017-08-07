@@ -77,6 +77,7 @@ function um_account_content_hook_favorite( $output ){
                 $args = array(
                     'post_type'        => 'favorite_program',
                     'post_status'      => 'publish',
+                    'numberposts'       => -1,
                     'author'           => get_current_user_id()
                 );
                 $myposts = get_posts( $args );
@@ -89,7 +90,9 @@ function um_account_content_hook_favorite( $output ){
                             <a href="<?php  echo $url; ?>"><?php the_title(); ?></a>
                         </td>
                         <td>
+                        <?php if (current_user_can('delete_post', $post->ID)) {?>
                             <a href="<?php echo get_delete_post_link($post->ID); ?>">delete</a>
+                        <?php } ?>
                         </td>
                     </tr>
                 <?php endforeach;
@@ -150,6 +153,7 @@ function um_account_content_hook_saved_search( $output ){
                 global $post;
                 $args = array(
                     'post_type'        => 'saved_search',
+                    'numberposts'       => -1,
                     'post_status'      => 'publish',
                     'author'           => get_current_user_id()
                 );
@@ -163,7 +167,9 @@ function um_account_content_hook_saved_search( $output ){
                         <a href="<?php  echo $url; ?>"><?php the_title(); ?></a>
                         </td>
                         <td>
-                        <a href="<?php echo get_delete_post_link($post->ID); ?>">delete</a>
+                            <?php if (current_user_can('delete_post', $post->ID)) {?>
+                                <a href="<?php echo get_delete_post_link($post->ID); ?>">delete</a>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php endforeach;

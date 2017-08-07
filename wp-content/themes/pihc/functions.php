@@ -228,3 +228,20 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+// Add CSS to hide everything in the admin while the JS above does it's trick
+add_action('admin_head', 'hide_admin_via_css');
+function hide_admin_via_css() {
+	if (!current_user_can( 'manage_options' )) {
+		echo '<style>body * {visibility:hidden !important;} body:before {content:"Give it a second...";}
+';
+	}
+}
+
+// Add Javascript to redirect anyone but administrators out of the admin area after 10 seconds
+function my_enqueue( $hook ) {
+	if (!current_user_can( 'manage_options' )) {
+	    wp_enqueue_script( 'my_custom_script', '/wp-content/themes/pihc/block-admin.js' );
+	}
+}
+add_action('admin_enqueue_scripts', 'my_enqueue');
