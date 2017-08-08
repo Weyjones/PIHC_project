@@ -172,11 +172,11 @@
 						</li>
 						<li ng-click="updateOrderBy('ProgramName')" ng-class="{'selected': $ctrl.orderProp === 'ProgramName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">-->
-							ProgramName
+							Program Name
 						</li>
 						<li ng-click="updateOrderBy('AccountName')" ng-class="{'selected': $ctrl.orderProp === 'AccountName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">-->
-							AccountName
+							Organization Name
 						</li>
 						<li ng-click="updateOrderBy('distance')" ng-class="{'selected': $ctrl.orderProp === 'distance'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">-->
@@ -295,10 +295,10 @@
 						<info-window id="map-lh">
 							<div ng-non-bindable>
 								<div id="siteNotice"></div>
-								<h4 style="color:#06c" ng-click="$ctrl.openDetailPage($ctrl.selectedProgram)">{{$ctrl.selectedProgram.AccountName}}</h4>
+								<h4 style="color:#06c" ng-click="$ctrl.openDetailPage($ctrl.selectedProgram)">{{$ctrl.selectedProgram.ProgramName}}</h4>
 								<div id="bodyContent">
 									<p>
-										<b>{{$ctrl.selectedProgram.ProgramName}}</b><br>
+										<b>{{$ctrl.selectedProgram.AccountName}}</b><br>
 										{{$ctrl.selectedProgram.fullAddress}}<br>
 
 										<a href="https://maps.google.com/?daddr={{$ctrl.selectedProgram.fullAddress}}&saddr=Current%20Location">

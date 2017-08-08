@@ -64,7 +64,7 @@
 	}
 ?>
 
-<li class="dropdown"><a href="" class="dropbtn">HELPFUL LINK</a>
+<li class="dropdown"><a href="" class="dropbtn">Helpful	Links</a>
 <div class="dropdown-content">
 	<?php
 		$helpfullinks = get_field( 'helpful_links' );
@@ -118,7 +118,7 @@ if ( is_user_logged_in() ) {
 <div class="container-fluid main-body">
 	<form id="lwl-search-form" class="search-bar" action="/livewell/search/">
 		<div class="keyword-search col-md-5">
-			<input id="LWLautocomplete" type="text" class="form-control" name="query" placeholder="Search by Keyword">
+			<input id="LWLautocomplete" type="text" class="form-control" name="query" placeholder="Enter keyword or click the search icon to see all topics.">
 		</div>
 		<div class="address-search col-md-5">
 			<input id="geocomplete" name="formatted_address" class="form-control"type="text" placeholder="Enter your Location (City or Zip Code)"/>

@@ -170,11 +170,11 @@
 						</li>
 						<li ng-click="updateOrderBy('ProgramName')" ng-class="{'selected': $ctrl.orderProp === 'ProgramName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">-->
-							ProgramName
+							Program Name
 						</li>
 						<li ng-click="updateOrderBy('AccountName')" ng-class="{'selected': $ctrl.orderProp === 'AccountName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">-->
-							AccountName
+							Organization Name
 						</li>
 						<li ng-click="updateOrderBy('distance')" ng-class="{'selected': $ctrl.orderProp === 'distance'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">-->
@@ -202,7 +202,7 @@
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
 						<a><h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
-				  			{{program.AccountName}}
+				  			{{program.ProgramName}}
 			  			</h3></a>
 						<div class="icon-list">
 							<div ng-if="program.LWL_Dimension__c === 'Mental/Emotional/Spiritual'" class="mentalIcon inline-block"></div>
@@ -213,7 +213,7 @@
 							<div ng-if="program.LWL_Dimension__c === 'Work/Learning & Growth'" class="workIcon inline-block"></div>
 						</div>
 						<span class="service-name">
-							{{program.ProgramName}}
+							{{program.AccountName}}
 						</span>
 						<div class="address" id="address-{{$index}}">
 							{{program.fullAddress}}
@@ -222,9 +222,7 @@
 						<div ng-if="program.distance" class="distance">
 							{{program.distance}} miles - <a href="https://maps.google.com/?daddr={{program.fullAddress}}&saddr=Current%20Location">Get Directions</a>
 						</div>
-						<div class="phone">
-							206-123-4567
-						</div>
+
 						<div ng-if="program.LWL_program_website__c"class="website">
 							<a href="{{program.LWL_program_website__c}}">Website</a>
 						</div>

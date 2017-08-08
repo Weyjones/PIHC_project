@@ -62,7 +62,7 @@
 	}
 ?>
 
-<li class="dropdown"><a href="" class="dropbtn">HELPFUL LINK</a>
+<li class="dropdown"><a href="" class="dropbtn">Helpful	Links</a>
 <div class="dropdown-content">
 	<?php
 		$helpfullinks = get_field( 'helpful_links' );
@@ -125,7 +125,7 @@ if ( is_user_logged_in() ) {
 			<p><?php the_field(live_healthy_navigation_description); ?></p>
 		</div>
 		<div class="nav-btn">
-			<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORER COMMUNITY</a>
+			<a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORE THE COMMUNITY</a>
 		</div>
 	</div>
 
@@ -195,7 +195,7 @@ if ( is_user_logged_in() ) {
         </tr>
         <tr class="btn-row">
             <td>
-                <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORER COMMUNITY</a>
+                <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">EXPLORE THE COMMUNITY</a>
             </td>
             <td>
                 <a href="http://www.pihcsnohomish.org/about/staff/" class="btn btn-blue">Local Well-being Resources</a>

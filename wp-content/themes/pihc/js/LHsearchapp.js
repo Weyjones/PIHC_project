@@ -777,8 +777,8 @@ function generatePDF(programs){
           },
       ],
 
-      defaultStyle: {
-          columnGap: 10,
+      pageBreakBefore: function(currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) {
+        return currentNode.startPosition.top >= 750;
       }
   }
 }
@@ -817,5 +817,6 @@ var currentURL =  window.location.href;
 
 var qd = getUrlParams(currentURL) ;
 
-
-document.getElementById("LHautocomplete").value = qd["query"];
+if(qd["query"]){
+  document.getElementById("LHautocomplete").value = qd["query"];
+}

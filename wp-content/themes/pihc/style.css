@@ -738,8 +738,7 @@ a {
     line-height: 32px;
     outline: none;
     padding: 15px 15px;
-    text-decoration: none;
-    text-transform: uppercase; }
+    text-decoration: none; }
     .sub-menu .menu a.active, .sub-menu .menu a:hover {
       background: rgba(255, 255, 255, 0.5); }
 

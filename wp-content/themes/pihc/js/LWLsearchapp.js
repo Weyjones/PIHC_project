@@ -528,7 +528,9 @@ app.factory('dataCache', function($http) {
             }
             result.fullAddress = fullAddress;
         }
-
+        if(result.GeoInfo__Latitude__s && result.GeoInfo__Longitude__s){
+            result.latlng = '['+result.GeoInfo__Latitude__s+','+result.GeoInfo__Longitude__s+']';
+        }
         return result;
     }
     function addFavorite(program) {
@@ -782,9 +784,10 @@ function generatePDF(programs){
           },
       ],
 
-      defaultStyle: {
-          columnGap: 10,
+      pageBreakBefore: function(currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) {
+        return currentNode.startPosition.top >= 750;
       }
+
   }
 }
 

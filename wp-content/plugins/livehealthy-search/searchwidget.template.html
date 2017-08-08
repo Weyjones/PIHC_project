@@ -172,11 +172,11 @@
 						</li>
 						<li ng-click="updateOrderBy('ProgramName')" ng-class="{'selected': $ctrl.orderProp === 'ProgramName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="ProgramName">-->
-							ProgramName
+							Program Name
 						</li>
 						<li ng-click="updateOrderBy('AccountName')" ng-class="{'selected': $ctrl.orderProp === 'AccountName'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="AccountName">-->
-							AccountName
+							Organization Name
 						</li>
 						<li ng-click="updateOrderBy('distance')" ng-class="{'selected': $ctrl.orderProp === 'distance'}">
 							<!--<input type="radio" ng-model="$ctrl.orderProp" ng-change="updateOrderBy()" value="distance">-->
@@ -289,11 +289,11 @@
 				<div class="result-item row" ng-repeat="program in $ctrl.programs | filter: $ctrl.keyword | filter: programFilter | orderBy:$ctrl.orderProp as filteredPrograms">
 					<div class="info col-sm-4">
 						<h3 class="program-name" ng-click="$ctrl.openDetailPage(program)">
-				  			{{program.AccountName}}
+				  			{{program.ProgramName}}
 			  			</h3>
 						<!-- </a> -->
 						<span class="server-name">
-							{{program.ProgramName}}
+							{{program.AccountName}}
 						</span>
 
 						<div class="address" id="address-{{$index}}">
